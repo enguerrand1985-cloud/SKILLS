@@ -1,0 +1,36 @@
+{
+    "meta": {
+        "document_type": "skill_rules",
+        "module": "section.regles-metier",
+        "version": "3.1.0",
+        "updated_at": "2026-04-12T00:00:00+02:00"
+    },
+    "rules": {
+        "reference_docs": [
+            "references/usage-section-regles-metier.md"
+        ],
+        "root_section": "regles_metier",
+        "rules_engine_path": "regles_metier.rules_engine.rules",
+        "rule_header_min": [
+            "title",
+            "category",
+            "scope_binding",
+            "cadence",
+            "inputs",
+            "stop_conditions",
+            "outputs",
+            "status"
+        ],
+        "details_may_live_in": [
+            "regles_metier.procedures",
+            "regles_metier.templates_prompts"
+        ],
+        "todo_projection_allowed": true,
+        "todo_projection_requires": [
+            "rule_id",
+            "links"
+        ],
+        "duplicate_data_facts_forbidden": true,
+        "internal_reference_table_allowed": "regles_metier.references"
+    }
+}

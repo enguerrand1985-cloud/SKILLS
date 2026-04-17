@@ -1,0 +1,61 @@
+{
+    "meta": {
+        "document_type": "skill_rules",
+        "module": "router",
+        "version": "3.0.0",
+        "updated_at": "2026-04-12T00:00:00+02:00",
+        "purpose": "minimal_read_router"
+    },
+    "activation_policy": {
+        "explicit_request_required": true,
+        "allowed_intents": [
+            "create_fiche_llm",
+            "full_replace_fiche_llm",
+            "update_fiche_llm",
+            "patch_fiche_llm",
+            "rebuild_todo",
+            "validate_fiche_llm"
+        ],
+        "forbidden_usages": [
+            "generic_scope_reading",
+            "pure_business_analysis",
+            "general_support_without_structuring_intent"
+        ],
+        "ambiguity_policy": "STOP"
+    },
+    "routing_modes": {
+        "full_run_dense_when": [
+            "creation complete demandee",
+            "full replace demande",
+            "maintenance complete demandee",
+            "reconstruction complete plus rentable qu'une lecture sectionnelle"
+        ],
+        "targeted_section_when": [
+            "une seule section est touchee",
+            "un diff minimal suffit",
+            "une correction locale ou un ajout borne est demande"
+        ],
+        "rebuild_todo_when": [
+            "l'utilisateur demande explicitement rebuild todo",
+            "les taches doivent etre reprojetees apres modification canonique"
+        ],
+        "validate_only_when": [
+            "demande de validation seule",
+            "doute de conformite avant livraison"
+        ]
+    },
+    "conditional_reads": {
+        "mapping": "read_only_if_section_routing_not_obvious",
+        "intake": "read_only_if_scope_or_placement_incomplete",
+        "scope_router": "read_only_if_scope_or_parent_scope_not_trivial",
+        "scope_doctrine": "read_only_if_child_scope_or_sasu_case_or_scope_sensitive_case",
+        "validate_rules": "read_only_before_delivery_or_sensitive_change",
+        "validate_schema": "read_only_if_structural_mutation_or_new_key_or_explicit_heavy_validation"
+    },
+    "first_line_guardrails": [
+        "Ne pas inventer de valeurs absentes.",
+        "Ne pas faire d inference cross-scope implicite.",
+        "Ne pas utiliser les archives comme source canonique.",
+        "Preferer le chemin le plus court qui preserve la fonction utile."
+    ]
+}

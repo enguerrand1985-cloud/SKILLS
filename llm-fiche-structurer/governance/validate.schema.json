@@ -1,0 +1,1208 @@
+{
+  "meta": {
+    "document_type": "",
+    "document_role": "",
+    "version": "2.3.2",
+    "created_at": "",
+    "timezone": "",
+    "updated_at": "2026-04-05T00:00:00+02:00",
+    "tags": [
+      "domain_schema"
+    ],
+    "change_log": [
+      {
+        "id": "CHG__SCHEMA_TEMPLATE__2_2_0",
+        "at": "2026-01-21T12:00:00+01:00",
+        "summary": "Ajout des mini-schémas domaines pour data.canonique (banque, personnes, social, assurances, vehicules, activite, fiscalite, documents_index) + doctrine canonique sans sources.",
+        "breaking_change": true
+      },
+      {
+        "id": "CHG__SCHEMA_TEMPLATE__2_2_1",
+        "at": "2026-01-22T12:00:00+01:00",
+        "summary": "Ajout du champ banque.primary_account_id (optionnel) pour référencer accounts[].id.",
+        "breaking_change": false
+      },
+      {
+        "id": "CHG__SCHEMA_TEMPLATE__2_2_2",
+        "at": "2026-01-22T12:30:00+01:00",
+        "summary": "Normalisation des pointeurs de dépendances: ajout d'un mini-schéma LinkRef pour todo.*.links[] et rules_engine.rules[*].links[] (type/ref_id/path/note).",
+        "breaking_change": false
+      },
+      {
+        "id": "CHG__SCHEMA_TEMPLATE__2_2_3",
+        "at": "2026-01-22T16:30:00+01:00",
+        "summary": "Ajout des playbooks runtime universels (MAINTENANCE/OUTPUT_JSON/REBUILD_TODO) dans llm_contract.playbooks et pré-remplissage llm_contract.hints[0] (runtime header) + hints[1] vide (scope addendum).",
+        "breaking_change": false
+      },
+      {
+        "id": "CHG__SCHEMA_TEMPLATE__2_2_4",
+        "at": "2026-01-22T17:20:31+01:00",
+        "summary": "Ajout d'une doctrine de couches par scope (base + extensions) dans meta.scope_variants. Ajout d'une extension SASU (surcouche entreprise) sous forme de gabarit data.canonique.* à fusionner lors de la génération d'une fiche SASU. Ajout d'un placeholder hints[1] (déjà) maintenu vide.",
+        "breaking_change": false
+      },
+      {
+        "id": "CHG__SCHEMA_TEMPLATE__2_2_5",
+        "at": "2026-01-22T18:11:37.474668+01:00",
+        "summary": "Ajout du champ optionnel policy aux Value objects (value-only) pour supporter masked_not_stored (ex: value=null + policy).",
+        "breaking_change": false
+      },
+      {
+        "id": "CHG__SCHEMA_TEMPLATE__2_2_6",
+        "at": "2026-01-22T19:38:53.250060+01:00",
+        "summary": "SASU: alignement extension entreprise (contacts/adresses + champs activité) + extension customs/ip; ajout meta.type_defs.ValueObject (doit_exister) + support explicite documents_index.",
+        "breaking_change": false
+      },
+      {
+        "id": "CHG__SCHEMA_TEMPLATE__2_2_7",
+        "at": "2026-01-23T17:20:12.132551+01:00",
+        "summary": "Extension domaine vehicules: ajout des champs vehicules[].annee et vehicules[].vin (admin minimal, sans dossier technique).",
+        "breaking_change": false
+      },
+      {
+        "id": "CHG__SCHEMA_TEMPLATE__2_2_8",
+        "at": "2026-01-23T19:03:02.208431+01:00",
+        "summary": "Extension domaine vehicules: ajout de vehicules[].entretien (historique compact: graissage/dégraissage/gonflage).",
+        "breaking_change": false
+      },
+      {
+        "id": "CHG__SCHEMA_TEMPLATE__2_2_9",
+        "at": "2026-01-23T20:49:51+01:00",
+        "summary": "Refactor vehicules: restauration du socle minimal BASE (vehicules[] sans annee/vin/entretien) et déplacement des champs avancés (annee/vin/entretien) en extension PERSONA via meta.scope_variants.PERSONA.",
+        "breaking_change": false
+      },
+      {
+        "id": "CHG__SCHEMA_TEMPLATE__2_3_0",
+        "at": "2026-03-26T00:00:00+01:00",
+        "summary": "Extension du domaine banque: ajout d'un référentiel enrichi des comptes, des engagements fixes, des virements récurrents et des snapshots de trésorerie facultatifs.",
+        "breaking_change": false
+      },
+      {
+        "id": "CHG__SCHEMA_TEMPLATE__2_3_1",
+        "at": "2026-03-26T00:30:00+01:00",
+        "summary": "Convergence banque PERSONA/MICRO: ajout de holder_name, account_numbers, domiciliation et tags sur accounts[]; neutralisation des valeurs d'exemple scope_affectation.",
+        "breaking_change": false
+      },
+      {
+        "id": "CHG__SCHEMA_TEMPLATE__2_3_2",
+        "at": "2026-04-05T00:00:00+02:00",
+        "summary": "Ajout du champ optionnel todo.recurring[*].valid_until pour les occurrences documentaires avec date de validité explicite, distincte de status.next_run_at.",
+        "breaking_change": false
+      }
+    ],
+    "migrated_from_version": "",
+    "scope_variants": {
+      "BASE": {
+        "description": "Socle minimal commun de structure et de domaines (BASE). Tout champ hors minimal doit être modélisé via une extension de scope (PERSONA/MICRO/SASU...).",
+        "data_canonique_domains": [
+          "identite",
+          "personnes",
+          "banque",
+          "social",
+          "assurances",
+          "vehicules",
+          "activite",
+          "fiscalite",
+          "documents_index",
+          "profils_numeriques"
+        ],
+        "llm_contract": {
+          "required_playbooks_min": [
+            "PLAYBOOK__ONBOARDING",
+            "PLAYBOOK__DATA_LOOKUP",
+            "PLAYBOOK__MAINTENANCE",
+            "PLAYBOOK__OUTPUT_JSON",
+            "PLAYBOOK__REBUILD_TODO"
+          ],
+          "required_policies_min": [
+            "POLICY__SCOPE_CLOSED_BY_DEFAULT",
+            "POLICY__ARCHIVES_NOT_CANONICAL",
+            "POLICY__CANONIQUE_CLEAN_NO_EVIDENCE_KEYS",
+            "POLICY__SENSITIVE_DATA_NO_SECRETS",
+            "POLICY__MAINTENANCE_MODE",
+            "POLICY__UPDATE_OUTPUT_MODES",
+            "POLICY__DEPENDENCY_POINTERS",
+            "POLICY__OVERWRITE_BY_ID"
+          ]
+        }
+      },
+      "SASU": {
+        "description": "Extension SASU: surcouche entreprise à fusionner avec le socle.",
+        "data_canonique_extension": {
+          "entreprise": {
+            "id": "",
+            "denomination": {
+              "value": "",
+              "policy": ""
+            },
+            "forme_juridique": {
+              "value": "SASU",
+              "policy": ""
+            },
+            "siren": {
+              "value": "",
+              "policy": ""
+            },
+            "siret_siege": {
+              "value": "",
+              "policy": ""
+            },
+            "rcs_ville": {
+              "value": "",
+              "policy": ""
+            },
+            "numero_rcs": {
+              "value": "",
+              "policy": ""
+            },
+            "capital_social_eur": {
+              "value": "",
+              "policy": ""
+            },
+            "date_creation": {
+              "value": "",
+              "policy": ""
+            },
+            "siege_adresse": {
+              "value": "",
+              "policy": ""
+            },
+            "tva_intracom": {
+              "value": "",
+              "policy": ""
+            },
+            "contacts": {
+              "emails": [
+                {
+                  "value": "",
+                  "label": ""
+                }
+              ],
+              "telephones": [
+                {
+                  "value": "",
+                  "label": ""
+                }
+              ]
+            },
+            "adresses": {
+              "siege_social": {
+                "value": "",
+                "policy": ""
+              },
+              "domiciliation": {
+                "value": "",
+                "policy": ""
+              }
+            },
+            "date_debut_activite": {
+              "value": "",
+              "policy": ""
+            }
+          },
+          "domiciliation": {
+            "id": "",
+            "prestataire": {
+              "value": "",
+              "policy": ""
+            },
+            "adresse": {
+              "value": "",
+              "policy": ""
+            },
+            "date_debut": {
+              "value": "",
+              "policy": ""
+            },
+            "date_fin": {
+              "value": "",
+              "policy": ""
+            },
+            "reference_contrat": {
+              "value": "",
+              "policy": ""
+            }
+          },
+          "dgfip": {
+            "id": "",
+            "sie": {
+              "nom": {
+                "value": "",
+                "policy": ""
+              },
+              "adresse": {
+                "value": "",
+                "policy": ""
+              },
+              "telephone": {
+                "value": "",
+                "policy": ""
+              },
+              "email": {
+                "value": "",
+                "policy": ""
+              }
+            },
+            "regimes": {
+              "impot_societes": {
+                "value": "",
+                "policy": ""
+              },
+              "tva": {
+                "value": "",
+                "policy": ""
+              }
+            }
+          },
+          "ip": {
+            "id": "",
+            "marques": [
+              {
+                "id": "",
+                "name": {
+                  "value": "",
+                  "policy": ""
+                },
+                "application_number": {
+                  "value": "",
+                  "policy": ""
+                },
+                "filing_date": {
+                  "value": "",
+                  "policy": ""
+                },
+                "nice_classes": [],
+                "fees_eur": {
+                  "value": "",
+                  "policy": ""
+                }
+              }
+            ],
+            "dossiers_inpi": []
+          },
+          "customs": {
+            "id": "",
+            "notes": {
+              "value": "",
+              "policy": ""
+            },
+            "eori": {
+              "value": "",
+              "policy": ""
+            },
+            "functional_email": {
+              "value": "",
+              "policy": ""
+            },
+            "contact_phone": {
+              "value": "",
+              "policy": ""
+            },
+            "attribution_date": {
+              "value": "",
+              "policy": ""
+            },
+            "address": {
+              "value": "",
+              "policy": ""
+            }
+          }
+        },
+        "mini_index_additions": [
+          {
+            "id": "IDX__DATA_CANONIQUE__ENTREPRISE",
+            "path": "data.canonique.entreprise",
+            "priority": 20,
+            "title": "Entreprise (SASU)",
+            "when_to_use": "SIREN/SIRET/RCS/TVA/capital/siège"
+          },
+          {
+            "id": "IDX__DATA_CANONIQUE__DOMICILIATION",
+            "path": "data.canonique.domiciliation",
+            "priority": 21,
+            "title": "Domiciliation",
+            "when_to_use": "Adresse siège, prestataire, contrat"
+          },
+          {
+            "id": "IDX__DATA_CANONIQUE__DGFIP",
+            "path": "data.canonique.dgfip",
+            "priority": 22,
+            "title": "DGFiP / SIE",
+            "when_to_use": "Contacts SIE, régimes IS/TVA"
+          },
+          {
+            "id": "IDX__DATA_CANONIQUE__IP",
+            "path": "data.canonique.ip",
+            "priority": 23,
+            "title": "INPI / Propriété intellectuelle",
+            "when_to_use": "Marques, dépôts, dossiers"
+          },
+          {
+            "id": "IDX__DATA_CANONIQUE__CUSTOMS",
+            "path": "data.canonique.customs",
+            "priority": 24,
+            "title": "Douanes / EORI",
+            "when_to_use": "EORI et éléments douane"
+          }
+        ]
+      },
+      "PERSONA": {
+        "description": "Extension PERSONA: champs additionnels par domaine au-delà du socle minimal BASE (ex: vehicules avancé).",
+        "domain_item_extensions": {
+          "vehicules_item_extension": {
+            "annee": null,
+            "vin": "",
+            "entretien": {
+              "chain": {
+                "graissage": [
+                  {
+                    "date": "",
+                    "km": null
+                  }
+                ],
+                "degraissage": [
+                  {
+                    "date": "",
+                    "km": null
+                  }
+                ]
+              },
+              "pneus": {
+                "gonflage": [
+                  {
+                    "date": "",
+                    "km": null
+                  }
+                ]
+              }
+            }
+          }
+        }
+      },
+      "MICRO": {
+        "description": "MICRO utilise le socle minimal BASE; extensions possibles ultérieurement si des domaines nécessitent des champs spécifiques.",
+        "domain_item_extensions": {}
+      }
+    },
+    "type_defs": {
+      "ValueObject": {
+        "value": null,
+        "policy": "",
+        "doit_exister": true
+      },
+      "DocumentIndexItem": {
+        "id": "",
+        "doc_id": "",
+        "filename": "",
+        "sha256": "",
+        "pages": 0,
+        "category": "",
+        "tags": []
+      },
+      "VehiculeItem_BASE": {
+        "id": "",
+        "type": "",
+        "marque": "",
+        "modele": "",
+        "immatriculation": "",
+        "usage": ""
+      },
+      "VehiculeItem_PERSONA_EXT": {
+        "annee": null,
+        "vin": "",
+        "entretien": {
+          "chain": {
+            "graissage": [
+              {
+                "date": "",
+                "km": null
+              }
+            ],
+            "degraissage": [
+              {
+                "date": "",
+                "km": null
+              }
+            ]
+          },
+          "pneus": {
+            "gonflage": [
+              {
+                "date": "",
+                "km": null
+              }
+            ]
+          }
+        }
+      }
+    }
+  },
+  "scope_header": {
+    "scope": "",
+    "parent_scope": null,
+    "child_scopes": []
+  },
+  "llm_contract": {
+    "allow_inference": false,
+    "allow_merge": false,
+    "routing": null,
+    "policies": [
+      {
+        "id": "POLICY__SCOPE_CLOSED_BY_DEFAULT",
+        "title": "Scope fermé par défaut",
+        "description": "Sans demande explicite, pas d’inférence cross-scope. Toute agrégation cross-scope doit être explicitement demandée.",
+        "enabled": true
+      },
+      {
+        "id": "POLICY__ARCHIVES_NOT_CANONICAL",
+        "title": "Archives non-canoniques",
+        "description": "Les archives ne sont jamais une source de vérité si une donnée canonique existe. Lecture des archives uniquement sur demande explicite.",
+        "enabled": true
+      }
+    ],
+    "playbooks": [
+      {
+        "id": "PLAYBOOK__ONBOARDING",
+        "title": "Onboarding / compréhension du fichier",
+        "steps": [
+          "Lire meta",
+          "Lire scope_header",
+          "Lire llm_contract (policies + playbooks)",
+          "Lire mini_index (navigation)",
+          "Lire regles_metier.rules_engine (si objectif action/calcul)",
+          "Lire data.canonique (faits)",
+          "Ne lire data.scope_specifique.archives que sur demande explicite"
+        ]
+      },
+      {
+        "id": "PLAYBOOK__RUN_RULE",
+        "title": "Exécuter une règle moteur (préparation)",
+        "steps": [
+          "Identifier la règle dans regles_metier.rules_engine.rules",
+          "Vérifier inputs_required / stop_conditions",
+          "Produire une proposition dans todo (recurring ou one_shot) avec rule_id",
+          "Ne pas écrire dans data sans instruction explicite"
+        ]
+      },
+      {
+        "id": "PLAYBOOK__DATA_LOOKUP",
+        "title": "Recherche factuelle",
+        "steps": [
+          "Lire data.canonique en priorité",
+          "Utiliser documents_index pour trouver les pièces",
+          "Ignorer archives sauf demande explicite"
+        ]
+      },
+      {
+        "id": "PLAYBOOK__DEDUPE_CONSOLIDATE",
+        "title": "Déduplication contrôlée (non-destructive)",
+        "steps": [
+          "Identifier le doublon (exact ou sémantique) et la section concernée",
+          "Choisir une source unique (canonique ou procédure/template)",
+          "Remplacer les occurrences secondaires par une référence (id/path)",
+          "Archiver l'ancienne formulation si utile (audit/historique)",
+          "Mettre à jour mini_index et regles_metier.references si nécessaire"
+        ]
+      },
+      {
+        "id": "PLAYBOOK__MAINTENANCE",
+        "title": "Maintenance / mise à jour contrôlée",
+        "steps": [
+          "Vérifier instruction explicite de mise à jour (sinon rester en lecture/planification)",
+          "Appliquer triage (ingestion): identifier faits à mettre à jour, demander les infos manquantes si nécessaire",
+          "Mettre à jour data.canonique par overwrite in-place (match par id), sans suppression",
+          "Rebuild contrôlé de todo: régénérer/ajuster les tâches liées via links et/ou rule_id; appliquer rollover recurring si applicable",
+          "Produire une sortie JSON exploitable (MERGE_PATCH par défaut) + demander validation utilisateur"
+        ]
+      },
+      {
+        "id": "PLAYBOOK__OUTPUT_JSON",
+        "title": "Sortie JSON exploitable (update)",
+        "steps": [
+          "Choisir le mode de sortie: MERGE_PATCH_RFC7396 (défaut) / FULL_REPLACE (fallback) / PATCH_RFC6902 (avancé)",
+          "Produire un bloc JSON unique sans prose mélangée",
+          "Inclure mode, target_filename, scope, payload"
+        ]
+      },
+      {
+        "id": "PLAYBOOK__REBUILD_TODO",
+        "title": "Rebuild contrôlé de todo",
+        "steps": [
+          "Identifier les entités canoniques modifiées (ids)",
+          "Retrouver les tâches todo impactées via links (ref_id) et/ou rule_id",
+          "Mettre à jour/remplacer les tâches concernées; conserver les autres",
+          "Appliquer la règle de rollover pour recurring (DONE ⇒ next_run_at recalculé ⇒ PLANNED)"
+        ]
+      }
+    ],
+    "hints": [
+      "Fiche LLM autonome. Respecte strictement le schéma. Scope fermé par défaut: pas d’inférence ou fusion cross-scope sans demande explicite. data.canonique est la source de vérité; archives non canoniques (lecture sur demande). Ne jamais inventer de valeurs absentes. Ne jamais stocker de secrets (CVV/mdp/2FA). Mises à jour uniquement sur instruction explicite + validation: overwrite in-place par id (pas de suppression) et rebuild contrôlé de todo via rule_id et todo.links (liens vers ids canoniques, jamais cross-scope). Sortie obligatoire en JSON exploitable: MERGE_PATCH par défaut, fallback FULL_REPLACE si nécessaire.",
+      ""
+    ]
+  },
+  "document_header": {
+    "title": "",
+    "description": "",
+    "owner": null,
+    "legal_entity": null
+  },
+  "mini_index": {
+    "entries": [
+      {
+        "id": "IDX__RULES_ENGINE",
+        "title": "Règles moteur",
+        "path": "regles_metier.rules_engine",
+        "when_to_use": "Quand il faut calculer, planifier, vérifier une obligation, préparer une action LLM",
+        "priority": 1
+      },
+      {
+        "id": "IDX__DATA_CANONIQUE",
+        "title": "Données canoniques (source de vérité)",
+        "path": "data.canonique",
+        "when_to_use": "Quand il faut répondre factuellement, remplir un formulaire, vérifier une information",
+        "priority": 2
+      },
+      {
+        "id": "IDX__TODO",
+        "title": "File d’exécution LLM (projection)",
+        "path": "todo",
+        "when_to_use": "Quand il faut lister les actions à faire (par le LLM), suivre un cycle, préparer une exécution",
+        "priority": 3
+      },
+      {
+        "id": "IDX__DATA_CANONIQUE__BANQUE",
+        "path": "data.canonique.banque",
+        "priority": 10,
+        "title": "Banque",
+        "when_to_use": "Navigation domaine"
+      },
+      {
+        "id": "IDX__DATA_CANONIQUE__PERSONNES",
+        "path": "data.canonique.personnes",
+        "priority": 11,
+        "title": "Personnes & identité",
+        "when_to_use": "Navigation domaine"
+      },
+      {
+        "id": "IDX__DATA_CANONIQUE__SOCIAL",
+        "path": "data.canonique.social",
+        "priority": 12,
+        "title": "Social",
+        "when_to_use": "Navigation domaine"
+      },
+      {
+        "id": "IDX__DATA_CANONIQUE__ASSURANCES",
+        "path": "data.canonique.assurances",
+        "priority": 13,
+        "title": "Assurances",
+        "when_to_use": "Navigation domaine"
+      },
+      {
+        "id": "IDX__DATA_CANONIQUE__DOCS",
+        "path": "data.canonique.documents_index",
+        "priority": 14,
+        "title": "Documents index",
+        "when_to_use": "Navigation domaine"
+      },
+      {
+        "id": "IDX__ARCHIVES",
+        "title": "Archives (non-canoniques)",
+        "path": "data.scope_specifique.archives",
+        "when_to_use": "Uniquement si explicitement demandé, ou pour audit/historique",
+        "priority": 99
+      },
+      {
+        "id": "IDX__DATA_CANONIQUE__PROFILS_NUMERIQUES",
+        "title": "Profils numériques (suite bureautique)",
+        "path": "data.canonique.profils_numeriques",
+        "when_to_use": "Accès aux comptes (Google/Microsoft/O365), services et URLs (suite bureautique).",
+        "priority": 17
+      }
+    ],
+    "legacy_paths": []
+  },
+  "todo": {
+    "recurring": [
+      {
+        "id": "",
+        "title": "",
+        "description": "",
+        "rule_id": null,
+        "valid_until": null,
+        "frequency": {
+          "type": "ADHOC",
+          "rrule": null,
+          "timezone": "Europe/Paris"
+        },
+        "window_policy": {
+          "type": "NONE",
+          "days": null
+        },
+        "inputs_required": [],
+        "stop_conditions": [],
+        "outputs_expected": [],
+        "status": {
+          "state": "PLANNED",
+          "last_run_at": null,
+          "next_run_at": null,
+          "last_result_ref": null
+        },
+        "execution_policy": {
+          "actor": "LLM",
+          "write_allowed": false,
+          "requires_user_validation": true
+        },
+        "links": [
+          {
+            "type": "",
+            "ref_id": "",
+            "path": null,
+            "note": ""
+          }
+        ],
+        "tags": []
+      }
+    ],
+    "one_shot": [
+      {
+        "id": "",
+        "title": "",
+        "description": "",
+        "rule_id": null,
+        "due_at": null,
+        "inputs_required": [],
+        "stop_conditions": [],
+        "outputs_expected": [],
+        "status": {
+          "state": "PLANNED",
+          "last_run_at": null,
+          "last_result_ref": null
+        },
+        "execution_policy": {
+          "actor": "LLM",
+          "write_allowed": false,
+          "requires_user_validation": true
+        },
+        "links": [
+          {
+            "type": "",
+            "ref_id": "",
+            "path": null,
+            "note": ""
+          }
+        ],
+        "tags": []
+      }
+    ]
+  },
+  "notes": [
+    {
+      "id": "",
+      "title": "",
+      "content": "",
+      "tags": [],
+      "created_at": "",
+      "updated_at": "",
+      "source": null,
+      "scope_binding": {
+        "scope": "",
+        "parent_scope": null
+      }
+    }
+  ],
+  "data": {
+    "canonique": {
+      "identite": {
+        "owner_display_name": "",
+        "langue": "",
+        "timezone": "Europe/Paris"
+      },
+      "personnes": [
+        {
+          "id": "",
+          "role": "",
+          "nom_legal_complet": {
+            "value": "",
+            "policy": ""
+          },
+          "date_naissance": {
+            "value": "",
+            "policy": ""
+          },
+          "lieu_naissance": {
+            "value": "",
+            "policy": ""
+          },
+          "nationalite": {
+            "value": "",
+            "policy": ""
+          },
+          "contacts": {
+            "emails": [
+              {
+                "value": "",
+                "label": ""
+              }
+            ],
+            "telephones": [
+              {
+                "value": "",
+                "label": ""
+              }
+            ]
+          },
+          "adresses": {
+            "principale": {
+              "value": "",
+              "policy": ""
+            },
+            "secondaire": {
+              "value": "",
+              "policy": ""
+            }
+          }
+        }
+      ],
+      "banque": {
+        "primary_account_id": null,
+        "accounts": [
+          {
+            "id": "",
+            "provider": "",
+            "label": "",
+            "holder_name": null,
+            "country": "FR",
+            "currency": "EUR",
+            "account_kind": "",
+            "ownership_kind": "",
+            "status": "active",
+            "ibans": [
+              {
+                "id": "",
+                "iban_raw": "",
+                "iban_formatted": "",
+                "currency": "EUR",
+                "kind": ""
+              }
+            ],
+            "bics": [
+              {
+                "bic": ""
+              }
+            ],
+            "account_numbers": {
+              "bank_code": null,
+              "branch_code": null,
+              "account_number": null,
+              "rib_key": null
+            },
+            "domiciliation": {
+              "label": null,
+              "address": null
+            },
+            "cards": [
+              {
+                "id": "",
+                "network": "",
+                "pan_raw": "",
+                "pan_formatted": "",
+                "expiry_mm_yy": "",
+                "cvv": {
+                  "value": null,
+                  "policy": "masked_not_stored"
+                }
+              }
+            ],
+            "tags": [],
+            "notes": ""
+          }
+        ],
+        "fixed_commitments": [
+          {
+            "id": "",
+            "label": "",
+            "category": "",
+            "subcategory": "",
+            "nature": "",
+            "amount": {
+              "value": 0,
+              "currency": "EUR"
+            },
+            "frequency": {
+              "type": "MONTHLY",
+              "rrule": null
+            },
+            "payment": {
+              "direction": "OUT",
+              "account_id": "",
+              "card_id": null,
+              "method": ""
+            },
+            "counterparty": {
+              "name": "",
+              "kind": ""
+            },
+            "status": "active",
+            "start_date": null,
+            "end_date": null,
+            "is_automatic": true,
+            "is_essential": true,
+            "scope_affectation": "",
+            "notes": ""
+          }
+        ],
+        "recurring_transfers": [
+          {
+            "id": "",
+            "label": "",
+            "direction": "IN",
+            "amount": {
+              "value": 0,
+              "currency": "EUR"
+            },
+            "frequency": {
+              "type": "MONTHLY",
+              "rrule": null,
+              "estimated_monthly_occurrences": 1
+            },
+            "destination_account_id": "",
+            "source_account_ref": {
+              "scope": null,
+              "account_id": null,
+              "label": ""
+            },
+            "counterparty": {
+              "name": "",
+              "kind": ""
+            },
+            "origin_nature": "",
+            "status": "active",
+            "is_automatic": true,
+            "start_date": null,
+            "end_date": null,
+            "usage": "",
+            "estimated_monthly_total": {
+              "value": 0,
+              "currency": "EUR"
+            },
+            "notes": ""
+          }
+        ],
+        "cashflow_snapshots": [
+          {
+            "id": "",
+            "period": {
+              "year": 0,
+              "month": 0
+            },
+            "scope_affectation": "",
+            "totals": {
+              "recurring_inflows": {
+                "value": 0,
+                "currency": "EUR"
+              },
+              "fixed_commitments": {
+                "value": 0,
+                "currency": "EUR"
+              },
+              "remainder_to_live": {
+                "value": 0,
+                "currency": "EUR"
+              }
+            },
+            "calculation_policy": {
+              "method": "",
+              "assumptions": []
+            },
+            "status": "declared",
+            "notes": ""
+          }
+        ]
+      },
+      "social": {
+        "carte_vitale": {
+          "numero": {
+            "value": "",
+            "policy": ""
+          },
+          "regime": {
+            "value": "",
+            "policy": ""
+          },
+          "pays": {
+            "value": "FR",
+            "policy": ""
+          }
+        }
+      },
+      "assurances": {
+        "habitation": [
+          {
+            "id": "",
+            "compagnie": {
+              "value": "",
+              "policy": ""
+            },
+            "produit": {
+              "value": "",
+              "policy": ""
+            },
+            "reference_contrat": {
+              "value": "",
+              "policy": ""
+            },
+            "adresse_rattachee": {
+              "value": "",
+              "policy": ""
+            },
+            "contact": {
+              "email": {
+                "value": "",
+                "policy": ""
+              },
+              "telephone": {
+                "value": "",
+                "policy": ""
+              },
+              "adresse_postale": {
+                "value": "",
+                "policy": ""
+              }
+            },
+            "dates": {
+              "date_effet": {
+                "value": "",
+                "policy": ""
+              },
+              "date_expiration": {
+                "value": "",
+                "policy": ""
+              }
+            }
+          }
+        ],
+        "vehicule": [
+          {
+            "id": "",
+            "compagnie": {
+              "value": "",
+              "policy": ""
+            },
+            "produit": {
+              "value": "",
+              "policy": ""
+            },
+            "numero_contrat": {
+              "value": "",
+              "policy": ""
+            },
+            "numero_societaire": {
+              "value": "",
+              "policy": ""
+            },
+            "vehicule": {
+              "type": {
+                "value": "",
+                "policy": ""
+              },
+              "marque": {
+                "value": "",
+                "policy": ""
+              },
+              "modele": {
+                "value": "",
+                "policy": ""
+              },
+              "immatriculation": {
+                "value": "",
+                "policy": ""
+              },
+              "usage": {
+                "value": "",
+                "policy": ""
+              }
+            },
+            "dates": {
+              "date_effet": {
+                "value": "",
+                "policy": ""
+              },
+              "date_expiration": {
+                "value": "",
+                "policy": ""
+              }
+            }
+          }
+        ]
+      },
+      "vehicules": [
+        {
+          "id": "",
+          "type": "",
+          "marque": "",
+          "modele": "",
+          "immatriculation": "",
+          "usage": ""
+        }
+      ],
+      "activite": {
+        "statut": {
+          "value": "",
+          "policy": ""
+        },
+        "code_ape": {
+          "value": "",
+          "policy": ""
+        },
+        "description": {
+          "value": "",
+          "policy": ""
+        }
+      },
+      "fiscalite": {
+        "residence_fiscale_pays": {
+          "value": "FR",
+          "policy": ""
+        }
+      },
+      "documents_index": [
+        {
+          "id": "",
+          "doc_id": "",
+          "filename": "",
+          "sha256": "",
+          "pages": 0,
+          "category": "",
+          "tags": []
+        }
+      ],
+      "profils_numeriques": {
+        "digital_profiles": [
+          {
+            "id": "",
+            "label": "",
+            "role": "",
+            "account_kind": "",
+            "account_email": "",
+            "tenant_domain": "",
+            "primary_use_cases": [],
+            "browser": {
+              "family": "",
+              "profile_label": ""
+            },
+            "services": [
+              {
+                "kind": "",
+                "label": "",
+                "url": "",
+                "account_email": ""
+              }
+            ],
+            "notes": ""
+          }
+        ]
+      }
+    },
+    "scope_specifique": {
+      "archives": {
+        "items": [
+          {
+            "id": "",
+            "title": "",
+            "kind": "",
+            "content": null,
+            "created_at": "",
+            "tags": [],
+            "checksum": null
+          }
+        ],
+        "policy": {
+          "not_canonical": true,
+          "read_only": true,
+          "use_only_if_explicitly_requested": true
+        }
+      }
+    }
+  },
+  "regles_metier": {
+    "rules_engine": {
+      "meta": {
+        "engine_version": "2.0.0",
+        "description": "Règles moteur déclaratives (source). Les tâches todo sont une projection (exécution).",
+        "defaults": {
+          "execution_policy": {
+            "actor": "LLM",
+            "write_allowed": false,
+            "requires_user_validation": true
+          }
+        }
+      },
+      "rules": {
+        "RULE_ID_EXAMPLE": {
+          "title": "",
+          "description": "",
+          "category": "ADMIN",
+          "scope_binding": {
+            "scope": "",
+            "parent_scope": null
+          },
+          "cadence": {
+            "type": "ADHOC",
+            "rrule": null,
+            "timezone": "Europe/Paris"
+          },
+          "window_policy": {
+            "type": "NONE",
+            "days": null
+          },
+          "inputs": {
+            "data_paths_required": [],
+            "files_required": [],
+            "credentials_required": false
+          },
+          "stop_conditions": [],
+          "invariants": [],
+          "procedure": {
+            "steps": [],
+            "checklist": [],
+            "prompts_refs": []
+          },
+          "outputs": {
+            "artifacts": [],
+            "data_updates_allowed": false,
+            "todo_projection_allowed": true
+          },
+          "links": [
+            {
+              "type": "",
+              "ref_id": "",
+              "path": null,
+              "note": ""
+            }
+          ],
+          "tags": [],
+          "status": {
+            "enabled": true,
+            "last_reviewed_at": null
+          }
+        }
+      }
+    },
+    "procedures": {},
+    "templates_prompts": {
+      "perplexity": {},
+      "other": {}
+    },
+    "references": {
+      "FACT__SCOPE__EXAMPLE": {
+        "type": "FACT",
+        "path": "data.canonique.entite",
+        "description": ""
+      },
+      "PROC__SCOPE__EXAMPLE": {
+        "type": "PROCEDURE",
+        "path": "regles_metier.procedures",
+        "description": ""
+      }
+    }
+  }
+}

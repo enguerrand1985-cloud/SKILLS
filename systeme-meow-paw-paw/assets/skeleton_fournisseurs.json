@@ -1,0 +1,285 @@
+{
+  "fournisseur_compact": {
+    "supplier_id": "",
+    "identity": {
+      "display_name": "",
+      "entity_type": "",
+      "seller_entity": "",
+      "location": {
+        "country": "",
+        "province": "",
+        "city": "",
+        "address": ""
+      }
+    },
+    "contact": {
+      "name": "",
+      "preferred_channel": "",
+      "email": "",
+      "phone": "",
+      "aliases": []
+    },
+    "catalog": [
+      {
+        "supplier_product_id": "",
+        "display_name": "",
+        "category": "",
+        "tier": "",
+        "run_available": null,
+        "default_packaging_option_id": ""
+      }
+    ],
+    "packaging_options": {
+      "PKG_KRAFT_DOLLY_BAG_BULK": {
+        "type": "",
+        "size_cm": {
+          "w": null,
+          "l": null,
+          "h": null
+        },
+        "closure": "",
+        "euro_slot": null,
+        "finish": "",
+        "finish_options": null,
+        "availability": "",
+        "status": ""
+      },
+      "PKG_BALL_CLEAR_SEALED": {
+        "type": "",
+        "size_cm": null,
+        "closure": null,
+        "euro_slot": null,
+        "finish": null,
+        "finish_options": null,
+        "availability": null,
+        "status": ""
+      },
+      "PKG_OPP_ZIP_EUROSLOT_28x35": {
+        "type": "",
+        "size_cm": {
+          "w": null,
+          "l": null
+        },
+        "closure": "",
+        "euro_slot": null,
+        "finish": null,
+        "finish_options": [],
+        "availability": null,
+        "status": ""
+      },
+      "PKG_OPP_ZIP_EUROSLOT_07x28": {
+        "type": "",
+        "size_cm": {
+          "w": null,
+          "l": null
+        },
+        "closure": "",
+        "euro_slot": null,
+        "finish": null,
+        "finish_options": [],
+        "availability": null,
+        "status": ""
+      },
+      "PKG_OPP_ZIP_EUROSLOT_12x28": {
+        "type": "",
+        "size_cm": {
+          "w": null,
+          "l": null
+        },
+        "closure": "",
+        "euro_slot": null,
+        "finish": null,
+        "finish_options": [],
+        "availability": null,
+        "status": ""
+      },
+      "PKG_KRAFT_LAMINATED_ZIP_22x15_BULK": {
+        "type": "",
+        "size_cm": {
+          "w": null,
+          "l": null
+        },
+        "closure": "",
+        "euro_slot": null,
+        "finish": "",
+        "finish_options": null,
+        "availability": "",
+        "status": ""
+      }
+    },
+    "carton_options": {
+      "CTN_SHIP_42x42x52_UNIQUE": {
+        "usage": "",
+        "scope": "",
+        "dims_cm": {
+          "l": null,
+          "w": null,
+          "h": null
+        },
+        "gross_weight_kg": null,
+        "gross_weight_status": "",
+        "units_per_carton": null,
+        "units_per_carton_status": "",
+        "status": ""
+      }
+    },
+    "commercial_terms": {
+      "moq": {
+        "baseline_units": null,
+        "flexible": null,
+        "negotiable": null
+      }
+    },
+    "logistics": {
+      "sample_incoterm": "",
+      "amazon_fba_fr_bulk_status": "",
+      "amazon_fba_fr_bulk_requires": [],
+      "fnsku_applied_by_supplier": null,
+      "fnsku_surcharge": "",
+      "amazon_box_labels_applied_by_supplier": null,
+      "carton_labeling_surcharge": ""
+    },
+    "compliance": {
+      "material_safety": {
+        "reach_required": null,
+        "supplier_declaration_required": null,
+        "required_documents": [],
+        "blocking_for_bulk": null,
+        "documents_state": {
+          "reach_conformity_declaration_signed_stamped_dated": {
+            "status": ""
+          },
+          "bom_materials_by_sku": {
+            "status": ""
+          }
+        }
+      }
+    },
+    "status": ""
+  },
+  "fournisseur_detaille": {
+    "supplier_id": "",
+    "slug": "",
+    "scope": {
+      "role": "",
+      "products": [],
+      "policy": ""
+    },
+    "locks": {
+      "mode": "",
+      "allowed_actions": [],
+      "blocked_actions": []
+    },
+    "supplier_snapshot": {
+      "identity": {
+        "supplier_name": "",
+        "primary_contact": "",
+        "role": "",
+        "exclusion_scope": []
+      },
+      "strategic_positioning": {
+        "run_build_scope": "",
+        "status": "",
+        "decision_rule": ""
+      },
+      "locks": {
+        "allowed_actions": [],
+        "blocked_actions": [],
+        "lock_reasoning": []
+      },
+      "product_constraints": {
+        "product": "",
+        "critical_points": []
+      },
+      "historical_context": {
+        "summary": "",
+        "past_decisions": []
+      }
+    },
+    "packaging_specs": {
+      "policy": {
+        "measurement_rules": {
+          "units": {
+            "dimensions": "",
+            "weight": ""
+          }
+        },
+        "modes": {
+          "opp_insert_hybrid": {
+            "rules": [],
+            "spec": {
+              "insert_std_cm": {
+                "h": null,
+                "w": null
+              },
+              "insert_xl_cm": {
+                "h": null,
+                "w": null
+              }
+            }
+          }
+        },
+        "principles": [],
+        "safety": {
+          "suffocation_warning_required": null,
+          "warning_text_bilingual": ""
+        }
+      },
+      "by_sku": {
+        "MPP-BAT-PRE-MAT-V1": {
+          "sku": "",
+          "product_name": "",
+          "packaging_options": {
+            "opp_25x35": {
+              "available": null,
+              "dims_cm": {
+                "l": null,
+                "w": null
+              },
+              "finish": "",
+              "status": "",
+              "structure": "",
+              "notes": ""
+            },
+            "kraft_tbd": {
+              "available": null,
+              "dims_cm": {},
+              "finish": "",
+              "status": "",
+              "structure": "",
+              "notes": ""
+            },
+            "kraft_like": {
+              "available": null,
+              "dims_cm": {},
+              "finish": "",
+              "status": "",
+              "structure": "",
+              "notes": ""
+            }
+          },
+          "preference": {
+            "primary": ""
+          },
+          "measurement_status": "",
+          "status": "",
+          "packaging_weight_g": null,
+          "packaging_weight_g_estimated": null,
+          "warnings": []
+        }
+      }
+    },
+    "next_actions_build_playbook": {
+      "scope": "",
+      "status": "",
+      "non_commitment_note": "",
+      "preconditions": [],
+      "sequence": [
+        {
+          "step": null,
+          "title": ""
+        }
+      ]
+    }
+  }
+}

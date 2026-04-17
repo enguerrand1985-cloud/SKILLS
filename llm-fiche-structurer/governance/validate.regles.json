@@ -1,0 +1,71 @@
+{
+    "meta": {
+        "document_type": "skill_rules",
+        "module": "validate",
+        "version": "3.0.0",
+        "updated_at": "2026-04-12T00:00:00+02:00",
+        "purpose": "final_logical_validation"
+    },
+    "root_keys_policy": [
+        "Les cles racine obligatoires sont: meta, scope_header, llm_contract, document_header, mini_index, todo, notes, data, regles_metier.",
+        "Aucune cle technique parasite (merge, sources, source_meta, etc.) ne doit exister a la racine.",
+        "llm_contract doit etre present, complet et exploitable par une autre IA.",
+        "data.canonique.documents_index doit exister, meme vide."
+    ],
+    "llm_contract_baseline": {
+        "required_policies_min": [
+            "POLICY__SCOPE_CLOSED_BY_DEFAULT",
+            "POLICY__ARCHIVES_NOT_CANONICAL",
+            "POLICY__CANONIQUE_CLEAN_NO_EVIDENCE_KEYS",
+            "POLICY__SENSITIVE_DATA_NO_SECRETS",
+            "POLICY__MAINTENANCE_MODE",
+            "POLICY__UPDATE_OUTPUT_MODES",
+            "POLICY__DEPENDENCY_POINTERS",
+            "POLICY__OVERWRITE_BY_ID"
+        ],
+        "required_playbooks_min": [
+            "PLAYBOOK__ONBOARDING",
+            "PLAYBOOK__DATA_LOOKUP",
+            "PLAYBOOK__MAINTENANCE",
+            "PLAYBOOK__OUTPUT_JSON",
+            "PLAYBOOK__REBUILD_TODO"
+        ]
+    },
+    "output_validation": {
+        "allowed_modes": [
+            "FULL_REPLACE",
+            "MERGE_PATCH_RFC7396",
+            "PATCH_RFC6902",
+            "STOP"
+        ],
+        "default_update_mode": "MERGE_PATCH_RFC7396",
+        "payload_only_when_exploitable": true,
+        "stop_contract_min": [
+            "mode=STOP",
+            "status=BLOCKED",
+            "blockers explicite",
+            "next_action explicite"
+        ]
+    },
+    "schema_load_policy": {
+        "default": "skip",
+        "load_when": [
+            "ajout de cle",
+            "mutation structurelle reelle",
+            "doute de conformite",
+            "validation lourde explicite"
+        ],
+        "skip_when": [
+            "patch cible sur structure deja connue",
+            "controle logique sans changement de schema",
+            "lecture de doctrine sans ecriture structurelle"
+        ]
+    },
+    "delivery_checks": [
+        "Verifier l absence de mojibake avant livraison.",
+        "Verifier la coherence scope / parent_scope avant livraison.",
+        "Verifier que notes, todo et regles_metier ne remplacent pas data.",
+        "Verifier que la sortie correspond exactement au mode annonce.",
+        "Verifier que les archives restent non canoniques et que les cles interdites de provenance n'apparaissent pas."
+    ]
+}

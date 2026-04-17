@@ -1,0 +1,57 @@
+{
+    "meta": {
+        "document_type": "skill_rules",
+        "module": "router.common",
+        "version": "1.5.0",
+        "updated_at": "2026-04-12",
+        "purpose": "minimal_workflow_router"
+    },
+    "routing": {
+        "domain": "COMPLIANCE_ADMIN",
+        "scope": "MICRO",
+        "profile_id": "DIGIPROF__MICRO__EDGE_PERSONNEL_ADMIN",
+        "source_of_truth": {
+            "primary_business_rules_file": "C:/Users/engue/OneDrive/_DATA - MICRO_/MICRO.json",
+            "index_route_id": "RULE_ROUTE__MICRO__CAF_URSSAF_PROVIGIS",
+            "index_file": "C:/Users/engue/OneDrive/__SYSTEME - PERSONA_O.S__/INDEX.marwan.json"
+        }
+    },
+    "workflow_selection": {
+        "caf": [
+            "caf",
+            "declaration trimestrielle",
+            "rsa",
+            "prime activite",
+            "ressources trimestrielles"
+        ],
+        "urssaf": [
+            "urssaf",
+            "declarer et payer",
+            "declaration ca",
+            "autoentrepreneur"
+        ],
+        "provigis": [
+            "provigis",
+            "check documents",
+            "statut vert",
+            "statut orange",
+            "modifier"
+        ],
+        "combined": [
+            "caf+urssaf",
+            "caf urssaf combined",
+            "execution combinee"
+        ]
+    },
+    "conditional_reads": {
+        "mapping": "read_only_if_subcase_not_immediate",
+        "runtime_common": "read_only_after_real_workflow_selection_or_when_runtime_policy_needed",
+        "sources_externes": "read_only_if_external_path_or_environment_resolution_is_needed",
+        "common_schema": "read_only_if_structural_control_is_required"
+    },
+    "stop_conditions": [
+        "STOP si le scope cible n'est pas MICRO.",
+        "STOP si le profil DIGIPROF__MICRO__EDGE_PERSONNEL_ADMIN n'est pas resolu.",
+        "STOP si aucun sous-protocole utile n'est resolu."
+    ]
+}

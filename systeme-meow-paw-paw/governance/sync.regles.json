@@ -1,0 +1,120 @@
+{
+  "meta": {
+    "document_type": "system_sync_module",
+    "document_role": "targeted_sync_rules_for_naming_ids_and_alignment",
+    "version": "v3",
+    "timezone": "Europe/Paris",
+    "updated_at": "2026-04-12T00:00:00+02:00",
+    "status": "active",
+    "default_read": false,
+    "activation_cases": [
+      "targeted_sync",
+      "naming_update",
+      "id_realignment",
+      "file_convention_update"
+    ]
+  },
+  "module_scope": {
+    "use_for": [
+      "naming conventions",
+      "id generation",
+      "file conventions",
+      "synchronization rules",
+      "asset validation support"
+    ],
+    "do_not_use_for": [
+      "full-run maintenance without naming impact",
+      "pure policy change without technical synchronization",
+      "pure business reasoning"
+    ]
+  },
+  "file_naming_conventions": {
+    "global_rules": [
+      "All filenames must be lowercase or UPPERCASE (no mixed case unless domain-specific).",
+      "Domain folders use Title Case (e.g., MEOW PAW PAW - PRODUITS).",
+      "Asset filenames encode the asset type, SKU, and position/variant."
+    ],
+    "labels": {
+      "category": "Editorial assets (PNG, PDF)",
+      "naming_rule": "[SKU_ID_SHORT]_[POSITION].[FORMAT]",
+      "pattern": "MPP_[VARIANT]_[SHORT_VARIANT]_[SIDE].[png|pdf]"
+    },
+    "stickers": {
+      "category": "Barcode stickers (Amazon FNSKU)",
+      "naming_rule": "[SKU_ID_SHORT]_FNSKU.[FORMAT]",
+      "pattern": "MPP_[VARIANT]_[V][N]_FNSKU.[png|pdf]"
+    },
+    "source_files": {
+      "category": "Design source files (editable)",
+      "naming_rule": "[SKU_ID_SHORT]_[POSITION]_SRC.[ai|psd|figma]",
+      "pattern": "MPP_[VARIANT]_[V][N]_[SIDE]_SRC.ai"
+    }
+  },
+  "export_formats": {
+    "definition": "Standard export formats used in the system",
+    "formats": [
+      {
+        "format_id": "PNG_SCREEN",
+        "description": "PNG for screen or sticker output"
+      },
+      {
+        "format_id": "PDF_X1A",
+        "description": "PDF/X-1a:2001 for print output"
+      },
+      {
+        "format_id": "SVG_VECTOR",
+        "description": "SVG for future digital vector use"
+      }
+    ]
+  },
+  "id_generation_rules": {
+    "SKU_ID_derivation": "label_id = LBL_PROD_ + SKU_ID + _[POSITION]",
+    "sticker_id_derivation": "sticker_id = STK_BC_FNSKU_AMZ_ + SKU_ID",
+    "filename_derivation_from_id": "source_filename derives from the technical id without the LBL_PROD_ prefix"
+  },
+  "synchronization_rules": [
+    "label_id must encode the full SKU_ID",
+    "source_filename must derive from label_id",
+    "export_format must match source_filename extension",
+    "Any change in id, filename or format requires checking the two others"
+  ],
+  "status_enums": {
+    "label_status": [
+      "ready",
+      "pending",
+      "rework",
+      "todo_define",
+      "known"
+    ],
+    "sku_role": [
+      "core",
+      "bundle",
+      "component",
+      "variant",
+      "deprecated"
+    ],
+    "sku_status": [
+      "ready",
+      "build",
+      "rework",
+      "pending",
+      "hold"
+    ]
+  },
+  "file_locations": {
+    "labels_assets": "C:/Users/engue/OneDrive - Enguerrand Kalfaian/_DATA - ATELIER COMPOSITION_/",
+    "stickers_assets": "C:/Users/engue/OneDrive - Enguerrand Kalfaian/_DATA - ATELIER COMPOSITION_/",
+    "source_files": "C:/Users/engue/OneDrive - Enguerrand Kalfaian/_DATA - ATELIER COMPOSITION_/",
+    "templates_assets": "C:/Users/engue/.codex/skills/systeme-meow-paw-paw/assets"
+  },
+  "validation_support": {
+    "preferred_local_check": "scripts/check_asset_consistency.py",
+    "checks": [
+      "label_id_format",
+      "sticker_id_format",
+      "filename_corresponds_to_id",
+      "export_format_matches_extension",
+      "sku_label_consistency"
+    ]
+  }
+}

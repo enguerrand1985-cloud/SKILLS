@@ -1,0 +1,59 @@
+{
+  "meta": {
+    "document_type": "",
+    "document_role": "",
+    "version": "",
+    "timezone": "",
+    "simplified_for": "",
+    "simplified_from": "",
+    "source_updated_at": ""
+  },
+  "budget": {
+    "operating_base_eur": null,
+    "operating_base_status": "",
+    "allocation_rule_percent": {
+      "stock": null,
+      "ads": null,
+      "buffer": null
+    },
+    "bulk_purchase_budget_eur": null,
+    "bulk_purchase_budget_status": ""
+  },
+  "targets": {
+    "sales_per_day_target": {
+      "min": null,
+      "max": null
+    },
+    "tacos_max_pct": null,
+    "rating_min": null,
+    "return_rate_max_pct": null,
+    "ppc_reference_pct": null
+  },
+  "go_to_market": {
+    "launch_mode": "",
+    "amazon_ppc": {
+      "allowed": null,
+      "timing": "",
+      "intensity": "",
+      "tacos_max_pct": null
+    },
+    "tiktok_shop_run_scope": ""
+  },
+  "horizons": {
+    "mid_term_post_run_stable": [],
+    "long_term": []
+  },
+  "brand_identity": {
+    "positioning": [],
+    "values": [],
+    "tone": []
+  },
+  "gate_run_stable": {
+    "status": "",
+    "sales_per_day_min": null,
+    "sales_per_day_max": null,
+    "tacos_max_pct": null,
+    "rating_min": null,
+    "return_rate_max_pct": null
+  }
+}

@@ -1,0 +1,122 @@
+{
+  "meta": {
+    "document_type": "",
+    "document_role": "",
+    "version": "",
+    "timezone": "",
+    "simplified_for": "",
+    "simplified_from": "",
+    "source_updated_at": ""
+  },
+  "amazon": {
+    "conventions": {
+      "currency_default": "",
+      "amount_status_allowed": [],
+      "effective_from_required_when_applicable": null,
+      "sales_channel_canon": ""
+    },
+    "policies": {
+      "referral_fee": {
+        "status": "",
+        "effective_from": null,
+        "rate": null,
+        "basis": "",
+        "scope": ""
+      },
+      "fba_unit_costs": {
+        "status": "",
+        "effective_from": "",
+        "currency": "",
+        "source": {
+          "name": "",
+          "effective": ""
+        },
+        "fulfillment_low_price": {
+          "effective_from": "",
+          "price_threshold_ttc_eur": null,
+          "tiers_fr": []
+        },
+        "fulfillment_standard_fr": {
+          "effective_from": "",
+          "tiers": []
+        }
+      },
+      "ppc": {
+        "status": "",
+        "effective_from": "",
+        "rules": [
+          {
+            "kind": "",
+            "rate": null,
+            "basis": "",
+            "scope": "",
+            "source": "",
+            "status": "",
+            "notes": ""
+          }
+        ],
+        "notes": ""
+      },
+      "digital_services_fee": {
+        "status": "",
+        "effective_from": "",
+        "notes": "",
+        "rules": [
+          {
+            "kind": "",
+            "rate": null,
+            "base": "",
+            "effective_from": "",
+            "notes": "",
+            "source": "",
+            "status": ""
+          }
+        ]
+      }
+    }
+  },
+  "alibaba": {
+    "policies": {
+      "trade_assurance": {
+        "status": "",
+        "effective_from": null,
+        "rules": [],
+        "notes": ""
+      },
+      "card_processing": {
+        "status": "",
+        "effective_from": null,
+        "rules": [],
+        "notes": ""
+      },
+      "fx": {
+        "status": "",
+        "effective_from": null,
+        "rules": [
+          {
+            "currency_pair": "",
+            "spread_estimated_rate": null,
+            "swift_fee_eur_estimated": null,
+            "double_conversion_risk_note": "",
+            "base": "",
+            "allocation": "",
+            "status": "",
+            "to_be_reconciled_after_first_payment": null,
+            "source": "",
+            "notes": "",
+            "action_required": {
+              "status": "",
+              "vendor": "",
+              "field": "",
+              "note": ""
+            },
+            "kind": "",
+            "spot_rate_eur_per_usd_estimated": null,
+            "spot_rate_source": ""
+          }
+        ],
+        "notes": ""
+      }
+    }
+  }
+}

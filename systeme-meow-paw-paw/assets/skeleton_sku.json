@@ -1,0 +1,53 @@
+{
+  "meta": {
+    "document_type": "",
+    "document_role": "",
+    "version": "",
+    "timezone": "",
+    "simplified_for": "",
+    "simplified_from": "",
+    "source_updated_at": ""
+  },
+  "items": [
+    {
+      "sku_id": "",
+      "product_uid": "",
+      "product_logical_uid": "",
+      "role": "",
+      "status": "",
+      "launch_scope": null,
+      "naming": {
+        "product_family": "",
+        "product_name": "",
+        "short_name": ""
+      },
+      "specs_truth": {
+        "core_length_cm": null,
+        "diameter_cm": null,
+        "length_total_cm": null,
+        "weight_g": null
+      },
+      "pricing_truth_supplier": {
+        "unit_cost_native": null,
+        "currency": "",
+        "unit_cost_eur": null,
+        "unit_cost_eur_status": "",
+        "incoterm": ""
+      },
+      "pricing_truth_ttc": {
+        "floor": null,
+        "full": null,
+        "promo": null
+      },
+      "barcode_on_pack": {
+        "printed_ean_gtin": null,
+        "amazon_labeling_mode": "",
+        "gtin13": "",
+        "gtin13_issuer": ""
+      },
+      "materials_truth": {
+        "elements": []
+      }
+    }
+  ]
+}

@@ -1,0 +1,410 @@
+{
+  "meta": {
+    "document_type": "",
+    "document_role": "",
+    "version": "",
+    "timezone": "",
+    "scope": "",
+    "notes": []
+  },
+  "accounting_scope": {
+    "legal_structure": "",
+    "legal_entity_name": "",
+    "country": "",
+    "tax_regime": "",
+    "sales_price_mode": "",
+    "vat_mode": "",
+    "packaging_cost_model": ""
+  },
+  "status_conventions": {
+    "amount_status_allowed": [],
+    "missing_value_status": "",
+    "reporting_rule": ""
+  },
+  "tax_reference": {
+    "is_rate": null,
+    "tva_rate_sales": null,
+    "tva_rate_purchases": null,
+    "tva_recovery_ratio": null,
+    "include_tva_in_margins": null
+  },
+  "fixed_costs_reference": {
+    "status": "",
+    "currency": "",
+    "period": "",
+    "source_of_truth": {
+      "file": "",
+      "legacy_file": "",
+      "json_path": ""
+    }
+  },
+  "margin_modes": {
+    "cash_now": {
+      "purpose": "",
+      "include_inputs": [],
+      "notes": []
+    },
+    "unit_economics_launch": {
+      "purpose": "",
+      "include_inputs": [],
+      "notes": []
+    },
+    "scale_scenario": {
+      "purpose": "",
+      "include_inputs": [],
+      "notes": []
+    }
+  },
+  "marketplace_conventions": {
+    "currency_default": "",
+    "sales_channel_canon": "",
+    "effective_from_required_when_applicable": null,
+    "amount_status_allowed": []
+  },
+  "policy_registry": {
+    "amazon": {
+      "referral_fee": {
+        "status": "",
+        "source_of_truth": {
+          "file": "",
+          "legacy_file": "",
+          "json_path": ""
+        }
+      },
+      "fba_unit_costs": {
+        "status": "",
+        "source_of_truth": {
+          "file": "",
+          "legacy_file": "",
+          "json_path": ""
+        }
+      },
+      "ppc": {
+        "status": "",
+        "source_of_truth": {
+          "file": "",
+          "legacy_file": "",
+          "json_path": ""
+        }
+      },
+      "digital_services_fee": {
+        "status": "",
+        "source_of_truth": {
+          "file": "",
+          "legacy_file": "",
+          "json_path": ""
+        }
+      }
+    },
+    "alibaba": {
+      "trade_assurance": {
+        "status": "",
+        "source_of_truth": {
+          "file": "",
+          "legacy_file": "",
+          "json_path": ""
+        }
+      },
+      "card_processing": {
+        "status": "",
+        "source_of_truth": {
+          "file": "",
+          "legacy_file": "",
+          "json_path": ""
+        }
+      },
+      "fx": {
+        "status": "",
+        "source_of_truth": {
+          "file": "",
+          "legacy_file": "",
+          "json_path": ""
+        }
+      }
+    }
+  },
+  "source_map": {
+    "owner_profile": {
+      "file": "",
+      "legacy_file": "",
+      "role": ""
+    },
+    "marketplace_rules": {
+      "file": "",
+      "legacy_file": "",
+      "role": ""
+    },
+    "sku_master": {
+      "file": "",
+      "legacy_file": "",
+      "role": ""
+    },
+    "ledger": {
+      "file": "",
+      "legacy_file": "",
+      "role": ""
+    },
+    "ops_amazon": {
+      "file": "",
+      "role": "",
+      "note": ""
+    }
+  },
+  "inputs_catalog": {
+    "sales_price_mode": {
+      "category": "",
+      "home": "",
+      "status_rule": "",
+      "notes": ""
+    },
+    "sales_price_canon": {
+      "category": "",
+      "home": "",
+      "status_rule": "",
+      "notes": ""
+    },
+    "sales_currency": {
+      "category": "",
+      "home": "",
+      "status_rule": ""
+    },
+    "sales_channel": {
+      "category": "",
+      "home": "",
+      "status_rule": ""
+    },
+    "supplier_unit_cost": {
+      "category": "",
+      "home": "",
+      "status_rule": "",
+      "notes": ""
+    },
+    "packaging_cost_mode": {
+      "category": "",
+      "home": "",
+      "status_rule": "",
+      "notes": ""
+    },
+    "referral_fee_policy": {
+      "category": "",
+      "home": "",
+      "status_rule": ""
+    },
+    "fba_fee_policy": {
+      "category": "",
+      "home": "",
+      "status_rule": ""
+    },
+    "ppc_policy": {
+      "category": "",
+      "home": "",
+      "status_rule": ""
+    },
+    "dsf_policy": {
+      "category": "",
+      "home": "",
+      "status_rule": "",
+      "notes": ""
+    },
+    "trade_assurance_policy": {
+      "category": "",
+      "home": "",
+      "status_rule": ""
+    },
+    "card_processing_policy": {
+      "category": "",
+      "home": "",
+      "status_rule": ""
+    },
+    "fx_policy": {
+      "category": "",
+      "home": "",
+      "status_rule": "",
+      "notes": ""
+    },
+    "fixed_costs_monthly_base": {
+      "category": "",
+      "home": "",
+      "status_rule": "",
+      "notes": ""
+    }
+  },
+  "source_pointers": {
+    "sales_price_mode": {
+      "canonical_id": "",
+      "json_pointer": "",
+      "status": "",
+      "notes": ""
+    },
+    "sales_price_canon": {
+      "canonical_id": "",
+      "status": "",
+      "notes": "",
+      "json_pointer_template": ""
+    },
+    "sales_currency": {
+      "canonical_id": "",
+      "json_pointer": "",
+      "status": ""
+    },
+    "sales_channel": {
+      "canonical_id": "",
+      "json_pointer": "",
+      "status": ""
+    },
+    "supplier_unit_cost": {
+      "canonical_id": "",
+      "json_pointer_template": "",
+      "status": ""
+    },
+    "referral_fee_policy": {
+      "canonical_id": "",
+      "json_pointer": "",
+      "status": ""
+    },
+    "fba_fee_policy": {
+      "canonical_id": "",
+      "json_pointer": "",
+      "status": "",
+      "notes": ""
+    },
+    "ppc_policy": {
+      "canonical_id": "",
+      "json_pointer": "",
+      "status": ""
+    },
+    "dsf_policy": {
+      "canonical_id": "",
+      "json_pointer": "",
+      "status": ""
+    },
+    "trade_assurance_policy": {
+      "canonical_id": "",
+      "json_pointer": "",
+      "status": ""
+    },
+    "card_processing_policy": {
+      "canonical_id": "",
+      "json_pointer": "",
+      "status": ""
+    },
+    "fx_policy": {
+      "canonical_id": "",
+      "json_pointer": "",
+      "status": ""
+    },
+    "fixed_costs_monthly_base": {
+      "canonical_id": "",
+      "json_pointer": "",
+      "status": "",
+      "period": ""
+    },
+    "is_rate": {
+      "canonical_id": "",
+      "json_pointer": "",
+      "status": "",
+      "notes": ""
+    },
+    "vat_sales_rate": {
+      "canonical_id": "",
+      "json_pointer": "",
+      "status": "",
+      "notes": ""
+    },
+    "vat_purchases_rate": {
+      "canonical_id": "",
+      "json_pointer": "",
+      "status": ""
+    },
+    "vat_recovery_ratio": {
+      "canonical_id": "",
+      "json_pointer": "",
+      "status": ""
+    },
+    "include_tva_in_margins": {
+      "canonical_id": "",
+      "json_pointer": "",
+      "status": ""
+    }
+  },
+  "ledger_standard": {
+    "append_only": null,
+    "format": "",
+    "date_format": "",
+    "required_min_columns": [],
+    "optional_columns": [],
+    "catalog_descriptor": {
+      "primary_key": [],
+      "columns": []
+    }
+  },
+  "ledger_workbook_schema": {
+    "sheets": {
+      "ledger": {
+        "primary_key": [],
+        "columns": []
+      },
+      "chart_of_accounts": {
+        "primary_key": [],
+        "columns": []
+      },
+      "tax_codes": {
+        "primary_key": [],
+        "columns": []
+      },
+      "partners": {
+        "primary_key": [],
+        "columns": []
+      },
+      "sources": {
+        "primary_key": [],
+        "columns": []
+      },
+      "validation": {
+        "columns": [],
+        "notes": ""
+      }
+    }
+  },
+  "id_pivots": {
+    "sku_id": {
+      "source": "",
+      "status": ""
+    },
+    "supplier_id": {
+      "source": "",
+      "status": ""
+    },
+    "amazon": {
+      "msku": {
+        "status": ""
+      },
+      "fnsku": {
+        "status": ""
+      },
+      "asin": {
+        "status": ""
+      },
+      "shipment_id": {
+        "status": ""
+      },
+      "inbound_plan_id": {
+        "status": ""
+      },
+      "stock_item_id": {
+        "status": ""
+      }
+    },
+    "ledger": {
+      "entry_id": {
+        "status": ""
+      }
+    }
+  },
+  "reporting_contract": {
+    "must_cite_sources": null,
+    "must_separate_statuses": [],
+    "stop_if_numeric_readout_not_traceable": null,
+    "do_not_present_target_as_actual": null
+  }
+}

@@ -1,0 +1,92 @@
+{
+  "meta": {
+    "document_type": "",
+    "document_role": "",
+    "version": "",
+    "timezone": "",
+    "simplified_for": "",
+    "simplified_from": "",
+    "source_updated_at": ""
+  },
+  "identity": {
+    "legal_entity": {
+      "form": "",
+      "denomination": "",
+      "president": "",
+      "siren": "",
+      "siret": "",
+      "rcs": "",
+      "registration_date": ""
+    },
+    "headquarters": {
+      "address": "",
+      "domiciliation": {
+        "provider": "",
+        "status": ""
+      }
+    },
+    "capital": {
+      "amount_eur": null,
+      "nature": "",
+      "status": "",
+      "release_date": ""
+    },
+    "bank_account": {
+      "bank": "",
+      "account_type": "",
+      "status": ""
+    },
+    "trademarks": [
+      {
+        "brand_label_exact": "",
+        "jurisdiction": "",
+        "office": "",
+        "application_number": "",
+        "filed_at": "",
+        "status": ""
+      }
+    ],
+    "budget_and_storage": {
+      "total_budget_eur": null,
+      "storage_policy": "",
+      "fixed_costs_estimate": {
+        "status": "",
+        "currency": "",
+        "period": "",
+        "estimated_total_eur": null,
+        "components": []
+      }
+    },
+    "constraints_and_dependencies": {
+      "experience_level": "",
+      "certifications": {
+        "reach": "",
+        "non_toxic": ""
+      },
+      "potential_blockers": []
+    },
+    "compta_model": {
+      "sales_price_mode": "",
+      "vat_mode": "",
+      "packaging_cost_model": "",
+      "tax_reference": {
+        "is_rate": null
+      },
+      "vat_reference": {
+        "tva_rate_sales": null,
+        "tva_rate_purchases": null,
+        "tva_recovery_ratio": null,
+        "include_tva_in_margins": null
+      }
+    }
+  },
+  "vision": {
+    "goal": "",
+    "brand_identity": {
+      "positioning": [],
+      "values": [],
+      "tone": ""
+    },
+    "long_term_image": []
+  }
+}

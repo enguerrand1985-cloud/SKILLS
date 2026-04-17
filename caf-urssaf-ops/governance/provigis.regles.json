@@ -1,0 +1,69 @@
+{
+    "meta": {
+        "document_type": "skill_rules",
+        "module": "provigis",
+        "title": "Workflow Provigis documents check",
+        "target": "provigis_documents_check",
+        "depends_on": [
+            "router.common.regles.json"
+        ],
+        "runtime_rules_file": "runtime.common.regles.json",
+        "source_file": "router.common.regles.json"
+    },
+    "workflow": {
+        "enabled": true,
+        "mode": "CHECK_ONLY",
+        "reference_docs": [
+            "references/usage-provigis.md"
+        ],
+        "service_urls": {
+            "entry_url": "https://m.supplier.app.provigis.com/dashboard",
+            "expected_domain": "m.supplier.app.provigis.com"
+        },
+        "trigger_keywords": [
+            "provigis",
+            "check documents",
+            "statut vert",
+            "statut orange",
+            "modifier"
+        ],
+        "check_scope": "documents_list_and_status_column_only",
+        "status_logic": {
+            "green_signals": [
+                "Valide",
+                "valide jusqu au"
+            ],
+            "attention_signals": [
+                "orange status",
+                "A modifier",
+                "Modifier"
+            ],
+            "all_green_result": "ALL_GREEN",
+            "attention_result": "ACTION_REQUIRED"
+        },
+        "action_policy": {
+            "allowed": [
+                "read",
+                "classify",
+                "report"
+            ],
+            "forbidden": [
+                "upload",
+                "edit",
+                "submit"
+            ]
+        },
+        "report_contract": {
+            "required": true,
+            "output_dir": "C:/Users/engue/OneDrive/Desktop",
+            "filename_pattern": "PROVIGIS_CHECK__{YYYY-MM-DD}__{HHmm}.md",
+            "must_include_sections": [
+                "PROVIGIS RESULTAT",
+                "DOCUMENTS VERTS",
+                "DOCUMENTS A MODIFIER",
+                "HORODATAGE",
+                "NOTES_UI"
+            ]
+        }
+    }
+}

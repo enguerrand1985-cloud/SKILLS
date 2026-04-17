@@ -1,0 +1,4 @@
+interface:
+  display_name: "CAF URSSAF Ops"
+  short_description: "Execute les workflows CAF/URSSAF/Provigis avec routeur commun leger et runtime charge a la demande."
+  default_prompt: "Use this skill to execute CAF/URSSAF/Provigis operations in supervised mode. Always read governance/router.common.regles.json first, then load only the required module among governance/caf.regles.json, governance/urssaf.regles.json, governance/provigis.regles.json, or governance/combined.regles.json. Load governance/runtime.common.regles.json only after the workflow is selected or when runtime, reporting, sync, or security policies are needed. Read references/sources-externes.md only when a real external path or environment dependency must be resolved. Do not invent missing facts, keep external truths outside the skill, and stop explicitly on critical ambiguity."

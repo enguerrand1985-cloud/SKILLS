@@ -1,0 +1,27 @@
+{
+    "meta": {
+        "document_type": "skill_rules",
+        "module": "rebuild",
+        "version": "3.1.0",
+        "updated_at": "2026-04-12T00:00:00+02:00"
+    },
+    "rebuild_contract": {
+        "reference_docs": [
+            "references/usage-rebuild.md"
+        ],
+        "target_section": "todo",
+        "requires_rules_engine": "regles_metier.rules_engine.rules",
+        "rule_id_and_links_priority": true,
+        "impacted_canonical_change_requires_rebuild": true,
+        "recurring_uses_valid_until": true,
+        "rollover_recurring_to_planned_after_done": true,
+        "one_shot_stays_done_without_explicit_reopen": true,
+        "no_cross_scope_links_without_explicit_request": true
+    },
+    "write_guardrails": {
+        "explicit_user_write_instruction_required": true,
+        "schema_drift_forbidden": true,
+        "minimal_change_only": true,
+        "silent_write_forbidden": true
+    }
+}

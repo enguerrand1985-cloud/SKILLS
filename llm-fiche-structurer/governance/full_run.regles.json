@@ -1,0 +1,77 @@
+{
+    "meta": {
+        "document_type": "skill_rules",
+        "module": "full_run",
+        "version": "3.0.0",
+        "updated_at": "2026-04-12T00:00:00+02:00",
+        "purpose": "dense_path_for_create_and_full_replace"
+    },
+    "supported_intents": [
+        "create_fiche_llm",
+        "full_replace_fiche_llm",
+        "maintenance_complete_fiche_llm"
+    ],
+    "intake_minimum": [
+        "identifier scope et parent_scope si child scope",
+        "identifier l'objectif principal de la fiche",
+        "repartir les faits entre canonique, archives, regles_metier, todo et notes",
+        "si des champs manquent, conserver le manque en notes ou demander un STOP cible"
+    ],
+    "section_distribution": {
+        "data.canonique": "faits stables, modelisables, value-only, sans provenance inline",
+        "data.scope_specifique.archives": "historique, trace, legacy, details non canoniques",
+        "regles_metier": "regles stables, procedures, templates et rules_engine",
+        "todo": "projection actionnable liee aux ids canoniques et aux rule_id",
+        "notes": "ambigu, incomplet, incident, information en attente de confirmation"
+    },
+    "build_order": [
+        "meta",
+        "scope_header",
+        "llm_contract",
+        "document_header",
+        "mini_index",
+        "todo",
+        "notes",
+        "data",
+        "regles_metier"
+    ],
+    "llm_contract_baseline": {
+        "policies_min": [
+            "POLICY__SCOPE_CLOSED_BY_DEFAULT",
+            "POLICY__ARCHIVES_NOT_CANONICAL",
+            "POLICY__CANONIQUE_CLEAN_NO_EVIDENCE_KEYS",
+            "POLICY__SENSITIVE_DATA_NO_SECRETS",
+            "POLICY__MAINTENANCE_MODE",
+            "POLICY__UPDATE_OUTPUT_MODES",
+            "POLICY__DEPENDENCY_POINTERS",
+            "POLICY__OVERWRITE_BY_ID"
+        ],
+        "playbooks_min": [
+            "PLAYBOOK__ONBOARDING",
+            "PLAYBOOK__DATA_LOOKUP",
+            "PLAYBOOK__MAINTENANCE",
+            "PLAYBOOK__OUTPUT_JSON",
+            "PLAYBOOK__REBUILD_TODO"
+        ]
+    },
+    "full_run_guardrails": [
+        "Ne pas lire toutes les sections une par une si full_run.regles.json suffit.",
+        "Ne pas charger validate.schema.json au debut par reflexe.",
+        "Charger scope.doctrine.regles.json pour tout child scope ou cas SASU.",
+        "Conserver documents_index et les cles racines obligatoires dans la sortie complete.",
+        "Preferer FULL_REPLACE seulement quand la demande porte bien sur une creation ou un remplacement complet."
+    ],
+    "todo_projection_rules": [
+        "Projeter les taches quand les donnees suffisent.",
+        "Renseigner rule_id et links des qu'une dependance canonique existe.",
+        "Utiliser valid_until dans todo.recurring pour les occurrences documentaires datees."
+    ],
+    "schema_load_policy": {
+        "default": "skip",
+        "load_when": [
+            "nouvelle cle demandee",
+            "mutation structurelle reelle",
+            "incertitude sur la conformite du payload final"
+        ]
+    }
+}

@@ -1,0 +1,194 @@
+{
+  "meta": {
+    "document_type": "system_runtime",
+    "document_role": "deferred_dense_runtime_for_meow_system_maintenance",
+    "version": "v6",
+    "status": "active",
+    "updated_at": "2026-04-16",
+    "owner_scope": "system_root",
+    "default_read": false,
+    "activation_cases": [
+      "full_run_system",
+      "targeted_update",
+      "write_intent",
+      "policy_change",
+      "structure_change",
+      "heavy_coherence_audit"
+    ]
+  },
+  "activation_contract": {
+    "load_only_after_subcase_qualification": true,
+    "requires_known_target_or_scope": true,
+    "reference_docs": [
+      "references/usage-update-runtime.md"
+    ]
+  },
+  "separation_contract": {
+    "prompt_keeps": [
+      "agent role",
+      "operational objectives",
+      "tone and language",
+      "response format",
+      "system maintenance posture"
+    ],
+    "router_keeps": [
+      "activation",
+      "subcase triage",
+      "read matrix",
+      "first level stop"
+    ],
+    "runtime_owns": [
+      "routing policy once subcase is qualified",
+      "visibility rules",
+      "governance constraints",
+      "schema usage policy",
+      "change management policy",
+      "write-intent guardrails"
+    ]
+  },
+  "governance_split_contract": {
+    "reading_policy_owner_file": "INDEX.bebert.json",
+    "rules_and_contracts_owner_file": "governance/update.regles.json",
+    "conflict_precedence": [
+      "user_explicit_instruction",
+      "INDEX.bebert.json_reading_policy",
+      "common.regles.json_subcase_router",
+      "update.regles.json_runtime_contracts",
+      "target_file"
+    ]
+  },
+  "business_reading_policy": {
+    "reading_priority": [
+      "INDEX SOURCES.json",
+      "final_truth",
+      "operational_truth",
+      "working_truth",
+      "notes_only",
+      "stabilized_snapshot"
+    ],
+    "path_catalog_externalized_to": "references/sources-externes.md"
+  },
+  "navigation_contract": {
+    "indexes_are_routing_artifacts_not_business_truth": true,
+    "primary_source_and_dependencies_must_be_cited": true,
+    "index_vs_physical_divergence_must_be_reported_first": true,
+    "sync_module_not_loaded_for_pure_update_without_naming_impact": true,
+    "only_json_assets_may_be_used_as_local_structure_refs": true
+  },
+  "reader_guardrails": {
+    "no_implicit_role_filtering": {
+      "applies_to": [
+        "all_sku_queries",
+        "data_hub_reads",
+        "sku_identity_lookups",
+        "readiness_queries"
+      ],
+      "forbidden_patterns": [
+        "WHERE role = 'core'",
+        "FILTER BY role IN ['core']",
+        "Exclude bundles/components from ready-status queries"
+      ],
+      "allowed_pattern": "explicit_filter_only_when_user_or_rule_requires_it",
+      "enforcement": "MUST"
+    }
+  },
+  "schema_policy": {
+    "json_content_is_truth": true,
+    "schema_structure_is_truth": true,
+    "read_schema_before_json_change": true,
+    "forbid_fields_outside_schema_without_explicit_validation": true,
+    "report_json_schema_divergence_before_fix": true
+  },
+  "coherence_scan_policy": {
+    "required_for": [
+      "write_intent_on_truth_file",
+      "scalar_business_value_update",
+      "factual_information_injection",
+      "json_patch_with_declared_dependencies"
+    ],
+    "minimum_sequence": [
+      "resolve_primary_source",
+      "read_schema_if_json",
+      "resolve_declared_dependencies_from_index_sources",
+      "resolve_reverse_dependencies_from_index_sources",
+      "scan_explicit_file_references",
+      "scan_duplicate_literals_if_scalar_or_total_changes",
+      "patch_full_coherent_scope",
+      "validate_changed_files"
+    ],
+    "deterministic_script": "scripts/check_update_coherence.py",
+    "manual_scan_is_not_enough_when_reverse_dependencies_exist": true
+  },
+  "intent_routing": {
+    "final_audit_or_validated_state": [
+      "final_truth",
+      "stabilized_snapshot"
+    ],
+    "current_operational_status": [
+      "operational_truth",
+      "final_truth"
+    ],
+    "drafting_or_preparation": [
+      "working_truth",
+      "operational_truth"
+    ],
+    "note_capture_or_idea_review": [
+      "notes_only",
+      "working_truth"
+    ]
+  },
+  "write_intent_guardrails": {
+    "must_confirm": [
+      "target_file",
+      "source_of_truth_layer",
+      "impact_scope",
+      "coherence_dependencies",
+      "reverse_dependencies",
+      "duplicate_value_candidates_if_scalar_change"
+    ],
+    "must_report_before_patch": [
+      "index_vs_physical_divergence",
+      "json_vs_schema_divergence",
+      "system_vs_business_boundary",
+      "stale_duplicated_values_in_dependent_files"
+    ],
+    "must_not_do": [
+      "silent_path_invention",
+      "silent_source_of_truth_switch",
+      "legacy_schema_catalog_reintroduction",
+      "write_without_validation_frame",
+      "single_file_patch_when_declared_dependencies_exist",
+      "close_write_intent_without_coherence_scan_for_factual_update"
+    ]
+  },
+  "change_management": {
+    "require_validation_before_new_source_of_truth": true,
+    "require_schema_update_if_json_structure_changes": true,
+    "require_prompt_update_if_structural_change_validated": true,
+    "require_index_update_if_topology_changes": true,
+    "require_rfc6902_before_json_application": true
+  },
+  "response_contract": {
+    "required_sections": [
+      "RESUME EXECUTIF",
+      "PRIORITE MAINTENANT",
+      "BLOQUEURS",
+      "AUTOMATISATION",
+      "RUN VS FUTUR",
+      "LECTURE PAR STREAM",
+      "LECTURE PAR CATEGORIE",
+      "LECTURE PAR TIMELINE",
+      "PROCHAINES ACTIONS",
+      "REQUEST BRIDGE"
+    ],
+    "max_lines_per_block": 7,
+    "allowed_statuses": [
+      "URGENT",
+      "CETTE_SEMAINE",
+      "A_PREPARER",
+      "BLOQUE"
+    ],
+    "request_bridge_only_on_explicit_request": true,
+    "schema_scope_must_be_stated_when_involved": true
+  }
+}

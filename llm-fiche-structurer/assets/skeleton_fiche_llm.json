@@ -1,0 +1,82 @@
+﻿{
+    "meta":  {
+                 "category":  "fiche_llm",
+                 "version":  "0.1.0",
+                 "status":  "draft"
+             },
+    "scope_header":  {
+                         "scope":  "",
+                         "parent_scope":  null,
+                         "child_scopes":  [
+
+                                          ]
+                     },
+    "llm_contract":  {
+                         "allow_inference":  false,
+                         "allow_merge":  false,
+                         "routing":  null,
+                         "policies":  [
+
+                                      ],
+                         "playbooks":  [
+
+                                       ],
+                         "hints":  [
+                                       "",
+                                       ""
+                                   ]
+                     },
+    "document_header":  {
+                            "title":  "",
+                            "description":  "",
+                            "owner":  null,
+                            "legal_entity":  null
+                        },
+    "mini_index":  {
+                       "entries":  [
+
+                                   ],
+                       "legacy_paths":  [
+
+                                        ]
+                   },
+    "todo":  {
+                 "recurring":  [
+
+                               ],
+                 "one_shot":  [
+
+                              ]
+             },
+    "notes":  [
+
+              ],
+    "data":  {
+                 "canonique":  {
+
+                               },
+                 "scope_specifique":  {
+                                          "archives":  {
+                                                           "items":  [
+
+                                                                     ]
+                                                       }
+                                      }
+             },
+    "regles_metier":  {
+                          "rules_engine":  {
+                                               "rules":  {
+
+                                                         }
+                                           },
+                          "procedures":  {
+
+                                         },
+                          "templates_prompts":  {
+
+                                                },
+                          "references":  {
+
+                                         }
+                      }
+}

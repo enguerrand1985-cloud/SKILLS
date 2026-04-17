@@ -1,0 +1,26 @@
+﻿{
+    "$schema":  "https://json-schema.org/draft/2020-12/schema",
+    "title":  "caf-urssaf-ops common governance schema",
+    "type":  "object",
+    "additionalProperties":  true,
+    "required":  [
+                     "meta",
+                     "routing",
+                     "automation",
+                     "safety"
+                 ],
+    "properties":  {
+                       "meta":  {
+                                    "type":  "object"
+                                },
+                       "routing":  {
+                                       "type":  "object"
+                                   },
+                       "automation":  {
+                                          "type":  "object"
+                                      },
+                       "safety":  {
+                                      "type":  "object"
+                                  }
+                   }
+}

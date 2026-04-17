@@ -1,0 +1,55 @@
+{
+    "meta": {
+        "document_type": "skill_rules",
+        "module": "urssaf",
+        "title": "Workflow URSSAF trimestrielle",
+        "target": "urssaf_ca_trimestrielle",
+        "depends_on": [
+            "router.common.regles.json"
+        ],
+        "runtime_rules_file": "runtime.common.regles.json",
+        "source_file": "router.common.regles.json"
+    },
+    "workflow": {
+        "enabled": true,
+        "reference_docs": [
+            "references/usage-urssaf.md"
+        ],
+        "service_urls": {
+            "entry_url_primary": "https://login-v2.urssaf.fr/api/oauth/v1/providerLogin",
+            "entry_url_fallback": "https://www.autoentrepreneur.urssaf.fr/portail/accueil.html",
+            "expected_domain": "www.autoentrepreneur.urssaf.fr"
+        },
+        "trigger_keywords": [
+            "urssaf",
+            "declarer et payer",
+            "declaration ca",
+            "autoentrepreneur"
+        ],
+        "required_inputs": {
+            "amount_source_file": "C:/Users/engue/OneDrive/_DATA - MICRO_/Micro_revenus_2025-2035.xlsx",
+            "expected_fields": [
+                "Montant BIC ventes",
+                "Montant BIC prestations",
+                "Montant BNC"
+            ],
+            "quarter_total_rule": "sum_of_target_months_integer_eur"
+        },
+        "required_checks": [
+            "expected URSSAF domain",
+            "active declaration period identified before fill",
+            "quarter total matches recap",
+            "payment step verified before final submission"
+        ],
+        "completion_criteria": {
+            "required_state_before_payment": "declaration_enregistree_message_visible",
+            "required_final_action": "payer_clicked_only_when_full_automation_requested",
+            "required_summary_output": [
+                "period_label",
+                "quarter_total_declared",
+                "cotisations_total",
+                "payment_action_status"
+            ]
+        }
+    }
+}

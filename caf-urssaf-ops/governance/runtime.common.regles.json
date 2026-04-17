@@ -1,0 +1,82 @@
+{
+    "meta": {
+        "document_type": "agent_rules",
+        "module": "runtime.common",
+        "version": "1.6.0",
+        "updated_at": "2026-04-12",
+        "purpose": "minimal_runtime_contract_loaded_after_workflow_selection"
+    },
+    "activation_contract": {
+        "load_only_after_workflow_selection": true,
+        "load_when": [
+            "real workflow execution",
+            "reporting policy needed",
+            "MICRO.json sync needed",
+            "browser or safety policy needed"
+        ],
+        "reference_docs": [
+            "references/usage-runtime-common.md"
+        ]
+    },
+    "runtime_policies": {
+        "automation_mode": "SUPERVISED_AUTOMATION",
+        "only_on_user_explicit_request": true,
+        "default_supervision": "live_user_supervision",
+        "manual_stop_word": "STOP",
+        "browser_channel": "msedge",
+        "browser_profile_mode": "persistent",
+        "browser_profile_path": "C:/Users/engue/AppData/Local/Microsoft/Edge/User Data",
+        "profile_id": "DIGIPROF__MICRO__EDGE_PERSONNEL_ADMIN"
+    },
+    "shared_dependencies": {
+        "caf_amount_source_file": "C:/Users/engue/OneDrive/_DATA - MICRO_/Micro_revenus_2025-2035.xlsx",
+        "caf_amount_source_columns": [
+            "Mois",
+            "Total Activite"
+        ],
+        "rounding_policy": "truncate_to_integer_eur_no_cents",
+        "micro_json_target_file": "C:/Users/engue/OneDrive/_DATA - MICRO_/MICRO.json"
+    },
+    "reporting_contract": {
+        "desktop_markdown_report_required": true,
+        "desktop_output_dir": "C:/Users/engue/OneDrive/Desktop",
+        "must_report": [
+            "final_url_if_available",
+            "declared_periods_or_checked_scope",
+            "declared_amounts_or_statuses",
+            "ui_variations",
+            "blockers"
+        ],
+        "provigis_filename_pattern": "PROVIGIS_CHECK__{YYYY-MM-DD}__{HHmm}.md"
+    },
+    "sync_contract": {
+        "micro_json_sync_enabled": true,
+        "write_mode": "overwrite_in_place_by_id",
+        "update_moment": "after_successful_run",
+        "task_id_map": {
+            "caf": [
+                "TODO__MICRO__CAF__DECLARATION_TRIMESTRIELLE__RUN_DAY5"
+            ],
+            "urssaf": [
+                "TODO__MICRO__URSSAF__DECLARATION_CA_TRIMESTRIELLE__RUN_DAY5"
+            ],
+            "provigis": [
+                "TODO__MICRO__PROVIGIS__IDENTITE_ENTREPRISE",
+                "TODO__MICRO__PROVIGIS__REGIME_SOCIAL",
+                "TODO__MICRO__PROVIGIS__TRAVAILLEURS_ETRANGERS"
+            ]
+        }
+    },
+    "safety": {
+        "forbid_hidden_silent_execution": true,
+        "credentials_policy": "never_expose_or_log_secrets",
+        "final_submit_requires_user_confirmation_when_not_end_to_end": true,
+        "critical_mismatch_policy": [
+            "CAF displayed months mismatch",
+            "required CAF activity category unavailable",
+            "CAF amount input contract mismatch",
+            "URSSAF active period mismatch",
+            "URSSAF recap total mismatch"
+        ]
+    }
+}

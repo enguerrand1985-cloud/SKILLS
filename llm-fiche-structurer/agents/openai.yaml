@@ -1,0 +1,4 @@
+interface:
+  display_name: "Structurer Fiche LLM"
+  short_description: "Cree ou maintient une fiche LLM JSON conforme avec routeur minimal, full-run dense et patch cible."
+  default_prompt: "Use this skill only for explicit fiche LLM structuring or maintenance requests. Always read governance/router.regles.json first. For create or full replace, load governance/full_run.regles.json, then scope.router/scope.doctrine only if the scope logic requires it. For targeted changes, load only the useful section module, plus patch.regles.json when a minimal diff is enough. Read validate.regles.json before delivery only when needed, and read validate.schema.json only for structural mutations, new keys, heavy validation, or real conformance doubt. Never invent missing facts, keep archives non-canonical, preserve the sasuprofile doctrine, and stop explicitly on critical ambiguity."

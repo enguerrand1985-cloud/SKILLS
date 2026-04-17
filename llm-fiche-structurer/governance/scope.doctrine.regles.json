@@ -1,0 +1,64 @@
+{
+    "meta": {
+        "document_type": "skill_rules",
+        "module": "scope.doctrine",
+        "version": "3.1.0",
+        "updated_at": "2026-04-12T00:00:00+02:00",
+        "purpose": "active_scope_contract_and_sasuprofile_guardrails"
+    },
+    "scope_contract": {
+        "reference_docs": [
+            "references/usage-scope-doctrine.md"
+        ],
+        "scope_closed_by_default": true,
+        "section_role_map": {
+            "data": "facts_only",
+            "regles_metier": "stable_logic",
+            "todo": "action_projection",
+            "notes": "pending_or_ambiguous_material"
+        }
+    },
+    "rules_by_scope": {
+        "BASE_RUNTIME": {
+            "required_policies_min": [
+                "POLICY__SCOPE_CLOSED_BY_DEFAULT",
+                "POLICY__ARCHIVES_NOT_CANONICAL",
+                "POLICY__CANONIQUE_CLEAN_NO_EVIDENCE_KEYS",
+                "POLICY__SENSITIVE_DATA_NO_SECRETS",
+                "POLICY__MAINTENANCE_MODE",
+                "POLICY__UPDATE_OUTPUT_MODES",
+                "POLICY__DEPENDENCY_POINTERS",
+                "POLICY__OVERWRITE_BY_ID"
+            ],
+            "required_playbooks_min": [
+                "PLAYBOOK__ONBOARDING",
+                "PLAYBOOK__DATA_LOOKUP",
+                "PLAYBOOK__MAINTENANCE",
+                "PLAYBOOK__OUTPUT_JSON",
+                "PLAYBOOK__REBUILD_TODO"
+            ]
+        },
+        "PERSONA": {
+            "required_domains_min": [
+                "identite",
+                "personnes",
+                "documents_index"
+            ]
+        },
+        "MICRO": {
+            "required_domains_min": [
+                "activite",
+                "fiscalite",
+                "documents_index"
+            ]
+        },
+        "SASU": {
+            "required_domains_min": [
+                "entreprise",
+                "documents_index"
+            ],
+            "child_scopes_allowed": true,
+            "explicit_sasuprofile_doctrine_required": true
+        }
+    }
+}

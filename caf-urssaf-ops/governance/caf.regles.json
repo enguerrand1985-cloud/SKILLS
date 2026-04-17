@@ -1,0 +1,60 @@
+{
+    "meta": {
+        "document_type": "skill_rules",
+        "module": "caf",
+        "title": "Workflow CAF trimestrielle",
+        "target": "caf_trimestrielle",
+        "depends_on": [
+            "router.common.regles.json"
+        ],
+        "runtime_rules_file": "runtime.common.regles.json",
+        "source_file": "router.common.regles.json"
+    },
+    "workflow": {
+        "enabled": true,
+        "reference_docs": [
+            "references/usage-caf.md"
+        ],
+        "service_urls": {
+            "entry_url": "https://connect.caf.fr/connexionappli/dist/?forceReload=20250313&contexteAppel=caffr&urlredirect=%2Fwps%2Fmyportal%2Fcaffr#/login",
+            "caf_domain_expected_after_login": "wwwd.caf.fr",
+            "franceconnect_domain": "oidc.franceconnect.gouv.fr",
+            "impots_domain": "cfspart-idp.impots.gouv.fr"
+        },
+        "trigger_keywords": [
+            "caf",
+            "declaration trimestrielle",
+            "rsa",
+            "prime activite",
+            "ressources trimestrielles"
+        ],
+        "expected_account_context": {
+            "profile_id": "DIGIPROF__MICRO__EDGE_PERSONNEL_ADMIN",
+            "identity_provider": "FranceConnect via impots.gouv.fr"
+        },
+        "required_inputs": {
+            "displayed_months_from_portal": true,
+            "amount_source_file": "C:/Users/engue/OneDrive/_DATA - MICRO_/Micro_revenus_2025-2035.xlsx",
+            "amount_columns": [
+                "Mois",
+                "Total Activite"
+            ],
+            "amount_format": "integer_eur_only"
+        },
+        "required_checks": [
+            "expected CAF domains during login",
+            "displayed months captured before amount fill",
+            "Prestations commerciales ou artisanales available",
+            "recap months and amounts exactly match inputs"
+        ],
+        "completion_criteria": {
+            "required_url_fragment": "#/FIN",
+            "required_success_text_contains": "Votre declaration a bien ete enregistree",
+            "required_summary_output": [
+                "declared months",
+                "declared amounts",
+                "submission status"
+            ]
+        }
+    }
+}

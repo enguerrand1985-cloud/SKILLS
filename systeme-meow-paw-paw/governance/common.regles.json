@@ -1,0 +1,194 @@
+{
+  "meta": {
+    "document_type": "system_router",
+    "document_role": "minimal_router_for_meow_system_skill",
+    "version": "v4",
+    "status": "active",
+    "updated_at": "2026-04-16",
+    "skill_type": "single_hybrid_skill"
+  },
+  "activation_scope": {
+    "use_for": [
+      "system_maintenance",
+      "routing_governance",
+      "write_intent_guardrails",
+      "policy_change",
+      "structure_change",
+      "synchronization_alignment",
+      "local_coherence_control"
+    ],
+    "do_not_use_for": [
+      "pure_business_read_without_system_maintenance",
+      "generic_non_meow_request"
+    ]
+  },
+  "subcase_router": {
+    "full_run_system": {
+      "triggers": [
+        "audit global systeme",
+        "maintenance lourde",
+        "rewire",
+        "migration",
+        "coherence systeme globale"
+      ],
+      "read_sequence": [
+        "common.regles.json",
+        "update.regles.json",
+        "references/sources-externes.md",
+        "external_target_if_needed",
+        "scripts/check_path_coherence.py_if_needed",
+        "scripts/check_reference_drift.py_if_needed"
+      ]
+    },
+    "targeted_update": {
+      "triggers": [
+        "modification de policy",
+        "modification de contrat",
+        "write-intent",
+        "changement structurel"
+      ],
+      "read_sequence": [
+        "common.regles.json",
+        "update.regles.json",
+        "references/sources-externes.md_if_needed",
+        "external_target_if_needed",
+        "candidate_dependencies.external.INDEX_SOURCES_if_business_truth_or_json_write",
+        "scripts/check_update_coherence.py_if_value_or_truth_update",
+        "scripts/check_path_coherence.py_if_needed"
+      ]
+    },
+    "targeted_sync": {
+      "triggers": [
+        "nomenclature",
+        "ids",
+        "conventions de fichiers",
+        "alignement technique",
+        "synchronisation"
+      ],
+      "read_sequence": [
+        "common.regles.json",
+        "sync.regles.json",
+        "specific_asset_if_needed",
+        "scripts/check_asset_consistency.py_if_needed"
+      ]
+    },
+    "local_control": {
+      "triggers": [
+        "verification de chemin",
+        "drift de reference",
+        "coherence asset",
+        "controle local"
+      ],
+      "read_sequence": [
+        "common.regles.json",
+        "targeted_script",
+        "update.regles.json_if_needed",
+        "sync.regles.json_if_needed"
+      ]
+    },
+    "migration_history": {
+      "triggers": [
+        "historique du refactor",
+        "arbitrage de migration",
+        "comparaison avant_apres"
+      ],
+      "read_sequence": [
+        "common.regles.json",
+        "references/usage-migration.md"
+      ]
+    }
+  },
+  "read_matrix": {
+    "always_read": [
+      "SKILL.md",
+      "governance/common.regles.json"
+    ],
+    "conditional_reads": {
+      "update_runtime": [
+        "full_run_system",
+        "targeted_update"
+      ],
+      "sync_module": [
+        "targeted_sync"
+      ],
+      "external_references": [
+        "full_run_system",
+        "targeted_update",
+        "external_dependency_explicitly_required"
+      ],
+      "migration_reference": [
+        "migration_history"
+      ],
+      "assets": [
+        "specific_local_structure_needed"
+      ],
+      "scripts": [
+        "deterministic_check_is_more_efficient_than_manual_scan",
+        "write_intent_targets_truth_file_or_scalar_business_value"
+      ]
+    },
+    "never_default": [
+      "governance/update.regles.json",
+      "governance/sync.regles.json",
+      "references/sources-externes.md",
+      "references/usage-migration.md",
+      "assets/*",
+      "scripts/*"
+    ]
+  },
+  "candidate_dependencies": {
+    "external": [
+      {
+        "id": "BEBERT_AGENT",
+        "path": "C:/Users/engue/OneDrive - Enguerrand Kalfaian/__SYSTEME - MEOW_PAW_PAW_O.S__/BEBERT.agent.md",
+        "when": [
+          "write_intent",
+          "system_posture_needed",
+          "execution_scope_confirmation"
+        ]
+      },
+      {
+        "id": "INDEX_BEBERT",
+        "path": "C:/Users/engue/OneDrive - Enguerrand Kalfaian/__SYSTEME - MEOW_PAW_PAW_O.S__/INDEX.bebert.json",
+        "when": [
+          "path_resolution",
+          "routing_confirmation",
+          "maintenance_reading_policy"
+        ]
+      },
+      {
+        "id": "INDEX_SOURCES",
+        "path": "C:/Users/engue/OneDrive - Enguerrand Kalfaian/__SYSTEME - MEOW_PAW_PAW_O.S__/INDEX SOURCES.json",
+        "when": [
+          "business_truth_boundary_check",
+          "mixed_request",
+          "source_selection",
+          "coherence_dependency_resolution",
+          "reverse_dependency_scan_for_write_intent"
+        ]
+      }
+    ],
+    "assets_policy": "Read only the single passive asset needed for the current reasoning step.",
+    "legacy_policy": "No schema catalog or legacy bridge may re-enter the runtime."
+  },
+  "first_level_stop": {
+    "blockers": [
+      "unresolved_scope",
+      "unresolved_target",
+      "unqualified_subcase",
+      "write_intent_without_validation_frame",
+      "broken_explicit_reference"
+    ],
+    "required_output": [
+      "mode=STOP",
+      "status=BLOCKED",
+      "blockers=<explicit_cause>",
+      "next_action=<expected_resolution>"
+    ]
+  },
+  "output_modes": [
+    "ANALYZE",
+    "PATCH_PLAN",
+    "STOP"
+  ]
+}

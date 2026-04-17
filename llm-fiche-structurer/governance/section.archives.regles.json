@@ -1,0 +1,19 @@
+{
+    "meta": {
+        "document_type": "skill_rules",
+        "module": "section.archives",
+        "version": "3.1.0",
+        "updated_at": "2026-04-12T00:00:00+02:00"
+    },
+    "rules": {
+        "reference_docs": [
+            "references/usage-section-archives.md"
+        ],
+        "archives_not_canonical": true,
+        "read_on_explicit_request_or_audit_only": true,
+        "complement_only": true,
+        "duplicate_of_canonique_forbidden": true,
+        "canonique_precedence": true,
+        "same_question_without_added_information_forbidden": true
+    }
+}

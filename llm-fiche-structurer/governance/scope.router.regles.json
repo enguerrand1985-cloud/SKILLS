@@ -1,0 +1,43 @@
+{
+    "meta": {
+        "document_type": "skill_rules",
+        "module": "scope.router",
+        "version": "3.0.0",
+        "updated_at": "2026-04-12T00:00:00+02:00",
+        "purpose": "minimal_scope_resolution"
+    },
+    "master_scopes": [
+        "PERSONA",
+        "MICRO",
+        "SASU",
+        "SALARIAT",
+        "TRI"
+    ],
+    "known_child_scopes": {
+        "SASU": [
+            "MEOW_PAW_PAW_FICHE",
+            "INPI",
+            "QONTO",
+            "LES_TRICOLORES",
+            "AMAZON_PROFILE",
+            "ALIBABA_PROFILE"
+        ]
+    },
+    "scope_resolution_rules": [
+        "scope_header.scope doit etre un master scope connu ou un child scope declare.",
+        "Pour tout master scope, scope_header.parent_scope = null.",
+        "Pour tout child scope declare, scope_header.parent_scope doit etre egal au parent_scope canonique du child.",
+        "Ne jamais deduire un parent_scope par inference metier silencieuse."
+    ],
+    "scope_separation_rules": [
+        "Les master scopes restent fermes par defaut.",
+        "Aucune fusion cross-scope implicite n'est autorisee.",
+        "Les archives ne remplacent jamais une valeur canonique."
+    ],
+    "read_scope_doctrine_when": [
+        "scope = SASU",
+        "parent_scope = SASU",
+        "child scope non trivial",
+        "question explicite sur doctrine ou surcouche de scope"
+    ]
+}

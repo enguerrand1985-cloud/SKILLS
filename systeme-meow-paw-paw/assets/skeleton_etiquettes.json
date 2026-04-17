@@ -1,0 +1,70 @@
+{
+  "meta": {
+    "document_type": "",
+    "document_role": "",
+    "version": "",
+    "timezone": "",
+    "simplified_for": "",
+    "sources": [],
+    "source_updated_at": {
+      "etiquettes_master": "",
+      "manuel_extension": ""
+    }
+  },
+  "standards": {
+    "pdf_prepress": {
+      "pdf_standard": "",
+      "compatibility": "",
+      "color_profile_target": "",
+      "color_mode": "",
+      "resolution_ppi_effects": null,
+      "bleed_mm": null,
+      "safe_margin_mm": null,
+      "no_transparency": null,
+      "crop_marks_policy": ""
+    },
+    "png_front_stickers": {
+      "format": "",
+      "background": "",
+      "color_profile": "",
+      "resolution_dpi": null
+    }
+  },
+  "items": [
+    {
+      "sku_id": "",
+      "specs": {
+        "status": null,
+        "front_label": {
+          "label_id": null,
+          "status": "",
+          "shape": "",
+          "size_cm": {
+            "w": null,
+            "h": null
+          },
+          "target_px": null,
+          "resolution_dpi": null,
+          "finish": "",
+          "placement": "",
+          "export_format": "PNG",
+          "source_filename": null
+        },
+        "back_label": {
+          "label_id": null,
+          "status": "",
+          "size_cm": {
+            "w": null,
+            "h": null
+          },
+          "resolution_dpi": null,
+          "color_mode": "",
+          "background": "",
+          "packaging_dims_cm": null,
+          "export_format": "PNG",
+          "source_filename": ""
+        }
+      }
+    }
+  ]
+}

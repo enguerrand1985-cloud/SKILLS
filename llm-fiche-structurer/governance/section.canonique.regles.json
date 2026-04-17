@@ -1,0 +1,71 @@
+{
+    "meta": {
+        "document_type": "skill_rules",
+        "module": "section.canonique",
+        "version": "3.1.0",
+        "updated_at": "2026-04-12T00:00:00+02:00"
+    },
+    "contracts": {
+        "reference_docs": [
+            "references/usage-section-canonique.md"
+        ],
+        "mini_index": {
+            "required_min_entries": [
+                "regles_metier.rules_engine",
+                "data.canonique",
+                "todo"
+            ],
+            "archives_entry_conditional": true,
+            "unique_entry_ids_required": true,
+            "stable_priority_required": true
+        },
+        "id_policy": {
+            "stable_id_required_for_referenceable_entities": true,
+            "recommended_pattern": "<TYPE>__<SCOPE>__<SLUG>",
+            "reserved_prefixes": [
+                "FACT__",
+                "RULE__",
+                "PROC__",
+                "TPL__",
+                "IDX__",
+                "ARCH__",
+                "CHG__",
+                "POLICY__",
+                "PLAYBOOK__",
+                "DIGIPROF__",
+                "DIGISVC__"
+            ],
+            "overwrite_in_place": true,
+            "delete_canonical_entity_in_standard_maintenance_forbidden": true,
+            "array_add_requires_explicit_user_instruction": true
+        },
+        "canonical_clean_policy": {
+            "value_only": true,
+            "documents_index_required": true,
+            "forbidden_keys": [
+                "sources",
+                "evidence",
+                "source_ref",
+                "context_ref",
+                "_source_contexts",
+                "paths_promoted",
+                "sample_excerpt",
+                "extraction"
+            ],
+            "proof_material_out_of_fiche": true
+        },
+        "domain_schema_policy": {
+            "schema_first": true,
+            "ad_hoc_keys_forbidden": true,
+            "missing_data_keep_shape": true,
+            "mini_index_navigation_required": true,
+            "digital_service_model_path": "data.canonique.profils_numeriques.digital_profiles[].services[]",
+            "sasu_company_identifiants_forbidden": true
+        },
+        "sensitive_data_policy": {
+            "stored_secrets_forbidden": true,
+            "masked_not_stored_marker_allowed": true
+        },
+        "contradiction_policy": "STOP"
+    }
+}

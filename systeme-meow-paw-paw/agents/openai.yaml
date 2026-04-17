@@ -1,0 +1,4 @@
+interface:
+  display_name: "[ SYSTEME ] MEOW PAW PAW"
+  short_description: "Maintenance et gouvernance du systeme Meow Paw Paw"
+  default_prompt: "Use this modular Meow Paw Paw system skill for maintenance, governance, routing, local asset-based structure support, and technical taxonomy work. Read governance/common.regles.json and governance/update.regles.json first, then governance/sync.regles.json when naming, ids, or synchronization rules are involved. For write-intents on truth files or factual value updates, resolve source and reverse dependencies, and use scripts/check_update_coherence.py when it adds deterministic coverage before patching. Treat only the JSON files present in assets/ as local structure bases for this test skill copy. Do not use any external legacy catalog or compatibility bridge. Do not invent paths, scopes, rules, or dependencies, and stop with a targeted question when a write-intent remains structurally ambiguous."

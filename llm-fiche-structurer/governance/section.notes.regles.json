@@ -1,0 +1,39 @@
+{
+    "meta": {
+        "document_type": "skill_rules",
+        "module": "section.notes",
+        "version": "3.1.0",
+        "updated_at": "2026-04-12T00:00:00+02:00"
+    },
+    "rules": {
+        "reference_docs": [
+            "references/usage-section-notes.md"
+        ],
+        "notes_structure": "list_of_objects",
+        "required_note_fields": [
+            "id",
+            "title",
+            "content",
+            "tags",
+            "created_at",
+            "updated_at"
+        ],
+        "legacy_string_notes_must_migrate_without_loss": true,
+        "stable_information_must_be_promoted_out_of_notes": true,
+        "ingestion_triage_targets": [
+            "data.canonique",
+            "data.scope_specifique.archives",
+            "data.canonique.documents_index",
+            "notes"
+        ],
+        "ambiguous_or_incomplete_goes_to_notes_or_archives": true,
+        "ad_hoc_canonical_key_forbidden": true,
+        "canonical_write_requires": [
+            "explicit_user_instruction",
+            "schema_conformity",
+            "rules_conformity",
+            "explicit_user_validation"
+        ],
+        "missing_fields_policy": "ask_or_park_in_notes"
+    }
+}

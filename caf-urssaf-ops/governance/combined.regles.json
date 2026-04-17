@@ -1,0 +1,34 @@
+{
+    "meta": {
+        "document_type": "skill_rules",
+        "module": "combined",
+        "title": "Workflow combine CAF + URSSAF",
+        "target": "caf_urssaf_combined",
+        "depends_on": [
+            "router.common.regles.json"
+        ],
+        "runtime_rules_file": "runtime.common.regles.json",
+        "source_file": "router.common.regles.json"
+    },
+    "workflow": {
+        "enabled": true,
+        "objective": "execute CAF then URSSAF in one supervised run",
+        "reference_docs": [
+            "references/usage-combined.md"
+        ],
+        "execution_order": [
+            "caf_trimestrielle",
+            "urssaf_ca_trimestrielle"
+        ],
+        "context_policy": {
+            "reuse_same_edge_profile": true,
+            "no_new_browser_profile_between_flows": true
+        },
+        "post_run_contract": {
+            "microsoft_todo_update_enabled": true,
+            "micro_json_update_enabled": true,
+            "desktop_artifact_required": true,
+            "desktop_filename_pattern": "AUTOMATISATION_CAF_URSSAF__DONE__{YYYY-MM-DD}.md"
+        }
+    }
+}

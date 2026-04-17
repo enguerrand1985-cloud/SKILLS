@@ -1,0 +1,32 @@
+{
+    "meta": {
+        "document_type": "skill_rules",
+        "module": "section.todo",
+        "version": "3.1.0",
+        "updated_at": "2026-04-12T00:00:00+02:00"
+    },
+    "rules": {
+        "reference_docs": [
+            "references/usage-section-todo.md"
+        ],
+        "todo_role": "projection_only",
+        "stable_fact_source_forbidden": true,
+        "rule_id_required_when_rule_exists": true,
+        "links_required_when_canonical_entity_impacted": true,
+        "valid_until_required_for_documentary_recurring_occurrence": true,
+        "next_run_at_distinct_from_valid_until": true,
+        "rebuild_required_after_impacted_canonical_change": true,
+        "rollover_recurring_to_planned_after_done": true,
+        "one_shot_no_auto_reappear": true,
+        "no_cross_scope_links_without_explicit_request": true,
+        "linkref_contract": {
+            "required": [
+                "type",
+                "ref_id"
+            ],
+            "optional": [
+                "path"
+            ]
+        }
+    }
+}
