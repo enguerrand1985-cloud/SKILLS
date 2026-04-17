@@ -25,5 +25,5 @@ La gouvernance canonique `NORME_SKILL` est portee dans :
 ## Index de synchronisation
 La policy de synchronisation systeme est portee par :
 
-- `C:\Users\engue\__SYSTEME - GITHUB__\INDEX__SYSTEME_GITHUB__SYNC.json`
-- `C:\Users\engue\__SYSTEME - GITHUB__\REGLE__SYSTEME_GITHUB__SYNC.md`
+- `C:\Users\engue\__SYSTEME - GITHUB__\GOUVERNANCE\system-sync\INDEX__SYSTEME_GITHUB__SYNC.json`
+- `C:\Users\engue\__SYSTEME - GITHUB__\GOUVERNANCE\system-sync\REGLE__SYSTEME_GITHUB__SYNC.md`
