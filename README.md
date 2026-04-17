@@ -16,5 +16,5 @@ Monorepo local de reference pour les skills personnels GitHub.
 ## Gouvernance
 La gouvernance canonique `NORME_SKILL` est portee dans :
 
-- `C:\Users\engue\__SYSTEME - GITHUB__\Gouvernance\NORME_SKILL.regle.md`
-- `C:\Users\engue\__SYSTEME - GITHUB__\Gouvernance\NORME_SKILL.schema.json`
+- `C:\Users\engue\__SYSTEME - GITHUB__\GOUVERNANCE\NORME_SKILL.regle.md`
+- `C:\Users\engue\__SYSTEME - GITHUB__\GOUVERNANCE\NORME_SKILL.schema.json`
