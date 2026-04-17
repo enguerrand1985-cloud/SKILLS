@@ -1,0 +1,49 @@
+{
+  "meta": {
+    "document_type": "norme_skill_runtime_validation",
+    "version": "1.0.0"
+  },
+  "governance_module_pattern": "^(?:common|[a-z0-9]+(?:[._-][a-z0-9]+)*)\\.(?:regles|schema)\\.json$",
+  "reference_pattern": "^(?:mapping-[a-z0-9-]+|intake-[a-z0-9-]+|usage-[a-z0-9._-]+|examples-[a-z0-9._-]+|sources-externes)\\.md$",
+  "script_pattern": "^(?P<verb>[a-z][a-z0-9]*)_(?P<target>[a-z0-9_]+)\\.py$",
+  "asset_pattern": "^(?:template|skeleton|snippet|payload|base)_[a-z0-9][a-z0-9_]*\\.[a-z0-9.]+$",
+  "asset_directory_pattern": "^(?:template|snippet|payload|base)_[a-z0-9][a-z0-9_]*$",
+  "allowed_script_verbs": [
+    "validate",
+    "check",
+    "create",
+    "update",
+    "patch",
+    "sync",
+    "rebuild",
+    "parse",
+    "transform",
+    "export",
+    "import",
+    "open",
+    "read",
+    "write",
+    "compute",
+    "generate"
+  ],
+  "routing_markers": {
+    "order_section_requires": [
+      "Toujours lire"
+    ],
+    "conditional_markers": [
+      "seulement",
+      "si "
+    ],
+    "routing_always": [
+      "Toujours lu:"
+    ],
+    "routing_conditional_any": [
+      "Lu a la demande",
+      "conditionnel",
+      "Full-run",
+      "Controle local",
+      "Sync",
+      "Validation"
+    ]
+  }
+}

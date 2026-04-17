@@ -1,0 +1,20 @@
+{
+  "meta": {
+    "document_type": "norme_skill_runtime_assets",
+    "version": "1.0.0"
+  },
+  "forbidden_suffixes": [
+    ".schema.json"
+  ],
+  "forbidden_markers": [
+    "catalog",
+    "catalogue",
+    "legacy",
+    "truth",
+    "verite"
+  ],
+  "policies": {
+    "skeletons_must_be_usage_oriented": true,
+    "historical_source_filenames_forbidden": true
+  }
+}

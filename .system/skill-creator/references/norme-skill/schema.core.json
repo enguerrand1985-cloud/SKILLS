@@ -1,0 +1,67 @@
+{
+  "meta": {
+    "document_type": "norme_skill_runtime_core",
+    "version": "1.0.0",
+    "derived_from": [
+      "NORME_SKILL.regle.md",
+      "NORME_SKILL.schema.json"
+    ]
+  },
+  "strict_personal_path_markers": [
+    "/.codex/skills/",
+    "/__systeme - github__/skills/"
+  ],
+  "strict_excluded_path_markers": [
+    "/.codex/skills/.system/",
+    "/.codex/plugins/cache/"
+  ],
+  "required_directories": [
+    "governance",
+    "references",
+    "scripts",
+    "assets"
+  ],
+  "tolerated_extra_directories": [
+    "agents"
+  ],
+  "skill_md": {
+    "required_top_level_sections": [
+      "MISSION",
+      "PORTEE",
+      "CONDITIONS D'ACTIVATION",
+      "ORDRE DE LECTURE",
+      "ROUTAGE INTERNE",
+      "WORKFLOWS / PROTOCOLES",
+      "REGLES NON NEGOCIABLES",
+      "CONDITIONS DE STOP",
+      "FORMAT DE SORTIE",
+      "REFERENCES"
+    ],
+    "empty_values": [
+      "N/A",
+      "Aucun",
+      "Non applicable"
+    ]
+  },
+  "intents": {
+    "short_path": [
+      "create-minimal",
+      "update-light",
+      "validate-quick",
+      "add-asset",
+      "add-script",
+      "add-reference"
+    ],
+    "intermediate_path": [
+      "update-structure",
+      "add-governance-light",
+      "migrate-partial"
+    ],
+    "full_path": [
+      "create-full",
+      "refactor-full",
+      "audit-full",
+      "migrate-full"
+    ]
+  }
+}

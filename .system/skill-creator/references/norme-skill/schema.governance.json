@@ -1,0 +1,19 @@
+{
+  "meta": {
+    "document_type": "norme_skill_runtime_governance",
+    "version": "1.0.0"
+  },
+  "forbidden_name_markers": [
+    "catalog",
+    "catalogue",
+    "legacy",
+    "truth",
+    "verite",
+    "stock"
+  ],
+  "policies": {
+    "common_only_if_shared_trunk": true,
+    "router_runtime_split_allowed": true,
+    "heavy_schema_default_read_forbidden": true
+  }
+}
