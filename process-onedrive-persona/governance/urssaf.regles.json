@@ -27,7 +27,7 @@
             "autoentrepreneur"
         ],
         "required_inputs": {
-            "amount_source_file": "C:/Users/engue/OneDrive/_DATA - MICRO_/Micro_revenus_2025-2035.xlsx",
+            "amount_source_file": "C:/Users/engue/__SYSTEME - GITHUB__/SOURCE OF TRUTH/PERSONA/_DATA - MICRO_/Micro_revenus_2025-2035.xlsx",
             "expected_fields": [
                 "Montant BIC ventes",
                 "Montant BIC prestations",

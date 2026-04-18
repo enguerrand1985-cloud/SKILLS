@@ -34,7 +34,7 @@
         },
         "required_inputs": {
             "displayed_months_from_portal": true,
-            "amount_source_file": "C:/Users/engue/OneDrive/_DATA - MICRO_/Micro_revenus_2025-2035.xlsx",
+            "amount_source_file": "C:/Users/engue/__SYSTEME - GITHUB__/SOURCE OF TRUTH/PERSONA/_DATA - MICRO_/Micro_revenus_2025-2035.xlsx",
             "amount_columns": [
                 "Mois",
                 "Total Activite"

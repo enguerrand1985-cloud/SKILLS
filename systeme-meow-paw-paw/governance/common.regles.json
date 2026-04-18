@@ -139,8 +139,8 @@
   "candidate_dependencies": {
     "external": [
       {
-        "id": "BEBERT_AGENT",
-        "path": "C:/Users/engue/OneDrive - Enguerrand Kalfaian/__SYSTEME - MEOW_PAW_PAW_O.S__/BEBERT.agent.md",
+        "id": "PROCESS_ONEDRIVE_MEOW_PAW_PAW_SKILL",
+        "path": "C:/Users/engue/.codex/skills/process-onedrive-meow-paw-paw/SKILL.md",
         "when": [
           "write_intent",
           "system_posture_needed",
@@ -148,8 +148,8 @@
         ]
       },
       {
-        "id": "INDEX_BEBERT",
-        "path": "C:/Users/engue/OneDrive - Enguerrand Kalfaian/__SYSTEME - MEOW_PAW_PAW_O.S__/INDEX.bebert.json",
+        "id": "PROCESS_ONEDRIVE_MEOW_ROUTING",
+        "path": "C:/Users/engue/.codex/skills/process-onedrive-meow-paw-paw/governance/routing.regles.json",
         "when": [
           "path_resolution",
           "routing_confirmation",
@@ -158,7 +158,7 @@
       },
       {
         "id": "INDEX_SOURCES",
-        "path": "C:/Users/engue/OneDrive - Enguerrand Kalfaian/__SYSTEME - MEOW_PAW_PAW_O.S__/INDEX SOURCES.json",
+        "path": "C:/Users/engue/__SYSTEME - GITHUB__/SOURCE OF TRUTH/INDEX SOURCES_MEOW_PAW_PAW.json",
         "when": [
           "business_truth_boundary_check",
           "mixed_request",

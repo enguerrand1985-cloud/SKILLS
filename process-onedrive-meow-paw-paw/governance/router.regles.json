@@ -1,0 +1,110 @@
+{
+  "meta": {
+    "document_type": "meow_process_router",
+    "document_role": "minimal_router_for_meow_process_skill",
+    "version": "1.0.0",
+    "status": "active",
+    "updated_at": "2026-04-18"
+  },
+  "replacement_contract": {
+    "replaces": [
+      "LEGACY_BEBERT_AGENT_REMOVED",
+      "LEGACY_BEBERT_INDEX_REMOVED"
+    ],
+    "scope": "MEOW_PAW_PAW_MARQUE_SASU_BRAND"
+  },
+  "activation_scope": {
+    "use_for": [
+      "meow_business_request",
+      "meow_bridge_runtime",
+      "marque_request",
+      "sourcing_request",
+      "workbook_routing",
+      "business_vs_system_triage"
+    ],
+    "do_not_use_for": [
+      "persona_generalist_request",
+      "pure_system_maintenance_without_meow_business_context",
+      "llm_fiche_structuring"
+    ]
+  },
+  "read_contract": {
+    "business_truth": "INDEX_SOURCES_FIRST",
+    "system_maintenance": "handoff_to_systeme_meow_paw_paw",
+    "always_read": [
+      "SKILL.md",
+      "governance/router.regles.json"
+    ],
+    "conditional_modules": {
+      "routing": [
+        "stream_selection",
+        "profile_selection",
+        "workbook_selection",
+        "margin_or_profitability_request",
+        "system_handoff"
+      ],
+      "paths": [
+        "folder_alias_resolution",
+        "desktop_output_resolution"
+      ],
+      "bridge": [
+        "direct_command",
+        "mapping_trigger",
+        "request_queue",
+        "journal_append",
+        "done_failed_artifact"
+      ]
+    }
+  },
+  "intent_router": [
+    {
+      "id": "ROUTE__MEOW_BUSINESS",
+      "when_any": [
+        "meow paw paw",
+        "marque",
+        "brand",
+        "sourcing",
+        "fournisseur",
+        "alibaba",
+        "amazon",
+        "marketplace"
+      ],
+      "load": [
+        "governance/routing.regles.json"
+      ],
+      "outcome": "handle_business_read_or_execution_prep"
+    },
+    {
+      "id": "ROUTE__MEOW_MAINTENANCE_HANDOFF",
+      "when_any": [
+        "maintenance",
+        "coherence",
+        "write-intent",
+        "schema",
+        "synchronisation",
+        "patch systeme",
+        "migration"
+      ],
+      "handoff_skill": "systeme-meow-paw-paw"
+    },
+    {
+      "id": "ROUTE__PERSONA_FALLBACK",
+      "when_any": [
+        "persona",
+        "perso",
+        "micro",
+        "n8n",
+        "generaliste"
+      ],
+      "handoff_skill": "process-onedrive-persona"
+    }
+  ],
+  "stop_policy": {
+    "ambiguity_mode": "STOP_AND_ASK_SINGLE_QUESTION",
+    "required_on_conflict": [
+      "business_vs_system_ambiguity",
+      "missing_workbook_or_source",
+      "request_without_runtime_guardrails"
+    ]
+  }
+}

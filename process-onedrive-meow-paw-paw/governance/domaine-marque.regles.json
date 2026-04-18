@@ -1,0 +1,392 @@
+{
+  "meta": {
+    "document_type": "process_skill_rules",
+    "rule_theme": "domaine_marque",
+    "version": "1.8.0",
+    "updated_at": "2026-04-18",
+    "owner_skill": "process-onedrive-meow-paw-paw",
+    "migrated_from": "C:/Users/engue/OneDrive - Enguerrand Kalfaian/__SYSTEME - MEOW_PAW_PAW_O.S__/PARAMETERS/domaine_marque.regle.json"
+  },
+  "rules": {
+    "domain_type": "routing_domain_only",
+    "no_new_llm_scope": true,
+    "profile_id": "DIGIPROF__SASU__EDGE_PRO_ECOMMERCE",
+    "truth_scopes": [
+      "PERSONA",
+      "MICRO",
+      "SASU"
+    ],
+    "paths": {
+      "local_business_root_priority": "C:/Users/engue/__SYSTEME - GITHUB__/SOURCE OF TRUTH/MEOW PAW PAW",
+      "onedrive_professional_priority": "C:/Users/engue/__SYSTEME - GITHUB__/SOURCE OF TRUTH/MEOW PAW PAW",
+      "index_sources_fallback": "C:/Users/engue/__SYSTEME - GITHUB__/SOURCE OF TRUTH/INDEX SOURCES_MEOW_PAW_PAW.json",
+      "system_skill_entrypoint": "C:/Users/engue/.codex/skills/systeme-meow-paw-paw/SKILL.md",
+      "parameters_priority": "governance/domaine-marque.regles.json"
+    },
+    "source_resolution_policy": {
+      "business_routing_truth": "INDEX_SOURCES_FIRST",
+      "local_windows_paths": "SYSTEM_SKILL_FOR_MAINTENANCE_ONLY",
+      "forbid_sharepoint_url_to_local_inference": true
+    },
+    "todo_list_marque": {
+      "priority_source": "operational_workbook_sources_in_scope_true_from_INDEX_SOURCES",
+      "write_policy": "local_workbook_hub_targeted_write",
+      "workbook_fallback_rule": "read_stream_targeted_workbook_sheet_first_scan_full_workbook_only_for_explicit_global_recap",
+      "forbid_workbook_as_primary_write_target": false
+    },
+    "business_actions": {
+      "require_rules_resolution_from_sasu_before_execution": true
+    },
+    "local_workbook_update_policy": {
+      "enabled": true,
+      "applies_to_domain": "BRAND_PRO",
+      "execution_backend": {
+        "mode": "local_xlsx_edit",
+        "run_context": "workspace_local_filesystem",
+        "session_name": "meow_workbook_hub",
+        "primary_write_root": "C:/Users/engue/__SYSTEME - GITHUB__/SOURCE OF TRUTH/MEOW PAW PAW/_HUB - DASHBOARD_",
+        "routing_source": "INDEX_SOURCES.operational_workbook_sources[in_scope=true]",
+        "on_missing_target_workbook": "stop_and_ask_single_question"
+      },
+      "write_flow": [
+        "resolve_target_workbook_sheet_from_index_sources",
+        "open_target_workbook",
+        "create_or_update_row_in_workbook_sheet",
+        "verify_row_after_save",
+        "sync_dated_items_to_todo_pro_when_due_date_exists"
+      ],
+      "post_write_replication_sync": {
+        "enabled": true,
+        "run_after_write_actions": [
+          "create_row",
+          "update_row",
+          "delete_row",
+          "update_column_choices",
+          "bulk_edit"
+        ],
+        "automation_mode": "mandatory_without_additional_user_prompt",
+        "target_directories": [
+          "C:/Users/engue/__SYSTEME - GITHUB__/SOURCE OF TRUTH/MEOW PAW PAW/_HUB - DASHBOARD_",
+          "C:/Users/engue/OneDrive/__SYSTEME - PERSONA_O.S__/GPT/MEOW PAW PAW/MEOW PAW PAW ATTACHEMENTS",
+          "C:/Users/engue/OneDrive/__SYSTEME - PERSONA_O.S__/GPT/TODO/TODO ATTACHEMENTS"
+        ],
+        "file_selection_scope": "only_updated_workbook_for_target_stream",
+        "distribution_strategy": "write_in_dashboard_then_copy_to_persona_workbook",
+        "conflict_policy": "overwrite_with_latest_local_workbook",
+        "verification_after_sync": [
+          "verify_file_exists_in_dashboard_target",
+          "verify_file_exists_in_persona_meow_workbook_target",
+          "verify_file_exists_in_persona_todo_workbook_target"
+        ],
+        "failure_policy": "report_sync_failure_and_keep_write_result"
+      },
+      "index_sources_post_update_replication_sync": {
+        "enabled": true,
+        "trigger_condition": "after_successful_write_on_any_file_referenced_by_INDEX_SOURCES",
+        "source_scope": {
+          "include_sources_entries": true,
+          "include_operational_workbook_sources_entries": true
+        },
+        "target_directories": [
+          "C:/Users/engue/OneDrive/__SYSTEME - PERSONA_O.S__/GPT/MEOW PAW PAW/MEOW PAW PAW ATTACHEMENTS"
+        ],
+        "file_selection_scope": "only_files_updated_in_current_request",
+        "distribution_strategy": "copy_updated_sources_to_persona_meow_attachments",
+        "conflict_policy": "overwrite_with_latest_updated_file",
+        "verification_after_sync": [
+          "verify_file_exists_in_persona_meow_workbook_target",
+          "verify_file_size_not_zero_in_persona_meow_workbook_target"
+        ],
+        "failure_policy": "report_sync_failure_and_keep_primary_write_result"
+      },
+      "dated_items_to_todo_sync_policy": {
+        "enabled": true,
+        "trigger_scope": "BRAND_PRO",
+        "source_condition": {
+          "required_field": "Échéance",
+          "required_field_not_empty": true,
+          "required_field_any": [
+            "Échéance",
+            "Echeance",
+            "due_date"
+          ],
+          "exclude_status_values_normalized": [
+            "Termine",
+            "Terminé"
+          ],
+          "exclude_status_values": [
+            "Terminé"
+          ]
+        },
+        "target_backend": {
+          "primary": "MICROSOFT_TODO",
+          "secondary": "OUTLOOK_TASKS",
+          "profile_id": "DIGIPROF__SASU__EDGE_PRO_ECOMMERCE",
+          "browser": "msedge",
+          "profile_path": "C:/Users/engue/AppData/Local/Microsoft/Edge/User Data/Profile 1",
+          "expected_account_upn": "djoson@meowpawpaw.onmicrosoft.com",
+          "account_switch_policy": "if_current_profile_or_account_not_matching_switch_before_any_todo_or_outlook_write",
+          "todo_url": "https://to-do.office.com/tasks/",
+          "outlook_tasks_url": "https://outlook.office.com/tasks/"
+        },
+        "mapping": {
+          "task_title_format": "[{sheet_name}] {Titre}",
+          "task_title_due_date_policy": "never_embed_due_date_in_title_if_source_title_contains_a_date_prefix_strip_that_prefix_before_write",
+          "due_date_source_field_any": [
+            "Échéance",
+            "Echeance",
+            "due_date"
+          ],
+          "due_date_target_field": "microsoft_todo_due_date",
+          "due_date_write_mode": "mandatory_write_due_date_field",
+          "overdue_due_date_policy": "write_overdue_date_when_backend_allows_else_stop_and_report_single_blocker",
+          "due_date_source_field": "Échéance",
+          "body_format": [
+            "Source Liste: {list_name}",
+            "Element ID: {item_id}",
+            "Categorie: {Catégorie}",
+            "Stream: {Stream}",
+            "SKU: {SKU'( S )}",
+            "Priorité: {Priorité}",
+            "Blocage LIVE: {⛔ Blocage LIVE}",
+            "Dépendances: {Dépendances}",
+            "Statut: {Statut}",
+            "Évidence/Lien: {Évidence/Lien}"
+          ],
+          "note_source_field_any": [
+            "Notes",
+            "Note",
+            "notes",
+            "note"
+          ],
+          "note_format": [
+            "Notes: {Notes}"
+          ],
+          "note_omit_empty_lines": true,
+          "todo_steps_source_field_any": [
+            "Prochain pas concret",
+            "prochain_pas_concret",
+            "next_step"
+          ],
+          "todo_steps_write_mode": "create_steps_in_add_a_step_section",
+          "todo_steps_split_policy": "split_on_newline_or_semicolon_or_bullet_then_trim",
+          "todo_steps_drop_empty": true,
+          "target_task_list_default": "AMAZON BRANDING ( TO DO )",
+          "target_task_list_fallback": "Tâches"
+        },
+        "deduplication": {
+          "external_key": "XLSX::{workbook_name}::{sheet_name}::{row_id_or_title}",
+          "on_existing_task": "update_title_body_due_date_note_steps_status",
+          "on_source_due_date_removed": "remove_due_date_in_todo_task_without_deleting_task",
+          "on_source_item_deleted": "mark_task_completed_only_if_user_explicitly_requests_else_keep_and_flag"
+        },
+        "safety_checks_before_todo_write": [
+          "verify_target_profile_and_account",
+          "verify_due_date_parseable",
+          "verify_due_date_written_in_due_date_field",
+          "verify_task_payload_contains_source_workbook_sheet_and_row_id",
+          "verify_no_duplicate_task_for_same_external_key"
+        ],
+        "run_after_workbook_write": true
+      },
+      "editable_columns": [
+        {
+          "id": "title",
+          "type": "text",
+          "column_header": "Titre"
+        },
+        {
+          "id": "category",
+          "type": "choice",
+          "column_header": "Catégorie"
+        },
+        {
+          "id": "stream",
+          "type": "choice",
+          "column_header": "Stream"
+        },
+        {
+          "id": "sku_master",
+          "type": "multi_choice_json_array",
+          "column_header": "SKU'( S )"
+        },
+        {
+          "id": "priority",
+          "type": "choice",
+          "column_header": "Priorité"
+        },
+        {
+          "id": "live_block",
+          "type": "boolean",
+          "column_header": "⛔ Blocage LIVE"
+        },
+        {
+          "id": "dependencies",
+          "type": "text",
+          "column_header": "Dépendances"
+        },
+        {
+          "id": "status",
+          "type": "choice",
+          "column_header": "Statut"
+        },
+        {
+          "id": "due_date",
+          "type": "date",
+          "column_header": "Échéance"
+        },
+        {
+          "id": "next_step",
+          "type": "text",
+          "column_header": "Prochain pas concret"
+        },
+        {
+          "id": "notes",
+          "type": "text",
+          "column_header": "Notes"
+        },
+        {
+          "id": "evidence_link",
+          "type": "url_or_text",
+          "column_header": "Évidence/Lien"
+        }
+      ],
+      "allowed_choice_values": {
+        "status": [
+          "À faire",
+          "En cours",
+          "En attente fournisseur",
+          "Bloqué",
+          "Terminé"
+        ],
+        "priority": [
+          "HAUTE",
+          "MOYENNE",
+          "BASSE"
+        ],
+        "category": [
+          "CARTONS D'EXPEDITION",
+          "IDENTIFIANTS",
+          "TARIFICATION",
+          "TRANSACTION",
+          "CONFORMITE",
+          "FORMALITE",
+          "PHOTOS / VIDEOS",
+          "EDITION ETIQUETTES",
+          "EDITION MONTAGE",
+          "LISTING AMAZON"
+        ],
+        "stream": [
+          "LOGISTIQUE",
+          "RELATION FOURNISSEURS",
+          "COMPTABILITE",
+          "REGLEMENTAIRE",
+          "CONTENU & MARQUE",
+          "AMAZON"
+        ]
+      },
+      "create_item_policy": {
+        "allow_create_new_task": true,
+        "default_behavior": "fill_all_known_columns_from_user_instruction",
+        "missing_required_field_policy": "STOP_AND_ASK_SINGLE_QUESTION"
+      },
+      "export_download_sync_policy": {
+        "enabled": true,
+        "trigger_intents_any": [
+          "telecharge mon xlsx",
+          "synchronise mon classeur hub",
+          "met a jour mon classeur dashboard",
+          "export xlsx des taches"
+        ],
+        "target_directories": [
+          "C:/Users/engue/__SYSTEME - GITHUB__/SOURCE OF TRUTH/MEOW PAW PAW/_HUB - DASHBOARD_",
+          "C:/Users/engue/OneDrive/__SYSTEME - PERSONA_O.S__/GPT/MEOW PAW PAW/MEOW PAW PAW ATTACHEMENTS",
+          "C:/Users/engue/OneDrive/__SYSTEME - PERSONA_O.S__/GPT/TODO/TODO ATTACHEMENTS"
+        ],
+        "file_selection_scope": "only_updated_workbook_in_current_session",
+        "distribution_strategy": "copy_from_dashboard_to_persona_workbook",
+        "conflict_policy": "overwrite_with_latest_local_workbook",
+        "verification_after_sync": [
+          "verify_file_exists_in_dashboard_target",
+          "verify_file_exists_in_persona_meow_workbook_target",
+          "verify_file_exists_in_persona_todo_workbook_target"
+        ]
+      },
+      "targeting_policy": {
+        "required_minimum_selector": [
+          "workbook_sheet_or_id",
+          "task_title_or_task_id"
+        ],
+        "preferred_selector_for_multi_sku_rows": [
+          "workbook_sheet_or_id",
+          "task_title_or_task_id",
+          "sku"
+        ],
+        "ambiguity_policy": "STOP_AND_ASK_SINGLE_QUESTION"
+      },
+      "multi_sku_update_policy": {
+        "sku_column_storage_mode": "json_array_string",
+        "on_single_sku_completion": "remove_only_target_sku_from_row",
+        "keep_row_if_remaining_skus_count_gt_0": true,
+        "if_remaining_skus_count_eq_0": "set_status_termine_or_archive_by_user_instruction",
+        "never_delete_row_if_no_explicit_delete_intent": true,
+        "global_row_when_sku_empty": "treat_as_shared_task_do_not_infer_sku_removal"
+      },
+      "date_policy": {
+        "accepted_input_formats": [
+          "YYYY-MM-DD",
+          "DD/MM/YYYY",
+          "DD-MM-YYYY"
+        ],
+        "storage_format": "YYYY-MM-DD",
+        "timezone": "Europe/Paris"
+      },
+      "safety_checks_before_write": [
+        "verify_target_workbook_sheet_is_correct",
+        "validate_target_row_uniqueness",
+        "validate_choice_values",
+        "validate_sku_exists_in_allowed_set_for_list",
+        "produce_preview_diff_before_apply"
+      ],
+      "workbook_schema_reference": {
+        "workbook_file": "C:/Users/engue/__SYSTEME - GITHUB__/SOURCE OF TRUTH/MEOW PAW PAW/_HUB - DASHBOARD_/MEOW PAW PAW - LIST.xlsx",
+        "sheet_name": "SCHEMA",
+        "usage_policy": "if_field_mapping_or_choice_values_unclear_read_schema_sheet_before_write"
+      },
+      "workbook_usage_mode": "primary_read_write_target",
+      "workbook_dashboard_dir": "C:/Users/engue/__SYSTEME - GITHUB__/SOURCE OF TRUTH/MEOW PAW PAW/_HUB - DASHBOARD_",
+      "download_csv_ingestion_policy": {
+        "enabled": true,
+        "source_download_dir": "C:/Users/engue/OneDrive/Downloads",
+        "source_file_pattern": "*.csv",
+        "ignore_non_csv_files": true,
+        "target_workbook_file": "C:/Users/engue/__SYSTEME - GITHUB__/SOURCE OF TRUTH/MEOW PAW PAW/_HUB - DASHBOARD_/MEOW PAW PAW - LIST.xlsx",
+        "routing_strategy": "INDEX_sheet_source_csv_to_sheet_name_then_fallback_sheet_name_match",
+        "header_validation": "strict_normalized_header_match_required",
+        "write_mode": "replace_target_sheet_data_rows_keep_header",
+        "delete_source_csv_after_successful_workbook_save": true,
+        "on_error": "keep_csv_and_report_error",
+        "script_path": "C:/Users/engue/OneDrive - Enguerrand Kalfaian/__SYSTEME - MEOW_PAW_PAW_O.S__/RUNBOOKS/sync_downloaded_csv_to_meow_workbook.py",
+        "default_execution_mode": "apply",
+        "post_update_replication_required": true,
+        "post_update_target_directories": [
+          "C:/Users/engue/OneDrive/__SYSTEME - PERSONA_O.S__/GPT/MEOW PAW PAW/MEOW PAW PAW ATTACHEMENTS",
+          "C:/Users/engue/OneDrive/__SYSTEME - PERSONA_O.S__/GPT/TODO/TODO ATTACHEMENTS"
+        ],
+        "todo_journal_update_required": true,
+        "todo_journal_file": "C:/Users/engue/OneDrive/__SYSTEME - PERSONA_O.S__/GPT/TODO/TODO ATTACHEMENTS/[ TODO ] Journal.md",
+        "todo_journal_update_mode": "append_only",
+        "todo_journal_required_block_template": [
+          "## Journal du YYYY-MM-DD - HH:mm",
+          "### Statut",
+          "### Changements",
+          "### Actions executees",
+          "### Blocages",
+          "### Prochaines actions",
+          "### REQUEST liees",
+          "### DONE lies"
+        ]
+      }
+    }
+  }
+}

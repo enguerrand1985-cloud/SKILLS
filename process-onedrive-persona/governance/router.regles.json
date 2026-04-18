@@ -1,0 +1,132 @@
+{
+  "meta": {
+    "document_type": "persona_process_router",
+    "document_role": "minimal_router_for_persona_process_skill",
+    "version": "1.0.0",
+    "status": "active",
+    "updated_at": "2026-04-18"
+  },
+  "replacement_contract": {
+    "replaces": [
+      "LEGACY_MARWAN_AGENT_REMOVED",
+      "LEGACY_MARWAN_INDEX_REMOVED"
+    ],
+    "scope": "PERSONA_MICRO_SASU_HORS_MEOW"
+  },
+  "activation_scope": {
+    "use_for": [
+      "persona_generalist_request",
+      "micro_admin_request",
+      "sasu_admin_request",
+      "user_path_alias_resolution",
+      "todo_bridge_runtime",
+      "internal_caf_urssaf_provigis_runtime",
+      "routing_to_llm_fiche_structurer"
+    ],
+    "do_not_use_for": [
+      "meow_brand_business_request",
+      "meow_system_maintenance",
+      "pure_llm_skill_internal_maintenance"
+    ]
+  },
+  "read_matrix": {
+    "always_read": [
+      "SKILL.md",
+      "governance/router.regles.json"
+    ],
+    "conditional_modules": {
+      "routing": [
+        "scope_selection",
+        "account_selection",
+        "service_domain_selection",
+        "specialized_handoff",
+        "internal_admin_compliance"
+      ],
+      "paths": [
+        "folder_alias_resolution",
+        "default_output_resolution",
+        "copy_target_resolution"
+      ],
+      "bridge": [
+        "direct_command",
+        "mapping_trigger",
+        "request_queue",
+        "todo_journal",
+        "done_failed_artifact"
+      ]
+    }
+  },
+  "multi_system_policy": {
+    "segment_requests_by_system": true,
+    "mixing_policy": "separate_blocks_then_route_each_block",
+    "do_not_mix_meow_and_persona_rules": true
+  },
+  "intent_router": [
+    {
+      "id": "ROUTE__PERSONA_GENERAL",
+      "when_any": [
+        "persona",
+        "perso",
+        "micro",
+        "sasu",
+        "documents",
+        "bureau",
+        "downloads",
+        "todo"
+      ],
+      "load": [
+        "governance/routing.regles.json"
+      ],
+      "outcome": "handle_locally_or_route_to_specialized_skill"
+    },
+    {
+      "id": "ROUTE__CAF_URSSAF_PROVIGIS",
+      "when_any": [
+        "caf",
+        "urssaf",
+        "provigis",
+        "declaration"
+      ],
+      "load": [
+        "governance/routing.regles.json",
+        "governance/router.common.regles.json"
+      ],
+      "outcome": "route_to_internal_compliance_admin_subprocess"
+    },
+    {
+      "id": "ROUTE__LLM_FICHE",
+      "when_any": [
+        "fiche llm",
+        "structurer",
+        "normaliser",
+        "aligner au schema",
+        "rebuild todo"
+      ],
+      "load": [
+        "governance/routing.regles.json"
+      ],
+      "handoff_skill": "llm-fiche-structurer"
+    },
+    {
+      "id": "ROUTE__MEOW_FALLBACK",
+      "when_any": [
+        "meow paw paw",
+        "marque",
+        "sku",
+        "amazon",
+        "alibaba",
+        "fournisseur"
+      ],
+      "handoff_skill": "process-onedrive-meow-paw-paw"
+    }
+  ],
+  "stop_policy": {
+    "ambiguity_mode": "STOP_AND_ASK_SINGLE_QUESTION",
+    "required_on_conflict": [
+      "scope_conflict",
+      "service_domain_conflict",
+      "explicit_meow_write_from_persona_process",
+      "missing_critical_source"
+    ]
+  }
+}

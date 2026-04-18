@@ -1,0 +1,33 @@
+{
+  "meta": {
+    "document_type": "gpt_bridge_project_schema",
+    "scope": "PROJECT_OR_GPT",
+    "version": "1.0.0"
+  },
+  "required_rule_fields": [
+    "prompt_file",
+    "attachments_dir",
+    "index_file",
+    "journal_file",
+    "write_mode",
+    "active_scopes"
+  ],
+  "allowed_modes": [
+    "JOURNAL_FIRST_PROMPT_STABLE",
+    "REQUEST_DRIVEN_CODEX_AUTO_SYNC",
+    "DEFINITION_NOTEBOOK",
+    "VISUAL_PACK_MANUAL_SYNC",
+    "FINANCE_REQUEST_SUPPORT"
+  ],
+  "prompt_contract_defaults": {
+    "location": "PROJET_<NOM>.md ou GPT_<NOM>.md",
+    "write_policy": "REQUEST_ONLY unless explicit user override",
+    "ambiguity_policy": "STOP si ambiguite bloquante"
+  },
+  "journal_contract_defaults": {
+    "append_only": true,
+    "keep_previous_entries": true,
+    "request_done_links_required": true
+  },
+  "ecosystem_context_required_when_available": true
+}

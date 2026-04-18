@@ -1,0 +1,60 @@
+{
+  "meta": {
+    "document_type": "gpt_bridge_system_ia_rules",
+    "skill_id": "systeme-gpt-bridge",
+    "version": "1.0.0",
+    "derived_from": [
+      "SYSTEM_IA.regle.json",
+      "SYSTEM_IA.schema.json",
+      "System IA ATTACHEMENTS"
+    ]
+  },
+  "rules": {
+    "project_id": "PROJET_SYSTEM_IA",
+    "entrypoints": {
+      "prompt_file": "C:/Users/engue/OneDrive/__SYSTEME - PERSONA_O.S__/GPT/System IA/PROJET_SYSTEM_IA.md",
+      "attachments_dir": "C:/Users/engue/OneDrive/__SYSTEME - PERSONA_O.S__/GPT/System IA/System IA ATTACHEMENTS",
+      "index_file": "C:/Users/engue/OneDrive/__SYSTEME - PERSONA_O.S__/GPT/System IA/System IA ATTACHEMENTS/INDEX.system_ia.json",
+      "journal_file": "C:/Users/engue/OneDrive/__SYSTEME - PERSONA_O.S__/GPT/System IA/System IA ATTACHEMENTS/[ IA ] journal_gpt.md",
+      "ecosystem_context": "C:/Users/engue/OneDrive/__SYSTEME - PERSONA_O.S__/GPT/System IA/System IA ATTACHEMENTS/GPT_ecosystem.context.json"
+    },
+    "attachment_contract": {
+      "required_files": [
+        "INDEX.system_ia.json",
+        "[ IA ] journal_gpt.md"
+      ],
+      "optional_files": [
+        "GPT_ecosystem.context.json",
+        "MANIFEST_SYSTEM_IA.json",
+        "WINDOWS_PATHS_REGISTRY.json",
+        "SYSTEM_IA_ORCHESTRATION.md"
+      ],
+      "refresh_script": "C:/Users/engue/OneDrive/__SYSTEME - PERSONA_O.S__/GPT/System IA/System IA ATTACHEMENTS/REFRESH_CONTEXT_PACK.ps1"
+    },
+    "legacy_copies_detected": [
+      "ROUTER__CODEX__AGENTS.md",
+      "WINDOWS_PATHS_REGISTRY.json",
+      "MANIFEST_SYSTEM_IA.json",
+      "SYSTEM_IA_ORCHESTRATION.md",
+      "GPT_ecosystem.context.json"
+    ],
+    "target_runtime_skills": {
+      "persona_process": "process-onedrive-persona",
+      "meow_process": "process-onedrive-meow-paw-paw",
+      "llm_structuration": "llm-fiche-structurer",
+      "caf_urssaf_ops": "process-onedrive-persona",
+      "meow_system_maintenance": "systeme-meow-paw-paw"
+    },
+    "recabling_policy": {
+      "goal": "replace_legacy_agent_and_index_copies_with_process_skill_aligned_sources",
+      "router_copy_policy": "keep_only_if_it_reflects_current_local_router",
+      "legacy_index_policy": "tolerate_for_migration_audit_only_not_as_active_truth",
+      "journal_policy": "append_only",
+      "prompt_policy": "structural_change_only"
+    },
+    "stop_policy": {
+      "on_ambiguous_target_file": "STOP_AND_REPORT_EXACT_FILE",
+      "on_unreviewed_legacy_dependency": "STOP_AND_REQUIRE_AUDIT_BEFORE_REWRITE"
+    }
+  }
+}

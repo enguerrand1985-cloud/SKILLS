@@ -1,0 +1,3 @@
+interface:
+  display_name: "Process Onedrive Persona"
+  short_description: "Route Persona, Micro, and SASU process requests with light local governance"

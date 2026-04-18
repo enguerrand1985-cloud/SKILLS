@@ -1,0 +1,151 @@
+{
+  "meta": {
+    "document_type": "process_skill_rules",
+    "rule_theme": "gaming_mode_local_prep",
+    "version": "1.1.0",
+    "updated_at": "2026-04-18",
+    "owner_skill": "process-onedrive-persona",
+    "migrated_from": "LEGACY_PARAMETERS_REMOVED"
+  },
+  "rules": {
+    "trigger_keywords_any": [
+      "mets-moi en mode jeu",
+      "mode jeu",
+      "gaming mode",
+      "prepare le pc pour jouer"
+    ],
+    "execution_policy": {
+      "enabled": true,
+      "mode": "SUPERVISED_AUTOMATION",
+      "only_on_user_explicit_request": true,
+      "manual_stop_word_supported": "STOP"
+    },
+    "power_plan_policy": {
+      "check_before_switch": true,
+      "target_plan_alias": "SCHEME_MIN",
+      "target_plan_label": "High performance",
+      "set_command": "powercfg /SETACTIVE SCHEME_MIN"
+    },
+    "background_cleanup_policy": {
+      "close_only_explicit_targets": true,
+      "do_not_touch_keyboard_mouse_profiles": true,
+      "target_process_names": [
+        "ChatGPT",
+        "ChatGPT.exe",
+        "OpenAI.ChatGPT-Desktop",
+        "GoogleDriveFS",
+        "GoogleDrive",
+        "googledrivesync",
+        "Copilot",
+        "M365Copilot",
+        "Microsoft.MicrosoftOfficeHub"
+      ],
+      "stop_command_hint": "Get-Process <name> -ErrorAction SilentlyContinue | Stop-Process -Force"
+    },
+    "reporting_policy": {
+      "console_summary_required": true,
+      "optional_desktop_report": {
+        "enabled": true,
+        "output_dir": "C:/Users/engue/OneDrive/Desktop",
+        "filename_pattern": "MODE_JEU__{YYYY-MM-DD}__{HHmm}.md"
+      }
+    },
+    "game_launcher_policy": {
+      "enabled": true,
+      "auto_game_mode_on_launch": true,
+      "auto_return_to_normal_on_exit": true,
+      "launcher_script_path": "C:/Users/engue/OneDrive/Scripts/ModeJeu/Start-GameMode.ps1",
+      "games": [
+        {
+          "key": "battlefield6",
+          "label": "Battlefield 6",
+          "aliases": [
+            "bf6",
+            "battlefield",
+            "battlefield 6"
+          ],
+          "install_dir": "G:/Battlefield 6",
+          "launch_exe": "G:/Battlefield 6/bf6.exe",
+          "wait_process_names": [
+            "bf6"
+          ]
+        },
+        {
+          "key": "blackops6",
+          "label": "Call of Duty: Black Ops 6",
+          "aliases": [
+            "bo6",
+            "black ops 6",
+            "call of duty",
+            "cod",
+            "cod bo6"
+          ],
+          "install_dir": "G:/Call of Duty",
+          "launch_exe": "G:/Call of Duty/_retail_/cod.exe",
+          "wait_process_names": [
+            "cod"
+          ]
+        },
+        {
+          "key": "pubg",
+          "label": "PlayerUnknown's Battlegrounds",
+          "aliases": [
+            "pubg",
+            "battlegrounds"
+          ],
+          "install_dir": "G:/SteamLibrary/steamapps/common/PUBG",
+          "launch_exe": "G:/SteamLibrary/steamapps/common/PUBG/TslGame/Binaries/Win64/TslGame.exe",
+          "wait_process_names": [
+            "TslGame"
+          ]
+        },
+        {
+          "key": "r6",
+          "label": "Rainbow Six Siege",
+          "aliases": [
+            "r6",
+            "r6s",
+            "siege",
+            "rainbow six",
+            "rainbow six siege"
+          ],
+          "install_dir": "G:/SteamLibrary/steamapps/common/Tom Clancy's Rainbow Six Siege",
+          "launch_exe": "G:/SteamLibrary/steamapps/common/Tom Clancy's Rainbow Six Siege/RainbowSix.exe",
+          "wait_process_names": [
+            "RainbowSix"
+          ]
+        }
+      ]
+    },
+    "mode_normal_policy": {
+      "enabled": true,
+      "power_plan_policy": {
+        "target_plan_alias": "SCHEME_BALANCED",
+        "target_plan_label": "Balanced",
+        "set_command": "powercfg /SETACTIVE SCHEME_BALANCED"
+      },
+      "restart_apps_policy": {
+        "enabled": true,
+        "apps_to_restart": [
+          {
+            "name": "ChatGPT",
+            "start_command": "explorer.exe \"shell:AppsFolder\\OpenAI.ChatGPT-Desktop_2p2nqsd0c76g0!ChatGPT\""
+          },
+          {
+            "name": "Google Drive",
+            "start_path": "C:/Program Files/Google/Drive File Stream/launch.bat"
+          },
+          {
+            "name": "Copilot M365",
+            "start_command": "explorer.exe \"shell:AppsFolder\\Microsoft.MicrosoftOfficeHub_8wekyb3d8bbwe!Microsoft.MicrosoftOfficeHub\""
+          }
+        ]
+      },
+      "optional_desktop_report": {
+        "enabled": true,
+        "output_dir": "C:/Users/engue/OneDrive/Desktop",
+        "filename_pattern": "MODE_NORMAL__{YYYY-MM-DD}__{HHmm}.md"
+      }
+    }
+  }
+}

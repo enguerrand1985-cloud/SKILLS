@@ -1,0 +1,140 @@
+{
+  "meta": {
+    "document_type": "persona_process_bridge_runtime",
+    "document_role": "todo_bridge_runtime_for_persona_process_skill",
+    "version": "1.0.0",
+    "status": "active",
+    "updated_at": "2026-04-18",
+    "default_read": false
+  },
+  "bridge_root": "C:/Users/engue/OneDrive/BRIDGE",
+  "mode": "REQUEST_OR_DIRECT_OR_MAPPING",
+  "execution_priority": [
+    "direct_command",
+    "mapping_trigger",
+    "request_queue"
+  ],
+  "direct_command_policy": {
+    "enabled": true,
+    "scope_guard": "PERSONA_MICRO_SASU_HORS_MEOW",
+    "write_policy": "allow_in_scope_when_user_command_is_explicit",
+    "traceability_policy": "always_append_todo_journal"
+  },
+  "mapping_triggers": {
+    "enabled": true,
+    "dispatch_policy": "first_matching_trigger_then_execute_action_pipeline",
+    "triggers": []
+  },
+  "request_scope": {
+    "include_patterns": [
+      "[ TODO ] REQUEST*.md",
+      "[ TODO ] REQUEST*.json",
+      "[TODO] REQUEST*.md",
+      "[TODO] REQUEST*.json"
+    ],
+    "exclude_patterns": [
+      "[ MEOW ] REQUEST*.md",
+      "[ MEOW ] REQUEST*.json",
+      "[MEOW] REQUEST*.md",
+      "[MEOW] REQUEST*.json"
+    ]
+  },
+  "journals": {
+    "todo_journal_file": "C:/Users/engue/OneDrive/__SYSTEME - PERSONA_O.S__/GPT/TODO/TODO ATTACHEMENTS/[ TODO ] Journal.md",
+    "path_handling_policy": "use_literal_path_for_bracket_filenames",
+    "append_only": true,
+    "required_block_template": [
+      "## Journal du YYYY-MM-DD - HH:mm",
+      "### Statut",
+      "### Changements",
+      "### Actions executees",
+      "### Blocages",
+      "### Prochaines actions",
+      "### REQUEST liees",
+      "### DONE lies"
+    ]
+  },
+  "done_failed_artifacts": {
+    "target_dir": "C:/Users/engue/OneDrive/BRIDGE",
+    "naming_policy": "DONE__or_FAILED__prefix_keep_existing_suffix"
+  },
+  "post_update_source_sync_policy": {
+    "enabled": true,
+    "trigger_condition": "after_successful_write_on_scope_file",
+    "source_scope": [
+      "PERSONA",
+      "MICRO",
+      "SASU",
+      "PERSONA_CB500X"
+    ],
+    "target_directory": "C:/Users/engue/OneDrive/__SYSTEME - PERSONA_O.S__/GPT/TODO/TODO ATTACHEMENTS",
+    "copy_policy": {
+      "copy_only_updated_files": true,
+      "keep_original_filename": true,
+      "overwrite_if_exists": true
+    },
+    "verification_policy": [
+      "verify_target_file_exists_after_copy",
+      "verify_target_file_size_not_zero"
+    ]
+  },
+  "request_policy_v2": {
+    "required_fields": [
+      "request_id",
+      "project_id",
+      "scope",
+      "intent_type",
+      "sources",
+      "actions",
+      "expected_result",
+      "constraints",
+      "linked_files",
+      "journal_ref",
+      "created_at",
+      "priority",
+      "execution_mode"
+    ],
+    "field_aliases": {
+      "sources": [
+        "Sources"
+      ],
+      "journal_ref": [
+        "journal_ref (TODO)",
+        "journal_ref (MEOW)"
+      ],
+      "status": [
+        "statut",
+        "Statut"
+      ],
+      "objective": [
+        "Objectif"
+      ]
+    },
+    "status_flow": [
+      "READY",
+      "IN_PROGRESS",
+      "DONE",
+      "FAILED"
+    ],
+    "fail_fast_guards": [
+      "stop_if_scope_ambiguous",
+      "stop_if_journal_ref_missing",
+      "stop_if_linked_file_missing"
+    ]
+  },
+  "inventory_command": {
+    "literal_command": "Etat des lieux",
+    "write_policy": "no_write_inventory_only"
+  },
+  "execution_cycle": [
+    "resolve_entrypoint_by_priority_direct_mapping_request",
+    "if_direct_command_execute_immediately",
+    "if_mapping_trigger_detected_execute_mapping_pipeline",
+    "if_request_queue_scan_todo_requests_only",
+    "ignore_meow_requests",
+    "sync_updated_scope_files_to_gpt_todo_attachments",
+    "write_done_or_failed_artifact",
+    "append_todo_journal",
+    "delete_request_only_on_success"
+  ]
+}

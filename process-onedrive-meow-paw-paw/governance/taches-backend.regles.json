@@ -1,0 +1,41 @@
+{
+  "meta": {
+    "document_type": "process_skill_rules",
+    "rule_theme": "taches_backend",
+    "version": "2.1.0",
+    "updated_at": "2026-04-18",
+    "owner_skill": "process-onedrive-meow-paw-paw",
+    "migrated_from": "C:/Users/engue/OneDrive - Enguerrand Kalfaian/__SYSTEME - MEOW_PAW_PAW_O.S__/PARAMETERS/taches_backend.regle.json"
+  },
+  "rules": {
+    "scope": "meow_marque_sasu",
+    "precedence": "user_explicit > direct_account_signal > service_domain_signal > intent_keyword > domain_default",
+    "routing_owner_file": "governance/routing.regles.json",
+    "task_backend_policy_path": "task_backend_policy",
+    "backend_defaults": {
+      "BRAND_PRO": "LOCAL_XLSX_HUB"
+    },
+    "brand_pro_outlook_duplication": "forbidden_by_default_unless_user_explicitly_requests_duplicate_outlook_reminder_or_dated_workbook_auto_sync_is_enabled",
+    "ambiguity_policy": "STOP_AND_ASK_SINGLE_QUESTION",
+    "todo_formal_flow": {
+      "schema_file": "C:/Users/engue/OneDrive - Enguerrand Kalfaian/__SYSTEME - MEOW_PAW_PAW_O.S__/SCHEMAS & LAYERS/TODO.schema.md",
+      "rules_file": "EMBEDDED_IN_governance/taches-backend.regles.json",
+      "fallback_if_rules_unusable": "apply_schema_plus_user_explicit_request"
+    },
+    "brand_pro_dated_workbook_to_todo_sync": {
+      "enabled": true,
+      "source_backend": "LOCAL_XLSX_HUB",
+      "trigger_condition": "workbook_row_has_due_date",
+      "target_backend": "OUTLOOK_TASKS_OR_MICROSOFT_TODO",
+      "target_profile_id": "DIGIPROF__SASU__EDGE_PRO_ECOMMERCE",
+      "expected_account_email": "djoson@meowpawpaw.onmicrosoft.com",
+      "profile_switch_policy": "if_current_profile_or_account_not_matching_switch_before_write",
+      "sync_mode": "UPSERT",
+      "sync_key": "workbook_file_plus_sheet_plus_row_id_or_title",
+      "due_date_field_policy": "mandatory_write_to_due_date_field",
+      "overdue_items_policy": "include_even_if_due_date_is_in_past",
+      "todo_note_dispatch_policy": "map_notes_column_into_todo_note",
+      "todo_step_dispatch_policy": "map_prochain_pas_concret_into_todo_steps"
+    }
+  }
+}

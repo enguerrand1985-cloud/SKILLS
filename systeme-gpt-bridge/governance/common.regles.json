@@ -1,0 +1,145 @@
+{
+  "meta": {
+    "document_type": "gpt_bridge_skill_router",
+    "skill_id": "systeme-gpt-bridge",
+    "display_label": "systeme-GPT_BRIDGE",
+    "version": "1.0.0",
+    "derived_from": [
+      "governance/projects.regles.json",
+      "governance/runtime.regles.json"
+    ]
+  },
+  "rules": {
+    "skill_role": "router_and_contract_maintainer",
+    "always_read": [
+      "common.regles.json"
+    ],
+    "external_truth_roots": {
+      "maintenance_root": "C:/Users/engue/.codex/skills/systeme-gpt-bridge",
+      "gpt_root": "C:/Users/engue/OneDrive/__SYSTEME - PERSONA_O.S__/GPT",
+      "bridge_root": "C:/Users/engue/OneDrive/BRIDGE"
+    },
+    "available_modules": {
+      "runtime": "runtime.regles.json",
+      "bridge": "bridge.regles.json",
+      "projects": "projects.regles.json",
+      "system_ia": "system-ia.regles.json",
+      "global_schema": "global.schema.json",
+      "project_schema": "project.schema.json",
+      "ecosystem_schema": "ecosystem.schema.json"
+    },
+    "activation_signals": {
+      "global_maintenance_keywords": [
+        "gpt maintenance",
+        "gpt ecosysteme",
+        "gpt systeme",
+        "prompt gpt",
+        "journal gpt",
+        "ecosystem context",
+        "index_gpt_systeme"
+      ],
+      "bridge_keywords": [
+        "bridge",
+        "request__",
+        "done__",
+        "failed__",
+        "journal_ref",
+        "request lifecycle"
+      ],
+      "project_keywords": {
+        "TODO": [
+          "todo",
+          "journal todo",
+          "projet todo"
+        ],
+        "MEOW_PAW_PAW": [
+          "meow paw paw",
+          "meow",
+          "marque",
+          "projet meow paw paw"
+        ],
+        "SYSTEM_IA": [
+          "system ia",
+          "systeme ia",
+          "context pack",
+          "attachments system ia"
+        ],
+        "ASSETS_STUDIO": [
+          "assets studio",
+          "pack visuel",
+          "assets studio image config"
+        ],
+        "GPT_SCROOGE": [
+          "scrooge",
+          "gpt scrooge"
+        ]
+      }
+    },
+    "routing_matrix": {
+      "global_runtime": {
+        "load": [
+          "runtime.regles.json"
+        ],
+        "when": [
+          "global_gpt_governance",
+          "structural_change",
+          "bridge_policy_change",
+          "systemic_reference_recabling"
+        ]
+      },
+      "bridge_runtime": {
+        "load": [
+          "bridge.regles.json",
+          "projects.regles.json"
+        ],
+        "when": [
+          "bridge_scan",
+          "request_file_analysis",
+          "scope_routing"
+        ]
+      },
+      "project_runtime": {
+        "load": [
+          "projects.regles.json"
+        ],
+        "when": [
+          "named_project_target",
+          "named_gpt_target",
+          "project_profile_validation"
+        ]
+      },
+      "system_ia_runtime": {
+        "load": [
+          "projects.regles.json",
+          "system-ia.regles.json"
+        ],
+        "when": [
+          "system_ia_target",
+          "context_pack_refresh",
+          "legacy_router_copy_rework"
+        ]
+      },
+      "schema_validation": {
+        "load": [
+          "global.schema.json",
+          "project.schema.json",
+          "ecosystem.schema.json"
+        ],
+        "when": [
+          "schema_check",
+          "journal_contract_check",
+          "prompt_contract_check"
+        ]
+      }
+    },
+    "legacy_guardrails": {
+      "legacy_references_known": [
+        "MARWAN.agent.md",
+        "BEBERT.agent.md",
+        "INDEX.marwan.json",
+        "INDEX.bebert.json"
+      ],
+      "policy": "do_not_preserve_as_active_dependencies_in_new_skill"
+    }
+  }
+}

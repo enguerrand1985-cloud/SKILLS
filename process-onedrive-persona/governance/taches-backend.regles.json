@@ -1,0 +1,28 @@
+{
+  "meta": {
+    "document_type": "process_skill_rules",
+    "rule_theme": "taches_backend",
+    "version": "1.1.0",
+    "updated_at": "2026-04-18",
+    "owner_skill": "process-onedrive-persona",
+    "migrated_from": "LEGACY_PARAMETERS_REMOVED"
+  },
+  "rules": {
+    "scope": "persona_micro_sasu_hors_marque",
+    "precedence": "user_explicit > direct_account_signal > service_domain_signal > intent_keyword > domain_default",
+    "routing_owner_file": "governance/routing.regles.json",
+    "task_backend_policy_path": "task_backend_policy",
+    "backend_defaults": {
+      "PERSONAL_GOOGLE": "OUTLOOK_TASKS",
+      "COMPLIANCE_ADMIN": "OUTLOOK_TASKS"
+    },
+    "brand_pro_policy": "out_of_scope_handoff_to_process_onedrive_meow_paw_paw",
+    "brand_pro_handoff_skill_file": "C:/Users/engue/.codex/skills/process-onedrive-meow-paw-paw/SKILL.md",
+    "ambiguity_policy": "STOP_AND_ASK_SINGLE_QUESTION",
+    "todo_formal_flow": {
+      "schema_file": "EMBEDDED_IN_governance/taches-backend.regles.json",
+      "rules_file": "EMBEDDED_IN_governance/taches-backend.regles.json",
+      "fallback_if_rules_unusable": "apply_schema_plus_user_explicit_request"
+    }
+  }
+}

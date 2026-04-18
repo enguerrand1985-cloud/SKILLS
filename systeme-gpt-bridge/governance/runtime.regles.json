@@ -1,0 +1,80 @@
+{
+  "meta": {
+    "document_type": "gpt_bridge_runtime",
+    "skill_id": "systeme-gpt-bridge",
+    "version": "1.0.0"
+  },
+  "rules": {
+    "roots": {
+      "maintenance_root": "C:/Users/engue/.codex/skills/systeme-gpt-bridge",
+      "rules_root": "C:/Users/engue/.codex/skills/systeme-gpt-bridge/governance",
+      "schemas_root": "C:/Users/engue/.codex/skills/systeme-gpt-bridge/governance",
+      "gpt_root": "C:/Users/engue/OneDrive/__SYSTEME - PERSONA_O.S__/GPT",
+      "gpts_root": "C:/Users/engue/OneDrive/__SYSTEME - PERSONA_O.S__/GPT/GPTS",
+      "bridge_root": "C:/Users/engue/OneDrive/BRIDGE"
+    },
+    "maintenance_strategy": {
+      "mode": "JOURNAL_FIRST_PROMPT_STABLE",
+      "self_update_allowed": true,
+      "self_update_targets": [
+        "governance/common.regles.json",
+        "governance/runtime.regles.json",
+        "governance/bridge.regles.json",
+        "governance/projects.regles.json",
+        "governance/system-ia.regles.json"
+      ],
+      "prompt_change_policy": "only_if_structural_change",
+      "requires_codex_for_prompt_rewrite": true
+    },
+    "update_triggers": [
+      "project_definition_change",
+      "bridge_contract_change",
+      "system_ia_definition_change",
+      "connector_scope_change",
+      "new_user_constraint",
+      "legacy_reference_cleanup"
+    ],
+    "write_policies": {
+      "default_write_mode": "REQUEST_ONLY",
+      "prompt_files": "structural_change_only",
+      "journals": "append_only",
+      "xlsx_csv_lists": "never_without_explicit_user_instruction",
+      "bridge_requests": "process_only_when_user_requests_it"
+    },
+    "project_selection_priority": [
+      "explicit_project_name",
+      "explicit_gpt_name",
+      "explicit_file_path",
+      "project_keyword_signal",
+      "scope_signal",
+      "STOP_IF_STILL_AMBIGUOUS"
+    ],
+    "process_routing": {
+      "scope_to_process_skill": {
+        "PERSONA": "process-onedrive-persona",
+        "MICRO": "process-onedrive-persona",
+        "SASU": "process-onedrive-persona",
+        "CB500X": "process-onedrive-persona",
+        "MARQUE": "process-onedrive-meow-paw-paw",
+        "SYSTEME_IA": "systeme-gpt-bridge"
+      },
+      "intent_to_specialized_skill": {
+        "fiche_llm": "llm-fiche-structurer",
+        "caf_urssaf_provigis": "process-onedrive-persona",
+        "meow_system_maintenance": "systeme-meow-paw-paw"
+      },
+      "policy": "process_skill_first_then_specialized_skill_if_request_moves_out_of_gpt_governance"
+    },
+    "conversation_targeting": {
+      "enabled": true,
+      "policy": "reuse_existing_thread_when_explicitly_required_by_the_contract",
+      "allow_new_thread_only_if_user_explicit": true
+    },
+    "schema_loading": {
+      "global": "global.schema.json",
+      "project": "project.schema.json",
+      "ecosystem": "ecosystem.schema.json",
+      "load_only_when_validation_or_migration_requires_it": true
+    }
+  }
+}

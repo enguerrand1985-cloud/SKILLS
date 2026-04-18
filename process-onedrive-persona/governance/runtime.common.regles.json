@@ -29,13 +29,13 @@
         "profile_id": "DIGIPROF__MICRO__EDGE_PERSONNEL_ADMIN"
     },
     "shared_dependencies": {
-        "caf_amount_source_file": "C:/Users/engue/OneDrive/_DATA - MICRO_/Micro_revenus_2025-2035.xlsx",
+        "caf_amount_source_file": "C:/Users/engue/__SYSTEME - GITHUB__/SOURCE OF TRUTH/PERSONA/_DATA - MICRO_/Micro_revenus_2025-2035.xlsx",
         "caf_amount_source_columns": [
             "Mois",
             "Total Activite"
         ],
         "rounding_policy": "truncate_to_integer_eur_no_cents",
-        "micro_json_target_file": "C:/Users/engue/OneDrive/_DATA - MICRO_/MICRO.json"
+        "micro_json_target_file": "C:/Users/engue/__SYSTEME - GITHUB__/SOURCE OF TRUTH/PERSONA/_DATA - MICRO_/MICRO.json"
     },
     "reporting_contract": {
         "desktop_markdown_report_required": true,

@@ -1,0 +1,33 @@
+{
+  "meta": {
+    "document_type": "gpt_bridge_ecosystem_schema",
+    "scope": "GPT_ECOSYSTEM_CONTEXT",
+    "version": "1.0.0"
+  },
+  "required_root_fields": [
+    "meta",
+    "objective",
+    "source_of_truth_priority",
+    "scopes",
+    "connectors",
+    "scope_detection",
+    "bridge_and_codex_contract"
+  ],
+  "scopes_rules": {
+    "must_match_project_active_scopes": true,
+    "forbid_unrelated_scopes": true,
+    "on_unknown_scope": "STOP_AND_REQUEST_SCOPE_CONFIRMATION"
+  },
+  "connectors_rules": {
+    "format": "object_by_connector",
+    "required_fields_per_connector": [
+      "available_configured",
+      "active_in_current_session"
+    ],
+    "active_runtime_is_dynamic": true
+  },
+  "instruction_binding": {
+    "project_prompt_must_reference_context": true,
+    "custom_instruction_may_reference_context": true
+  }
+}

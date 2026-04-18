@@ -12,10 +12,10 @@
 - Si le profil Edge est verrouille, la relance peut necessiter l'arret des processus `msedge` avant une seule tentative de reprise.
 
 ## Dependances partagees
-- Source CAF pour les montants: `C:/Users/engue/OneDrive/_DATA - MICRO_/Micro_revenus_2025-2035.xlsx`.
+- Source CAF pour les montants: `C:/Users/engue/__SYSTEME - GITHUB__/SOURCE OF TRUTH/PERSONA/_DATA - MICRO_/Micro_revenus_2025-2035.xlsx`.
 - Colonnes de travail attendues: `Mois` et `Total Activite`.
 - Regle d'arrondi: troncature a l'euro entier, sans centimes.
-- Cible de synchronisation post-run: `C:/Users/engue/OneDrive/_DATA - MICRO_/MICRO.json`.
+- Cible de synchronisation post-run: `C:/Users/engue/__SYSTEME - GITHUB__/SOURCE OF TRUTH/PERSONA/_DATA - MICRO_/MICRO.json`.
 
 ## Reporting
 - Tout run utile doit produire un rapport Markdown sur le Bureau.

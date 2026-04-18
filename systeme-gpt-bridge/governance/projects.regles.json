@@ -1,0 +1,127 @@
+{
+  "meta": {
+    "document_type": "gpt_bridge_projects_catalog",
+    "skill_id": "systeme-gpt-bridge",
+    "version": "1.0.0",
+    "derived_from": [
+      "INDEX_GPT_SYSTEME.json",
+      "TODO.regle.json",
+      "MEOW_PAW_PAW.regle.json",
+      "SYSTEM_IA.regle.json",
+      "ASSETS_STUDIO.regle.json",
+      "GPT_SCROOGE.regle.json"
+    ]
+  },
+  "rules": {
+    "selection_priority": [
+      "explicit_target",
+      "project_keyword",
+      "scope_compatibility",
+      "STOP_IF_MULTIPLE_TARGETS"
+    ],
+    "projects": {
+      "TODO": {
+        "project_id": "PROJET_TODO",
+        "display_name": "TODO",
+        "prompt_file": "C:/Users/engue/OneDrive/__SYSTEME - PERSONA_O.S__/GPT/TODO/PROJET_TODO.md",
+        "project_dir": "C:/Users/engue/OneDrive/__SYSTEME - PERSONA_O.S__/GPT/TODO",
+        "attachments_dir": "C:/Users/engue/OneDrive/__SYSTEME - PERSONA_O.S__/GPT/TODO/TODO ATTACHEMENTS",
+        "index_file": "C:/Users/engue/OneDrive/__SYSTEME - PERSONA_O.S__/GPT/TODO/TODO ATTACHEMENTS/INDEX.todo.json",
+        "journal_file": "C:/Users/engue/OneDrive/__SYSTEME - PERSONA_O.S__/GPT/TODO/TODO ATTACHEMENTS/[ TODO ] Journal.md",
+        "ecosystem_context": "C:/Users/engue/OneDrive/__SYSTEME - PERSONA_O.S__/GPT/TODO/TODO ATTACHEMENTS/GPT_ecosystem.context.json",
+        "maintenance_mode": "JOURNAL_FIRST_PROMPT_STABLE",
+        "write_mode": "REQUEST_ONLY",
+        "active_scopes": [
+          "PERSONA",
+          "MICRO",
+          "SASU",
+          "MARQUE",
+          "CB500X"
+        ],
+        "special_notes": [
+          "XLSX_WORKBOOK_FIRST",
+          "supports_render_views_by_scope_day_priority"
+        ]
+      },
+      "MEOW_PAW_PAW": {
+        "project_id": "PROJET_MEOW_PAW_PAW",
+        "display_name": "MEOW PAW PAW",
+        "prompt_file": "C:/Users/engue/OneDrive/__SYSTEME - PERSONA_O.S__/GPT/MEOW PAW PAW/PROJET_MEOW_PAW_PAW.md",
+        "project_dir": "C:/Users/engue/OneDrive/__SYSTEME - PERSONA_O.S__/GPT/MEOW PAW PAW",
+        "attachments_dir": "C:/Users/engue/OneDrive/__SYSTEME - PERSONA_O.S__/GPT/MEOW PAW PAW/MEOW PAW PAW ATTACHEMENTS",
+        "index_file": "C:/Users/engue/OneDrive/__SYSTEME - PERSONA_O.S__/GPT/MEOW PAW PAW/MEOW PAW PAW ATTACHEMENTS/INDEX.meow_paw_paw.json",
+        "journal_file": "C:/Users/engue/OneDrive/__SYSTEME - PERSONA_O.S__/GPT/MEOW PAW PAW/MEOW PAW PAW ATTACHEMENTS/[ MEOW ] Journal.md",
+        "ecosystem_context": "C:/Users/engue/OneDrive/__SYSTEME - PERSONA_O.S__/GPT/MEOW PAW PAW/MEOW PAW PAW ATTACHEMENTS/GPT_ecosystem.context.json",
+        "maintenance_mode": "REQUEST_DRIVEN_CODEX_AUTO_SYNC",
+        "write_mode": "REQUEST_ONLY",
+        "active_scopes": [
+          "SASU",
+          "MARQUE"
+        ],
+        "special_notes": [
+          "XLSX_WORKBOOK_FIRST",
+          "profitability_mandatory_sources",
+          "business_agent_contract_applies"
+        ]
+      },
+      "SYSTEM_IA": {
+        "project_id": "PROJET_SYSTEM_IA",
+        "display_name": "System IA",
+        "prompt_file": "C:/Users/engue/OneDrive/__SYSTEME - PERSONA_O.S__/GPT/System IA/PROJET_SYSTEM_IA.md",
+        "project_dir": "C:/Users/engue/OneDrive/__SYSTEME - PERSONA_O.S__/GPT/System IA",
+        "attachments_dir": "C:/Users/engue/OneDrive/__SYSTEME - PERSONA_O.S__/GPT/System IA/System IA ATTACHEMENTS",
+        "index_file": "C:/Users/engue/OneDrive/__SYSTEME - PERSONA_O.S__/GPT/System IA/System IA ATTACHEMENTS/INDEX.system_ia.json",
+        "journal_file": "C:/Users/engue/OneDrive/__SYSTEME - PERSONA_O.S__/GPT/System IA/System IA ATTACHEMENTS/[ IA ] journal_gpt.md",
+        "ecosystem_context": "C:/Users/engue/OneDrive/__SYSTEME - PERSONA_O.S__/GPT/System IA/System IA ATTACHEMENTS/GPT_ecosystem.context.json",
+        "maintenance_mode": "DEFINITION_NOTEBOOK",
+        "write_mode": "REQUEST_ONLY",
+        "active_scopes": [
+          "SYSTEME_IA"
+        ],
+        "special_notes": [
+          "context_pack",
+          "legacy_router_copies_present",
+          "prompt_and_journal_contract_strict"
+        ]
+      },
+      "ASSETS_STUDIO": {
+        "project_id": "PROJET_ASSETS_STUDIO",
+        "display_name": "ASSETS STUDIO",
+        "prompt_file": "C:/Users/engue/OneDrive/__SYSTEME - PERSONA_O.S__/GPT/ASSETS STUDIO/PROJET_ASSETS_STUDIO.md",
+        "project_dir": "C:/Users/engue/OneDrive/__SYSTEME - PERSONA_O.S__/GPT/ASSETS STUDIO",
+        "attachments_dir": "C:/Users/engue/OneDrive/__SYSTEME - PERSONA_O.S__/GPT/ASSETS STUDIO/ASSETS STUDIO ATTACHEMENTS",
+        "index_file": "C:/Users/engue/OneDrive/__SYSTEME - PERSONA_O.S__/GPT/ASSETS STUDIO/ASSETS STUDIO ATTACHEMENTS/INDEX.assets_studio.json",
+        "journal_file": "C:/Users/engue/OneDrive/__SYSTEME - PERSONA_O.S__/GPT/ASSETS STUDIO/ASSETS STUDIO ATTACHEMENTS/journal_gpt.md",
+        "ecosystem_context": "C:/Users/engue/OneDrive/__SYSTEME - PERSONA_O.S__/GPT/ASSETS STUDIO/ASSETS STUDIO ATTACHEMENTS/GPT_ecosystem.context.json",
+        "image_config_file": "C:/Users/engue/OneDrive/__SYSTEME - PERSONA_O.S__/GPT/ASSETS STUDIO/ASSETS STUDIO ATTACHEMENTS/ASSETS_STUDIO_IMAGE_CONFIG.json",
+        "maintenance_mode": "VISUAL_PACK_MANUAL_SYNC",
+        "write_mode": "REQUEST_ONLY",
+        "active_scopes": [
+          "MARQUE"
+        ],
+        "special_notes": [
+          "pack_production_output_contract",
+          "transparent_policy",
+          "typography_policy"
+        ]
+      }
+    },
+    "gpts": {
+      "GPT_SCROOGE": {
+        "gpt_id": "GPT_SCROOGE",
+        "display_name": "Scrooge",
+        "prompt_file": "C:/Users/engue/OneDrive/__SYSTEME - PERSONA_O.S__/GPT/GPTS/GPT_SCROOGE.md",
+        "attachments_dir": "C:/Users/engue/OneDrive/__SYSTEME - PERSONA_O.S__/GPT/GPTS/SCROOGE ATTACHEMENTS",
+        "journal_file": "C:/Users/engue/OneDrive/__SYSTEME - PERSONA_O.S__/GPT/GPTS/SCROOGE ATTACHEMENTS/journal_gpt.md",
+        "ecosystem_context": "C:/Users/engue/OneDrive/__SYSTEME - PERSONA_O.S__/GPT/GPTS/SCROOGE ATTACHEMENTS/GPT_ecosystem.context.json",
+        "mode": "FINANCE_REQUEST_SUPPORT",
+        "write_mode": "REQUEST_ONLY",
+        "active_scopes": [
+          "PERSONA",
+          "MICRO",
+          "SASU"
+        ]
+      }
+    }
+  }
+}

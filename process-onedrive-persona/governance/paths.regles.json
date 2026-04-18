@@ -1,0 +1,52 @@
+{
+  "meta": {
+    "document_type": "persona_process_paths",
+    "document_role": "user_path_alias_and_output_policy_for_persona_process_skill",
+    "version": "1.0.0",
+    "status": "active",
+    "updated_at": "2026-04-18",
+    "default_read": false
+  },
+  "resolution_order": [
+    "explicit_user_path",
+    "agent_specific_output_rule",
+    "folder_alias_mapping",
+    "existing_local_profile_fallback"
+  ],
+  "aliases": {
+    "Desktop": {
+      "alias_tokens": [
+        "bureau",
+        "desktop"
+      ],
+      "canonical_path": "C:/Users/engue/OneDrive/Desktop"
+    },
+    "Documents": {
+      "alias_tokens": [
+        "documents",
+        "document"
+      ],
+      "canonical_path": "C:/Users/engue/OneDrive/Documents"
+    },
+    "Downloads": {
+      "alias_tokens": [
+        "downloads",
+        "telechargements",
+        "telechargement"
+      ],
+      "canonical_path": "C:/Users/engue/OneDrive/Downloads"
+    },
+    "Scripts": {
+      "alias_tokens": [
+        "scripts",
+        "script"
+      ],
+      "canonical_path": "C:/Users/engue/OneDrive/Scripts"
+    }
+  },
+  "default_outputs": {
+    "prompts_and_document_exports": "C:/Users/engue/OneDrive/Desktop",
+    "bridge_root": "C:/Users/engue/OneDrive/BRIDGE",
+    "task_backend_policy_owner": "governance/routing.regles.json"
+  }
+}

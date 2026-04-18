@@ -11,9 +11,9 @@
         "scope": "MICRO",
         "profile_id": "DIGIPROF__MICRO__EDGE_PERSONNEL_ADMIN",
         "source_of_truth": {
-            "primary_business_rules_file": "C:/Users/engue/OneDrive/_DATA - MICRO_/MICRO.json",
+            "primary_business_rules_file": "C:/Users/engue/__SYSTEME - GITHUB__/SOURCE OF TRUTH/PERSONA/_DATA - MICRO_/MICRO.json",
             "index_route_id": "RULE_ROUTE__MICRO__CAF_URSSAF_PROVIGIS",
-            "index_file": "C:/Users/engue/OneDrive/__SYSTEME - PERSONA_O.S__/INDEX.marwan.json"
+            "index_file": "C:/Users/engue/.codex/skills/process-onedrive-persona/governance/routing.regles.json"
         }
     },
     "workflow_selection": {

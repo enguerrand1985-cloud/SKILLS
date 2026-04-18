@@ -3,8 +3,10 @@
 Monorepo local de reference pour les skills personnels GitHub.
 
 ## Contenu
-- `caf-urssaf-ops/`
 - `llm-fiche-structurer/`
+- `process-onedrive-meow-paw-paw/`
+- `process-onedrive-persona/`
+- `systeme-gpt-bridge/`
 - `systeme-meow-paw-paw/`
 - `.system/skill-creator/`
 

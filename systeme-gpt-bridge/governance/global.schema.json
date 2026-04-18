@@ -1,0 +1,54 @@
+{
+  "meta": {
+    "document_type": "gpt_bridge_global_schema",
+    "scope": "GLOBAL",
+    "version": "1.0.0"
+  },
+  "required_files": {
+    "system_index": "INDEX_GPT_SYSTEME.json",
+    "global_rules": "PARAMETERS/GPT.regle.json"
+  },
+  "prompt_structure": {
+    "mandatory_sections": [
+      "ROLE",
+      "OBJECTIF",
+      "SOURCES",
+      "REGLES",
+      "FORMAT_SORTIE",
+      "BRIDGE_POLICY"
+    ],
+    "output_contract": "Actionnable, concis, scope explicite"
+  },
+  "custom_instruction_structure": {
+    "format": "text",
+    "target": "GPT base",
+    "max_chars": 1500,
+    "required_sections": [
+      "Role de l agent",
+      "Contexte metier et sources",
+      "Sources de verite",
+      "Objectifs",
+      "Style et ton",
+      "Format de sortie",
+      "Contraintes"
+    ]
+  },
+  "journal_structure": {
+    "format": "markdown",
+    "update_mode": "append_only",
+    "schema_compliance_required": true,
+    "required_sections": [
+      "DateHeure",
+      "ThemeProjet",
+      "EtatDesLieux",
+      "Changements",
+      "Blocages",
+      "ProchainesActions",
+      "Statut",
+      "Actions executees",
+      "REQUEST liees",
+      "DONE lies"
+    ]
+  },
+  "data_files_scope": "Only GPT system files, journals, indexes, and ecosystem context. Business XLSX and CSV remain external."
+}

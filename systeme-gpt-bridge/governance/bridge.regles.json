@@ -1,0 +1,142 @@
+{
+  "meta": {
+    "document_type": "gpt_bridge_runtime_bridge",
+    "skill_id": "systeme-gpt-bridge",
+    "version": "1.0.0"
+  },
+  "rules": {
+    "bridge_execution": {
+      "enabled": true,
+      "monitor_dir": "C:/Users/engue/OneDrive/BRIDGE",
+      "accepted_file_patterns": [
+        "*REQUEST__*.md",
+        "*RAPPORT__*.md",
+        "*REQUEST__*.json",
+        "*RAPPORT__*.json",
+        "*REQUEST_*.md",
+        "*RAPPORT_*.md",
+        "*REQUEST_*.json",
+        "*RAPPORT_*.json"
+      ],
+      "ready_status_values": [
+        "READY",
+        "A_EXECUTER"
+      ],
+      "lifecycle_status_values": [
+        "READY",
+        "A_EXECUTER",
+        "IN_PROGRESS",
+        "DONE",
+        "FAILED"
+      ],
+      "execute_rule": "manual_only_when_user_requests_bridge_scan",
+      "output_mode": "APPLY_AND_REPORT"
+    },
+    "scope_detection": {
+      "scope_field_candidates": [
+        "Scope(s)",
+        "Scope",
+        "scope",
+        "scope_target"
+      ],
+      "scope_keyword_fallback": {
+        "PERSONA": [
+          "persona",
+          "perso",
+          "personnel",
+          "cb500x",
+          "moto"
+        ],
+        "MICRO": [
+          "micro",
+          "auto-entrepreneur",
+          "urssaf",
+          "caf",
+          "provigis"
+        ],
+        "SASU": [
+          "sasu",
+          "trade-vision",
+          "trade vision"
+        ],
+        "MARQUE": [
+          "marque",
+          "brand",
+          "meow paw paw",
+          "amazon",
+          "alibaba",
+          "ecommerce"
+        ],
+        "SYSTEME_IA": [
+          "system ia",
+          "systeme ia",
+          "gpt",
+          "ecosysteme gpt"
+        ]
+      },
+      "ambiguity_policy": "STOP_AND_ASK_SINGLE_QUESTION"
+    },
+    "routing_by_scope": {
+      "PERSONA": {
+        "target_process_skill": "process-onedrive-persona",
+        "domain": "PERSONAL_GOOGLE",
+        "profile_id": "DIGIPROF__PERSONA__CHROME_PERSONNEL"
+      },
+      "MICRO": {
+        "target_process_skill": "process-onedrive-persona",
+        "domain": "COMPLIANCE_ADMIN",
+        "profile_id": "DIGIPROF__MICRO__EDGE_PERSONNEL_ADMIN"
+      },
+      "SASU": {
+        "target_process_skill": "process-onedrive-persona",
+        "domain": "COMPLIANCE_ADMIN",
+        "profile_id": "DIGIPROF__SASU__EDGE_PERSONNEL_ADMIN"
+      },
+      "MARQUE": {
+        "target_process_skill": "process-onedrive-meow-paw-paw",
+        "domain": "BRAND_PRO",
+        "profile_id": "DIGIPROF__SASU__EDGE_PRO_ECOMMERCE"
+      },
+      "CB500X": {
+        "target_process_skill": "process-onedrive-persona",
+        "domain": "PERSONAL_GOOGLE",
+        "profile_id": "DIGIPROF__PERSONA__CHROME_PERSONNEL"
+      },
+      "SYSTEME_IA": {
+        "target_process_skill": "systeme-gpt-bridge",
+        "domain": "GPT_GOVERNANCE",
+        "profile_id": "NO_BROWSER_PROFILE_REQUIRED"
+      }
+    },
+    "intent_handoff": {
+      "fiche_llm": "llm-fiche-structurer",
+      "caf_urssaf_provigis": "process-onedrive-persona",
+      "meow_system_maintenance": "systeme-meow-paw-paw",
+      "gpt_governance": "systeme-gpt-bridge"
+    },
+    "request_contract": {
+      "request_contract_version": "V2",
+      "request_journal_ref_required": true,
+      "required_request_fields_v2": [
+        "request_id",
+        "project_id",
+        "scope",
+        "intent_type",
+        "sources",
+        "linked_files",
+        "actions",
+        "expected_result",
+        "constraints",
+        "journal_ref",
+        "created_at",
+        "priority",
+        "execution_mode"
+      ],
+      "request_cleanup_policy": {
+        "enabled": true,
+        "mode": "DELETE_REQUEST_AFTER_DONE_AND_JOURNAL_APPEND",
+        "failure_policy": "keep_request_and_report_blocker"
+      }
+    }
+  }
+}

@@ -1,0 +1,118 @@
+{
+  "meta": {
+    "document_type": "meow_process_routing",
+    "document_role": "conditional_routing_layer_for_meow_process_skill",
+    "version": "1.0.0",
+    "status": "active",
+    "updated_at": "2026-04-18",
+    "default_read": false
+  },
+  "root_paths": {
+    "system_root": "C:/Users/engue/__SYSTEME - GITHUB__/SOURCE OF TRUTH/MEOW PAW PAW",
+    "business_data_root": "C:/Users/engue/__SYSTEME - GITHUB__/SOURCE OF TRUTH/MEOW PAW PAW",
+    "dashboard_hub_root": "C:/Users/engue/__SYSTEME - GITHUB__/SOURCE OF TRUTH/MEOW PAW PAW/_HUB - DASHBOARD_"
+  },
+  "canonical_sources": {
+    "index_sources_file": "C:/Users/engue/__SYSTEME - GITHUB__/SOURCE OF TRUTH/INDEX SOURCES_MEOW_PAW_PAW.json",
+    "source_resolution_policy": {
+      "business_truth": "INDEX_SOURCES_FIRST",
+      "system_maintenance_owner_skill": "C:/Users/engue/.codex/skills/systeme-meow-paw-paw/SKILL.md",
+      "forbid_sharepoint_primary_model": true
+    }
+  },
+  "rule_files": {
+    "domaine_marque_rules": "governance/domaine-marque.regles.json",
+    "taches_backend_rules": "governance/taches-backend.regles.json",
+    "system_skill_path": "C:/Users/engue/.codex/skills/systeme-meow-paw-paw/SKILL.md"
+  },
+  "mandatory_business_files": {
+    "compta_parameters_file": "C:/Users/engue/__SYSTEME - GITHUB__/SOURCE OF TRUTH/MEOW PAW PAW/PARAMETERS/COMPTA_PARAMETERS.json",
+    "sku_file": "C:/Users/engue/__SYSTEME - GITHUB__/SOURCE OF TRUTH/MEOW PAW PAW/_DATA - SKU_/SKU.json",
+    "marketplace_rules_file": "C:/Users/engue/__SYSTEME - GITHUB__/SOURCE OF TRUTH/MEOW PAW PAW/_DATA - MARKETPLACE_/MARKETPLACE RULES.json"
+  },
+  "account_routing": {
+    "precedence": [
+      "user_explicit",
+      "direct_account_signal",
+      "service_domain_signal",
+      "intent_keyword",
+      "domain_default"
+    ],
+    "domains": {
+      "BRAND_PRO": {
+        "default_scope": "SASU",
+        "default_profile_id": "DIGIPROF__SASU__EDGE_PRO_ECOMMERCE",
+        "default_account_email": "djoson@meowpawpaw.onmicrosoft.com"
+      }
+    },
+    "profiles": {
+      "DIGIPROF__SASU__EDGE_PRO_ECOMMERCE": {
+        "scope": "SASU",
+        "domain": "BRAND_PRO",
+        "account_email": "djoson@meowpawpaw.onmicrosoft.com",
+        "account_kind": "O365_TENANT",
+        "tenant_domain": "meowpawpaw.onmicrosoft.com",
+        "service_domains": [
+          "outlook.office365.com",
+          "to-do.office.com",
+          "message.alibaba.com",
+          "www.alibaba.com",
+          "sellercentral.amazon."
+        ]
+      }
+    },
+    "selectors": {
+      "scope_keyword": {
+        "MARQUE": [
+          "marque",
+          "brand",
+          "meow paw paw",
+          "ecommerce",
+          "alibaba",
+          "amazon"
+        ]
+      },
+      "direct_account_signal": {
+        "djoson@meowpawpaw.onmicrosoft.com": "DIGIPROF__SASU__EDGE_PRO_ECOMMERCE"
+      },
+      "service_domain_signal": {
+        "outlook.office365.com": "DIGIPROF__SASU__EDGE_PRO_ECOMMERCE",
+        "to-do.office.com": "DIGIPROF__SASU__EDGE_PRO_ECOMMERCE",
+        "message.alibaba.com": "DIGIPROF__SASU__EDGE_PRO_ECOMMERCE",
+        "www.alibaba.com": "DIGIPROF__SASU__EDGE_PRO_ECOMMERCE"
+      },
+      "intent_keyword": {
+        "BRAND_PRO": [
+          "marque",
+          "sourcing",
+          "fournisseur",
+          "alibaba",
+          "amazon",
+          "meow paw paw"
+        ]
+      }
+    }
+  },
+  "task_backend_policy": {
+    "default_backend": "LOCAL_XLSX_HUB",
+    "primary_operational_workbook_file": "C:/Users/engue/__SYSTEME - GITHUB__/SOURCE OF TRUTH/MEOW PAW PAW/_HUB - DASHBOARD_/MEOW PAW PAW - LIST.xlsx",
+    "download_csv_ingestion_script": "C:/Users/engue/OneDrive - Enguerrand Kalfaian/__SYSTEME - MEOW_PAW_PAW_O.S__/RUNBOOKS/sync_downloaded_csv_to_meow_workbook.py",
+    "download_csv_ingestion_default_mode": "apply",
+    "download_csv_ingestion_post_update_target_dirs": [
+      "C:/Users/engue/OneDrive/__SYSTEME - PERSONA_O.S__/GPT/MEOW PAW PAW/MEOW PAW PAW ATTACHEMENTS",
+      "C:/Users/engue/OneDrive/__SYSTEME - PERSONA_O.S__/GPT/TODO/TODO ATTACHEMENTS"
+    ]
+  },
+  "system_handoff_contract": {
+    "owner_skill": "C:/Users/engue/.codex/skills/systeme-meow-paw-paw/SKILL.md",
+    "required_for": [
+      "system_maintenance",
+      "routing_governance",
+      "write_intent_guardrails",
+      "policy_change",
+      "structure_change",
+      "synchronization_alignment",
+      "local_coherence_control"
+    ]
+  }
+}

@@ -1,0 +1,141 @@
+{
+  "meta": {
+    "document_type": "meow_process_bridge_runtime",
+    "document_role": "bridge_runtime_for_meow_process_skill",
+    "version": "1.0.0",
+    "status": "active",
+    "updated_at": "2026-04-18",
+    "default_read": false
+  },
+  "bridge_root": "C:/Users/engue/OneDrive/BRIDGE",
+  "mode": "REQUEST_OR_DIRECT_OR_MAPPING",
+  "execution_priority": [
+    "direct_command",
+    "mapping_trigger",
+    "request_queue"
+  ],
+  "direct_command_policy": {
+    "enabled": true,
+    "scope_guard": "MEOW_PAW_PAW_ONLY",
+    "write_policy": "allow_in_scope_when_user_command_is_explicit",
+    "traceability_policy": "always_append_journals"
+  },
+  "mapping_triggers": {
+    "enabled": true,
+    "dispatch_policy": "first_matching_trigger_then_execute_action_pipeline",
+    "triggers": [
+      {
+        "id": "MAP__DOWNLOADS__CSV__INGEST_TO_MEOW_WORKBOOK",
+        "enabled": true,
+        "watch_dirs": [
+          "C:/Users/engue/OneDrive/Downloads"
+        ],
+        "file_patterns": [
+          "*.csv"
+        ],
+        "trigger_condition": "csv_file_detected_in_watch_dir",
+        "policy_owner_file": "governance/domaine-marque.regles.json",
+        "execution_rule": "apply_external_policy_without_local_override"
+      }
+    ]
+  },
+  "request_scope": {
+    "include_patterns": [
+      "[ MEOW ] REQUEST*.md",
+      "[ MEOW ] REQUEST*.json",
+      "[MEOW] REQUEST*.md",
+      "[MEOW] REQUEST*.json"
+    ],
+    "exclude_patterns": [
+      "[ TODO ] REQUEST*.md",
+      "[ TODO ] REQUEST*.json",
+      "[TODO] REQUEST*.md",
+      "[TODO] REQUEST*.json"
+    ]
+  },
+  "journals": {
+    "meow_active_summary_file": "C:/Users/engue/OneDrive/__SYSTEME - PERSONA_O.S__/GPT/MEOW PAW PAW/MEOW PAW PAW ATTACHEMENTS/[ MEOW ] Journal - Synthese active.md",
+    "meow_journal_file": "C:/Users/engue/OneDrive/__SYSTEME - PERSONA_O.S__/GPT/MEOW PAW PAW/MEOW PAW PAW ATTACHEMENTS/[ MEOW ] Journal.md",
+    "meow_journal_chain_pattern": "C:/Users/engue/OneDrive/__SYSTEME - PERSONA_O.S__/GPT/MEOW PAW PAW/MEOW PAW PAW ATTACHEMENTS/[ MEOW ] Journal_{n}.md",
+    "todo_journal_file": "C:/Users/engue/OneDrive/__SYSTEME - PERSONA_O.S__/GPT/TODO/TODO ATTACHEMENTS/[ TODO ] Journal.md",
+    "path_handling_policy": "use_literal_path_for_bracket_filenames",
+    "append_only": true,
+    "required_block_template": [
+      "## Journal du YYYY-MM-DD - HH:mm",
+      "### Statut",
+      "### Changements",
+      "### Actions executees",
+      "### Blocages",
+      "### Prochaines actions",
+      "### REQUEST liees",
+      "### DONE lies"
+    ]
+  },
+  "done_failed_artifacts": {
+    "target_dir": "C:/Users/engue/OneDrive/Desktop",
+    "naming_policy": "DONE__or_FAILED__prefix_keep_existing_suffix"
+  },
+  "post_update_source_sync_policy": {
+    "enabled": true,
+    "policy_owner_file": "governance/domaine-marque.regles.json",
+    "execution_rule": "apply_external_policy_without_local_override"
+  },
+  "request_policy_v2": {
+    "required_fields": [
+      "request_id",
+      "project_id",
+      "scope",
+      "intent_type",
+      "sources",
+      "actions",
+      "expected_result",
+      "constraints",
+      "linked_files",
+      "journal_ref",
+      "created_at",
+      "priority",
+      "execution_mode"
+    ],
+    "field_aliases": {
+      "sources": [
+        "Sources"
+      ],
+      "journal_ref": [
+        "journal_ref (MEOW)",
+        "journal_ref (TODO)"
+      ],
+      "status": [
+        "statut",
+        "Statut"
+      ],
+      "objective": [
+        "Objectif"
+      ]
+    },
+    "status_flow": [
+      "READY",
+      "IN_PROGRESS",
+      "DONE",
+      "FAILED"
+    ],
+    "fail_fast_guards": [
+      "stop_if_scope_ambiguous",
+      "stop_if_journal_ref_missing",
+      "stop_if_linked_file_missing"
+    ]
+  },
+  "inventory_command": {
+    "literal_command": "Etat des lieux",
+    "write_policy": "no_write_inventory_only"
+  },
+  "execution_cycle": [
+    "resolve_entrypoint_by_priority_direct_mapping_request",
+    "if_direct_command_execute_immediately",
+    "if_mapping_trigger_detected_execute_mapping_pipeline",
+    "if_request_queue_scan_meow_requests_only",
+    "sync_updated_index_sources_files_by_external_policy",
+    "write_done_or_failed_artifact",
+    "append_meow_and_todo_journals",
+    "delete_request_only_on_success"
+  ]
+}

@@ -1,0 +1,250 @@
+{
+  "meta": {
+    "document_type": "persona_process_routing",
+    "document_role": "conditional_routing_layer_for_persona_process_skill",
+    "version": "1.0.0",
+    "status": "active",
+    "updated_at": "2026-04-18",
+    "default_read": false
+  },
+  "external_sources": {
+    "index_sources_file": "C:/Users/engue/__SYSTEME - GITHUB__/SOURCE OF TRUTH/INDEX SOURCES_PERSONA.json",
+    "scope_files": [
+      {
+        "scope": "PERSONA",
+        "source_id": "SRC_SCOPE_PERSONA",
+        "file": "C:/Users/engue/__SYSTEME - GITHUB__/SOURCE OF TRUTH/PERSONA/_DATA - PERSONA_/PERSONA.json"
+      },
+      {
+        "scope": "MICRO",
+        "source_id": "SRC_SCOPE_MICRO",
+        "file": "C:/Users/engue/__SYSTEME - GITHUB__/SOURCE OF TRUTH/PERSONA/_DATA - MICRO_/MICRO.json"
+      },
+      {
+        "scope": "SASU",
+        "source_id": "SRC_SCOPE_SASU",
+        "file": "C:/Users/engue/__SYSTEME - GITHUB__/SOURCE OF TRUTH/PERSONA/_DATA - SASU_/SASU.json"
+      },
+      {
+        "scope": "PERSONA",
+        "source_id": "SRC_SCOPE_PERSONA_CB500X",
+        "file": "C:/Users/engue/__SYSTEME - GITHUB__/SOURCE OF TRUTH/PERSONA/_DATA - PERSONA_/DATA - VEHICULES/Cb 500X.json"
+      }
+    ],
+    "rule_files": {
+      "taches_backend_rules": "governance/taches-backend.regles.json",
+      "mode_jeu_rules": "governance/mode-jeu.regles.json"
+    }
+  },
+  "internal_modules": {
+    "COMPLIANCE_ADMIN__CAF_URSSAF_PROVIGIS": {
+      "owner_skill": "process-onedrive-persona",
+      "router_file": "governance/router.common.regles.json",
+      "mapping_file": "references/mapping-compliance-admin.md",
+      "runtime_common_file": "governance/runtime.common.regles.json",
+      "workflow_modules": {
+        "caf": "governance/caf.regles.json",
+        "urssaf": "governance/urssaf.regles.json",
+        "provigis": "governance/provigis.regles.json",
+        "combined": "governance/combined.regles.json"
+      },
+      "load_policy": "read_only_after_real_compliance_admin_intent_resolution"
+    }
+  },
+  "account_routing": {
+    "precedence": [
+      "user_explicit",
+      "direct_account_signal",
+      "service_domain_signal",
+      "intent_keyword",
+      "domain_default"
+    ],
+    "domains": {
+      "PERSONAL_GOOGLE": {
+        "default_scope": "PERSONA",
+        "default_profile_id": "DIGIPROF__PERSONA__CHROME_PERSONNEL",
+        "default_account_email": "Enguerrand1985@gmail.com"
+      },
+      "COMPLIANCE_ADMIN": {
+        "default_scope": "MICRO",
+        "default_profile_id": "DIGIPROF__MICRO__EDGE_PERSONNEL_ADMIN",
+        "default_account_email": "Enguerrand.kalfaian@outlook.com"
+      }
+    },
+    "profiles": {
+      "DIGIPROF__PERSONA__CHROME_PERSONNEL": {
+        "scope": "PERSONA",
+        "domain": "PERSONAL_GOOGLE",
+        "account_email": "Enguerrand1985@gmail.com",
+        "account_kind": "GOOGLE",
+        "service_domains": [
+          "mail.google.com",
+          "drive.google.com",
+          "calendar.google.com",
+          "tasks.google.com",
+          "keep.google.com"
+        ]
+      },
+      "DIGIPROF__MICRO__EDGE_PERSONNEL_ADMIN": {
+        "scope": "MICRO",
+        "domain": "COMPLIANCE_ADMIN",
+        "account_email": "Enguerrand.kalfaian@outlook.com",
+        "account_kind": "MICROSOFT",
+        "service_domains": [
+          "outlook.live.com",
+          "onedrive.live.com",
+          "to-do.live.com",
+          "connect.caf.fr",
+          "www.autoentrepreneur.urssaf.fr",
+          "supplier.app.provigis.com"
+        ]
+      },
+      "DIGIPROF__SASU__EDGE_PERSONNEL_ADMIN": {
+        "scope": "SASU",
+        "domain": "COMPLIANCE_ADMIN",
+        "account_email": "Enguerrand.kalfaian@outlook.com",
+        "account_kind": "MICROSOFT",
+        "service_domains": [
+          "outlook.live.com",
+          "onedrive.live.com",
+          "to-do.live.com",
+          "connect.caf.fr",
+          "www.autoentrepreneur.urssaf.fr"
+        ]
+      }
+    },
+    "selectors": {
+      "scope_keyword": {
+        "PERSONA": [
+          "persona",
+          "personnel",
+          "perso"
+        ],
+        "MICRO": [
+          "micro",
+          "micro-entreprise",
+          "auto-entrepreneur",
+          "urssaf",
+          "caf",
+          "provigis"
+        ],
+        "SASU": [
+          "sasu",
+          "trade-vision",
+          "trade vision"
+        ]
+      },
+      "direct_account_signal": {
+        "enguerrand1985@gmail.com": "DIGIPROF__PERSONA__CHROME_PERSONNEL",
+        "enguerrand.kalfaian@outlook.com": "DIGIPROF__MICRO__EDGE_PERSONNEL_ADMIN"
+      },
+      "service_domain_signal": {
+        "mail.google.com": "DIGIPROF__PERSONA__CHROME_PERSONNEL",
+        "drive.google.com": "DIGIPROF__PERSONA__CHROME_PERSONNEL",
+        "calendar.google.com": "DIGIPROF__PERSONA__CHROME_PERSONNEL",
+        "tasks.google.com": "DIGIPROF__PERSONA__CHROME_PERSONNEL",
+        "outlook.live.com": "DIGIPROF__MICRO__EDGE_PERSONNEL_ADMIN",
+        "onedrive.live.com": "DIGIPROF__MICRO__EDGE_PERSONNEL_ADMIN",
+        "to-do.live.com": "DIGIPROF__MICRO__EDGE_PERSONNEL_ADMIN",
+        "connect.caf.fr": "DIGIPROF__MICRO__EDGE_PERSONNEL_ADMIN",
+        "www.autoentrepreneur.urssaf.fr": "DIGIPROF__MICRO__EDGE_PERSONNEL_ADMIN",
+        "supplier.app.provigis.com": "DIGIPROF__MICRO__EDGE_PERSONNEL_ADMIN"
+      },
+      "intent_keyword": {
+        "PERSONAL_GOOGLE": [
+          "abonnement",
+          "achats",
+          "facture perso",
+          "promo",
+          "publicite",
+          "colis",
+          "personnel"
+        ],
+        "COMPLIANCE_ADMIN": [
+          "compliance",
+          "administratif",
+          "impots",
+          "dgfip",
+          "urssaf",
+          "caf",
+          "assurance"
+        ]
+      }
+    }
+  },
+  "rule_source_routes": [
+    {
+      "id": "RULE_ROUTE__MICRO__CAF_URSSAF_PROVIGIS",
+      "keywords_any": [
+        "caf",
+        "urssaf",
+        "provigis",
+        "declaration caf",
+        "declaration urssaf"
+      ],
+      "source_id": "SRC_SCOPE_MICRO",
+      "source_file": "C:/Users/engue/__SYSTEME - GITHUB__/SOURCE OF TRUTH/PERSONA/_DATA - MICRO_/MICRO.json",
+      "internal_module_id": "COMPLIANCE_ADMIN__CAF_URSSAF_PROVIGIS",
+      "internal_router_file": "governance/router.common.regles.json",
+      "mapping_file": "references/mapping-compliance-admin.md"
+    },
+    {
+      "id": "RULE_ROUTE__PERSONA__VEHICLE_CB500X",
+      "keywords_any": [
+        "moto",
+        "cb500x",
+        "cb 500x",
+        "honda",
+        "gm-108-ar",
+        "chaine",
+        "graissage",
+        "degraissage",
+        "pneu",
+        "garage moto"
+      ],
+      "source_id": "SRC_SCOPE_PERSONA_CB500X",
+      "source_file": "C:/Users/engue/__SYSTEME - GITHUB__/SOURCE OF TRUTH/PERSONA/_DATA - PERSONA_/DATA - VEHICULES/Cb 500X.json"
+    },
+    {
+      "id": "RULE_ROUTE__PERSONA__GENERAL",
+      "keywords_any": [
+        "abonnement",
+        "facture perso",
+        "promo",
+        "colis",
+        "assurance perso"
+      ],
+      "source_id": "SRC_SCOPE_PERSONA",
+      "source_file": "C:/Users/engue/__SYSTEME - GITHUB__/SOURCE OF TRUTH/PERSONA/_DATA - PERSONA_/PERSONA.json"
+    }
+  ],
+  "specialized_handoffs": {
+    "llm_fiche_structurer": {
+      "handoff_skill_path": "C:/Users/engue/.codex/skills/llm-fiche-structurer/SKILL.md",
+      "required_for_intents": [
+        "structurer",
+        "normaliser",
+        "mettre en fiche llm",
+        "aligner au schema",
+        "convertir",
+        "maintenance complete",
+        "rebuild todo"
+      ]
+    },
+    "meow_process": {
+      "handoff_skill_path": "C:/Users/engue/.codex/skills/process-onedrive-meow-paw-paw/SKILL.md",
+      "required_for_keywords_any": [
+        "meow paw paw",
+        "sku",
+        "prix",
+        "catalogue",
+        "fournisseur",
+        "amazon",
+        "alibaba",
+        "marketplace",
+        "ecommerce"
+      ],
+      "write_policy": "mandatory_handoff_for_write_intent"
+    }
+  }
+}
